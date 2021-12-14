@@ -302,7 +302,7 @@ class Home extends Component<{
       width={200}
       height={'auto'}
       onClick={function(){
-        if(1===1 || danData[i].name === correctPlace){
+        if(danData[i].name === correctPlace){
           // alert("WIN");
           myApp.setState({ 
             key: Math.random(),
