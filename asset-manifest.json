@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/flag-game/static/css/main.36894b5e.chunk.css",
-    "main.js": "/flag-game/static/js/main.62a311fa.chunk.js",
-    "main.js.map": "/flag-game/static/js/main.62a311fa.chunk.js.map",
+    "main.js": "/flag-game/static/js/main.26103123.chunk.js",
+    "main.js.map": "/flag-game/static/js/main.26103123.chunk.js.map",
     "runtime-main.js": "/flag-game/static/js/runtime-main.ac88d708.js",
     "runtime-main.js.map": "/flag-game/static/js/runtime-main.ac88d708.js.map",
     "static/js/2.c31b1761.chunk.js": "/flag-game/static/js/2.c31b1761.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ac88d708.js",
     "static/js/2.c31b1761.chunk.js",
     "static/css/main.36894b5e.chunk.css",
-    "static/js/main.62a311fa.chunk.js"
+    "static/js/main.26103123.chunk.js"
   ]
 }
