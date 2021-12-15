@@ -2,214 +2,551 @@ import './App.css';
 import { Component } from 'react';
 
 import { FlagNavBar } from './NavBar';
-import FlagImage from './NICA0001.gif';
+import adImage from './svgs/ad.svg';
+import aeImage from './svgs/ae.svg';
+import afImage from './svgs/af.svg';
+import agImage from './svgs/ag.svg';
+import aiImage from './svgs/ai.svg';
+import alImage from './svgs/al.svg';
+import amImage from './svgs/am.svg';
+import aoImage from './svgs/ao.svg';
+import aqImage from './svgs/aq.svg';
+import arImage from './svgs/ar.svg';
+import asImage from './svgs/as.svg';
+import atImage from './svgs/at.svg';
+import auImage from './svgs/au.svg';
+import awImage from './svgs/aw.svg';
+import axImage from './svgs/ax.svg';
+import azImage from './svgs/az.svg';
+import baImage from './svgs/ba.svg';
+import bbImage from './svgs/bb.svg';
+import bdImage from './svgs/bd.svg';
+import beImage from './svgs/be.svg';
+import bfImage from './svgs/bf.svg';
+import bgImage from './svgs/bg.svg';
+import bhImage from './svgs/bh.svg';
+import biImage from './svgs/bi.svg';
+import bjImage from './svgs/bj.svg';
+import blImage from './svgs/bl.svg';
+import bmImage from './svgs/bm.svg';
+import bnImage from './svgs/bn.svg';
+import boImage from './svgs/bo.svg';
+import bqImage from './svgs/bq.svg';
+import brImage from './svgs/br.svg';
+import bsImage from './svgs/bs.svg';
+import btImage from './svgs/bt.svg';
+import bvImage from './svgs/bv.svg';
+import bwImage from './svgs/bw.svg';
+import byImage from './svgs/by.svg';
+import bzImage from './svgs/bz.svg';
+import caImage from './svgs/ca.svg';
+import ccImage from './svgs/cc.svg';
+import cdImage from './svgs/cd.svg';
+import cfImage from './svgs/cf.svg';
+import cgImage from './svgs/cg.svg';
+import chImage from './svgs/ch.svg';
+import ciImage from './svgs/ci.svg';
+import ckImage from './svgs/ck.svg';
+import clImage from './svgs/cl.svg';
+import cmImage from './svgs/cm.svg';
+import cnImage from './svgs/cn.svg';
+import coImage from './svgs/co.svg';
+import crImage from './svgs/cr.svg';
+import cuImage from './svgs/cu.svg';
+import cvImage from './svgs/cv.svg';
+import cwImage from './svgs/cw.svg';
+import cxImage from './svgs/cx.svg';
+import cyImage from './svgs/cy.svg';
+import czImage from './svgs/cz.svg';
+import deImage from './svgs/de.svg';
+import djImage from './svgs/dj.svg';
+import dkImage from './svgs/dk.svg';
+import dmImage from './svgs/dm.svg';
+import doImage from './svgs/do.svg';
+import dzImage from './svgs/dz.svg';
+import ecImage from './svgs/ec.svg';
+import eeImage from './svgs/ee.svg';
+import egImage from './svgs/eg.svg';
+import ehImage from './svgs/eh.svg';
+import erImage from './svgs/er.svg';
+import esImage from './svgs/es.svg';
+import etImage from './svgs/et.svg';
+import fiImage from './svgs/fi.svg';
+import fjImage from './svgs/fj.svg';
+import fkImage from './svgs/fk.svg';
+import fmImage from './svgs/fm.svg';
+import foImage from './svgs/fo.svg';
+import frImage from './svgs/fr.svg';
+import gaImage from './svgs/ga.svg';
+import gbImage from './svgs/gb.svg';
+import gbengImage from './svgs/gb-eng.svg';
+import gbnirImage from './svgs/gb-nir.svg';
+import gbsctImage from './svgs/gb-sct.svg';
+import gbwlsImage from './svgs/gb-wls.svg';
+import gdImage from './svgs/gd.svg';
+import geImage from './svgs/ge.svg';
+import gfImage from './svgs/gf.svg';
+import ggImage from './svgs/gg.svg';
+import ghImage from './svgs/gh.svg';
+import giImage from './svgs/gi.svg';
+import glImage from './svgs/gl.svg';
+import gmImage from './svgs/gm.svg';
+import gnImage from './svgs/gn.svg';
+import gpImage from './svgs/gp.svg';
+import gqImage from './svgs/gq.svg';
+import grImage from './svgs/gr.svg';
+import gsImage from './svgs/gs.svg';
+import gtImage from './svgs/gt.svg';
+import guImage from './svgs/gu.svg';
+import gwImage from './svgs/gw.svg';
+import gyImage from './svgs/gy.svg';
+import hkImage from './svgs/hk.svg';
+import hmImage from './svgs/hm.svg';
+import hnImage from './svgs/hn.svg';
+import hrImage from './svgs/hr.svg';
+import htImage from './svgs/ht.svg';
+import huImage from './svgs/hu.svg';
+import idImage from './svgs/id.svg';
+import ieImage from './svgs/ie.svg';
+import ilImage from './svgs/il.svg';
+import imImage from './svgs/im.svg';
+import inImage from './svgs/in.svg';
+import ioImage from './svgs/io.svg';
+import iqImage from './svgs/iq.svg';
+import irImage from './svgs/ir.svg';
+import isImage from './svgs/is.svg';
+import itImage from './svgs/it.svg';
+import jeImage from './svgs/je.svg';
+import jmImage from './svgs/jm.svg';
+import joImage from './svgs/jo.svg';
+import jpImage from './svgs/jp.svg';
+import keImage from './svgs/ke.svg';
+import kgImage from './svgs/kg.svg';
+import khImage from './svgs/kh.svg';
+import kiImage from './svgs/ki.svg';
+import kmImage from './svgs/km.svg';
+import knImage from './svgs/kn.svg';
+import kpImage from './svgs/kp.svg';
+import krImage from './svgs/kr.svg';
+import kwImage from './svgs/kw.svg';
+import kyImage from './svgs/ky.svg';
+import kzImage from './svgs/kz.svg';
+import laImage from './svgs/la.svg';
+import lbImage from './svgs/lb.svg';
+import lcImage from './svgs/lc.svg';
+import liImage from './svgs/li.svg';
+import lkImage from './svgs/lk.svg';
+import lrImage from './svgs/lr.svg';
+import lsImage from './svgs/ls.svg';
+import ltImage from './svgs/lt.svg';
+import luImage from './svgs/lu.svg';
+import lvImage from './svgs/lv.svg';
+import lyImage from './svgs/ly.svg';
+import maImage from './svgs/ma.svg';
+import mcImage from './svgs/mc.svg';
+import mdImage from './svgs/md.svg';
+import meImage from './svgs/me.svg';
+import mfImage from './svgs/mf.svg';
+import mgImage from './svgs/mg.svg';
+import mhImage from './svgs/mh.svg';
+import mkImage from './svgs/mk.svg';
+import mlImage from './svgs/ml.svg';
+import mmImage from './svgs/mm.svg';
+import mnImage from './svgs/mn.svg';
+import moImage from './svgs/mo.svg';
+import mpImage from './svgs/mp.svg';
+import mqImage from './svgs/mq.svg';
+import mrImage from './svgs/mr.svg';
+import msImage from './svgs/ms.svg';
+import mtImage from './svgs/mt.svg';
+import muImage from './svgs/mu.svg';
+import mvImage from './svgs/mv.svg';
+import mwImage from './svgs/mw.svg';
+import mxImage from './svgs/mx.svg';
+import myImage from './svgs/my.svg';
+import mzImage from './svgs/mz.svg';
+import naImage from './svgs/na.svg';
+import ncImage from './svgs/nc.svg';
+import neImage from './svgs/ne.svg';
+import nfImage from './svgs/nf.svg';
+import ngImage from './svgs/ng.svg';
+import niImage from './svgs/ni.svg';
+import nlImage from './svgs/nl.svg';
+import noImage from './svgs/no.svg';
+import npImage from './svgs/np.svg';
+import nrImage from './svgs/nr.svg';
+import nuImage from './svgs/nu.svg';
+import nzImage from './svgs/nz.svg';
+import omImage from './svgs/om.svg';
+import paImage from './svgs/pa.svg';
+import peImage from './svgs/pe.svg';
+import pfImage from './svgs/pf.svg';
+import pgImage from './svgs/pg.svg';
+import phImage from './svgs/ph.svg';
+import pkImage from './svgs/pk.svg';
+import plImage from './svgs/pl.svg';
+import pmImage from './svgs/pm.svg';
+import pnImage from './svgs/pn.svg';
+import prImage from './svgs/pr.svg';
+import psImage from './svgs/ps.svg';
+import ptImage from './svgs/pt.svg';
+import pwImage from './svgs/pw.svg';
+import pyImage from './svgs/py.svg';
+import qaImage from './svgs/qa.svg';
+import reImage from './svgs/re.svg';
+import roImage from './svgs/ro.svg';
+import rsImage from './svgs/rs.svg';
+import ruImage from './svgs/ru.svg';
+import rwImage from './svgs/rw.svg';
+import saImage from './svgs/sa.svg';
+import sbImage from './svgs/sb.svg';
+import scImage from './svgs/sc.svg';
+import sdImage from './svgs/sd.svg';
+import seImage from './svgs/se.svg';
+import sgImage from './svgs/sg.svg';
+import shImage from './svgs/sh.svg';
+import siImage from './svgs/si.svg';
+import sjImage from './svgs/sj.svg';
+import skImage from './svgs/sk.svg';
+import slImage from './svgs/sl.svg';
+import smImage from './svgs/sm.svg';
+import snImage from './svgs/sn.svg';
+import soImage from './svgs/so.svg';
+import srImage from './svgs/sr.svg';
+import ssImage from './svgs/ss.svg';
+import stImage from './svgs/st.svg';
+import svImage from './svgs/sv.svg';
+import sxImage from './svgs/sx.svg';
+import syImage from './svgs/sy.svg';
+import szImage from './svgs/sz.svg';
+import tcImage from './svgs/tc.svg';
+import tdImage from './svgs/td.svg';
+import tfImage from './svgs/tf.svg';
+import tgImage from './svgs/tg.svg';
+import thImage from './svgs/th.svg';
+import tjImage from './svgs/tj.svg';
+import tkImage from './svgs/tk.svg';
+import tlImage from './svgs/tl.svg';
+import tmImage from './svgs/tm.svg';
+import tnImage from './svgs/tn.svg';
+import toImage from './svgs/to.svg';
+import trImage from './svgs/tr.svg';
+import ttImage from './svgs/tt.svg';
+import tvImage from './svgs/tv.svg';
+import twImage from './svgs/tw.svg';
+import tzImage from './svgs/tz.svg';
+import uaImage from './svgs/ua.svg';
+import ugImage from './svgs/ug.svg';
+import umImage from './svgs/um.svg';
+import usImage from './svgs/us.svg';
+import uyImage from './svgs/uy.svg';
+import uzImage from './svgs/uz.svg';
+import vaImage from './svgs/va.svg';
+import vcImage from './svgs/vc.svg';
+import veImage from './svgs/ve.svg';
+import vgImage from './svgs/vg.svg';
+import viImage from './svgs/vi.svg';
+import vnImage from './svgs/vn.svg';
+import vuImage from './svgs/vu.svg';
+import wfImage from './svgs/wf.svg';
+import wsImage from './svgs/ws.svg';
+import xkImage from './svgs/xk.svg';
+import yeImage from './svgs/ye.svg';
+import ytImage from './svgs/yt.svg';
+import zaImage from './svgs/za.svg';
+import zmImage from './svgs/zm.svg';
+import zwImage from './svgs/zw.svg';
+let images:any = {};
+images['ad'] = { image: adImage, name: 'Andorra' };
+images['ae'] = { image: aeImage, name: 'United Arab Emirates' };
+images['af'] = { image: afImage, name: 'Afghanistan' };
+images['ag'] = { image: agImage, name: 'Antigua and Barbuda' };
+images['ai'] = { image: aiImage, name: 'Anguilla' };
+images['al'] = { image: alImage, name: 'Albania' };
+images['am'] = { image: amImage, name: 'Armenia' };
+images['ao'] = { image: aoImage, name: 'Angola' };
+images['aq'] = { image: aqImage, name: 'Antarctica' };
+images['ar'] = { image: arImage, name: 'Argentina' };
+images['as'] = { image: asImage, name: 'American Samoa' };
+images['at'] = { image: atImage, name: 'Austria' };
+images['au'] = { image: auImage, name: 'Australia' };
+images['aw'] = { image: awImage, name: 'Aruba' };
+images['ax'] = { image: axImage, name: 'Åland Islands' };
+images['az'] = { image: azImage, name: 'Azerbaijan' };
+images['ba'] = { image: baImage, name: 'Bosnia and Herzegovina' };
+images['bb'] = { image: bbImage, name: 'Barbados' };
+images['bd'] = { image: bdImage, name: 'Bangladesh' };
+images['be'] = { image: beImage, name: 'Belgium' };
+images['bf'] = { image: bfImage, name: 'Burkina Faso' };
+images['bg'] = { image: bgImage, name: 'Bulgaria' };
+images['bh'] = { image: bhImage, name: 'Bahrain' };
+images['bi'] = { image: biImage, name: 'Burundi' };
+images['bj'] = { image: bjImage, name: 'Benin' };
+images['bl'] = { image: blImage, name: 'Saint Barthélemy' };
+images['bm'] = { image: bmImage, name: 'Bermuda' };
+images['bn'] = { image: bnImage, name: 'Brunei' };
+images['bo'] = { image: boImage, name: 'Bolivia' };
+images['bq'] = { image: bqImage, name: 'Caribbean Netherlands' };
+images['br'] = { image: brImage, name: 'Brazil' };
+images['bs'] = { image: bsImage, name: 'Bahamas' };
+images['bt'] = { image: btImage, name: 'Bhutan' };
+images['bv'] = { image: bvImage, name: 'Bouvet Island' };
+images['bw'] = { image: bwImage, name: 'Botswana' };
+images['by'] = { image: byImage, name: 'Belarus' };
+images['bz'] = { image: bzImage, name: 'Belize' };
+images['ca'] = { image: caImage, name: 'Canada' };
+images['cc'] = { image: ccImage, name: 'Cocos (Keeling) Islands' };
+images['cd'] = { image: cdImage, name: 'DR Congo' };
+images['cf'] = { image: cfImage, name: 'Central African Republic' };
+images['cg'] = { image: cgImage, name: 'Republic of the Congo' };
+images['ch'] = { image: chImage, name: 'Switzerland' };
+images['ci'] = { image: ciImage, name: 'Côte d\'Ivoire (Ivory Coast)' };
+images['ck'] = { image: ckImage, name: 'Cook Islands' };
+images['cl'] = { image: clImage, name: 'Chile' };
+images['cm'] = { image: cmImage, name: 'Cameroon' };
+images['cn'] = { image: cnImage, name: 'China' };
+images['co'] = { image: coImage, name: 'Colombia' };
+images['cr'] = { image: crImage, name: 'Costa Rica' };
+images['cu'] = { image: cuImage, name: 'Cuba' };
+images['cv'] = { image: cvImage, name: 'Cape Verde' };
+images['cw'] = { image: cwImage, name: 'Curaçao' };
+images['cx'] = { image: cxImage, name: 'Christmas Island' };
+images['cy'] = { image: cyImage, name: 'Cyprus' };
+images['cz'] = { image: czImage, name: 'Czechia' };
+images['de'] = { image: deImage, name: 'Germany' };
+images['dj'] = { image: djImage, name: 'Djibouti' };
+images['dk'] = { image: dkImage, name: 'Denmark' };
+images['dm'] = { image: dmImage, name: 'Dominica' };
+images['do'] = { image: doImage, name: 'Dominican Republic' };
+images['dz'] = { image: dzImage, name: 'Algeria' };
+images['ec'] = { image: ecImage, name: 'Ecuador' };
+images['ee'] = { image: eeImage, name: 'Estonia' };
+images['eg'] = { image: egImage, name: 'Egypt' };
+images['eh'] = { image: ehImage, name: 'Western Sahara' };
+images['er'] = { image: erImage, name: 'Eritrea' };
+images['es'] = { image: esImage, name: 'Spain' };
+images['et'] = { image: etImage, name: 'Ethiopia' };
+images['fi'] = { image: fiImage, name: 'Finland' };
+images['fj'] = { image: fjImage, name: 'Fiji' };
+images['fk'] = { image: fkImage, name: 'Falkland Islands' };
+images['fm'] = { image: fmImage, name: 'Micronesia' };
+images['fo'] = { image: foImage, name: 'Faroe Islands' };
+images['fr'] = { image: frImage, name: 'France' };
+images['ga'] = { image: gaImage, name: 'Gabon' };
+images['gb'] = { image: gbImage, name: 'United Kingdom' };
+images['gbeng'] = { image: gbengImage, name: 'England' };
+images['gbnir'] = { image: gbnirImage, name: 'Northern Ireland' };
+images['gbsct'] = { image: gbsctImage, name: 'Scotland' };
+images['gbwls'] = { image: gbwlsImage, name: 'Wales' };
+images['gd'] = { image: gdImage, name: 'Grenada' };
+images['ge'] = { image: geImage, name: 'Georgia' };
+images['gf'] = { image: gfImage, name: 'French Guiana' };
+images['gg'] = { image: ggImage, name: 'Guernsey' };
+images['gh'] = { image: ghImage, name: 'Ghana' };
+images['gi'] = { image: giImage, name: 'Gibraltar' };
+images['gl'] = { image: glImage, name: 'Greenland' };
+images['gm'] = { image: gmImage, name: 'Gambia' };
+images['gn'] = { image: gnImage, name: 'Guinea' };
+images['gp'] = { image: gpImage, name: 'Guadeloupe' };
+images['gq'] = { image: gqImage, name: 'Equatorial Guinea' };
+images['gr'] = { image: grImage, name: 'Greece' };
+images['gs'] = { image: gsImage, name: 'South Georgia' };
+images['gt'] = { image: gtImage, name: 'Guatemala' };
+images['gu'] = { image: guImage, name: 'Guam' };
+images['gw'] = { image: gwImage, name: 'Guinea-Bissau' };
+images['gy'] = { image: gyImage, name: 'Guyana' };
+images['hk'] = { image: hkImage, name: 'Hong Kong' };
+images['hm'] = { image: hmImage, name: 'Heard Island and McDonald Islands' };
+images['hn'] = { image: hnImage, name: 'Honduras' };
+images['hr'] = { image: hrImage, name: 'Croatia' };
+images['ht'] = { image: htImage, name: 'Haiti' };
+images['hu'] = { image: huImage, name: 'Hungary' };
+images['id'] = { image: idImage, name: 'Indonesia' };
+images['ie'] = { image: ieImage, name: 'Ireland' };
+images['il'] = { image: ilImage, name: 'Israel' };
+images['im'] = { image: imImage, name: 'Isle of Man' };
+images['in'] = { image: inImage, name: 'India' };
+images['io'] = { image: ioImage, name: 'British Indian Ocean Territory' };
+images['iq'] = { image: iqImage, name: 'Iraq' };
+images['ir'] = { image: irImage, name: 'Iran' };
+images['is'] = { image: isImage, name: 'Iceland' };
+images['it'] = { image: itImage, name: 'Italy' };
+images['je'] = { image: jeImage, name: 'Jersey' };
+images['jm'] = { image: jmImage, name: 'Jamaica' };
+images['jo'] = { image: joImage, name: 'Jordan' };
+images['jp'] = { image: jpImage, name: 'Japan' };
+images['ke'] = { image: keImage, name: 'Kenya' };
+images['kg'] = { image: kgImage, name: 'Kyrgyzstan' };
+images['kh'] = { image: khImage, name: 'Cambodia' };
+images['ki'] = { image: kiImage, name: 'Kiribati' };
+images['km'] = { image: kmImage, name: 'Comoros' };
+images['kn'] = { image: knImage, name: 'Saint Kitts and Nevis' };
+images['kp'] = { image: kpImage, name: 'North Korea' };
+images['kr'] = { image: krImage, name: 'South Korea' };
+images['kw'] = { image: kwImage, name: 'Kuwait' };
+images['ky'] = { image: kyImage, name: 'Cayman Islands' };
+images['kz'] = { image: kzImage, name: 'Kazakhstan' };
+images['la'] = { image: laImage, name: 'Laos' };
+images['lb'] = { image: lbImage, name: 'Lebanon' };
+images['lc'] = { image: lcImage, name: 'Saint Lucia' };
+images['li'] = { image: liImage, name: 'Liechtenstein' };
+images['lk'] = { image: lkImage, name: 'Sri Lanka' };
+images['lr'] = { image: lrImage, name: 'Liberia' };
+images['ls'] = { image: lsImage, name: 'Lesotho' };
+images['lt'] = { image: ltImage, name: 'Lithuania' };
+images['lu'] = { image: luImage, name: 'Luxembourg' };
+images['lv'] = { image: lvImage, name: 'Latvia' };
+images['ly'] = { image: lyImage, name: 'Libya' };
+images['ma'] = { image: maImage, name: 'Morocco' };
+images['mc'] = { image: mcImage, name: 'Monaco' };
+images['md'] = { image: mdImage, name: 'Moldova' };
+images['me'] = { image: meImage, name: 'Montenegro' };
+images['mf'] = { image: mfImage, name: 'Saint Martin' };
+images['mg'] = { image: mgImage, name: 'Madagascar' };
+images['mh'] = { image: mhImage, name: 'Marshall Islands' };
+images['mk'] = { image: mkImage, name: 'North Macedonia' };
+images['ml'] = { image: mlImage, name: 'Mali' };
+images['mm'] = { image: mmImage, name: 'Myanmar' };
+images['mn'] = { image: mnImage, name: 'Mongolia' };
+images['mo'] = { image: moImage, name: 'Macau' };
+images['mp'] = { image: mpImage, name: 'Northern Mariana Islands' };
+images['mq'] = { image: mqImage, name: 'Martinique' };
+images['mr'] = { image: mrImage, name: 'Mauritania' };
+images['ms'] = { image: msImage, name: 'Montserrat' };
+images['mt'] = { image: mtImage, name: 'Malta' };
+images['mu'] = { image: muImage, name: 'Mauritius' };
+images['mv'] = { image: mvImage, name: 'Maldives' };
+images['mw'] = { image: mwImage, name: 'Malawi' };
+images['mx'] = { image: mxImage, name: 'Mexico' };
+images['my'] = { image: myImage, name: 'Malaysia' };
+images['mz'] = { image: mzImage, name: 'Mozambique' };
+images['na'] = { image: naImage, name: 'Namibia' };
+images['nc'] = { image: ncImage, name: 'New Caledonia' };
+images['ne'] = { image: neImage, name: 'Niger' };
+images['nf'] = { image: nfImage, name: 'Norfolk Island' };
+images['ng'] = { image: ngImage, name: 'Nigeria' };
+images['ni'] = { image: niImage, name: 'Nicaragua' };
+images['nl'] = { image: nlImage, name: 'Netherlands' };
+images['no'] = { image: noImage, name: 'Norway' };
+images['np'] = { image: npImage, name: 'Nepal' };
+images['nr'] = { image: nrImage, name: 'Nauru' };
+images['nu'] = { image: nuImage, name: 'Niue' };
+images['nz'] = { image: nzImage, name: 'New Zealand' };
+images['om'] = { image: omImage, name: 'Oman' };
+images['pa'] = { image: paImage, name: 'Panama' };
+images['pe'] = { image: peImage, name: 'Peru' };
+images['pf'] = { image: pfImage, name: 'French Polynesia' };
+images['pg'] = { image: pgImage, name: 'Papua New Guinea' };
+images['ph'] = { image: phImage, name: 'Philippines' };
+images['pk'] = { image: pkImage, name: 'Pakistan' };
+images['pl'] = { image: plImage, name: 'Poland' };
+images['pm'] = { image: pmImage, name: 'Saint Pierre and Miquelon' };
+images['pn'] = { image: pnImage, name: 'Pitcairn Islands' };
+images['pr'] = { image: prImage, name: 'Puerto Rico' };
+images['ps'] = { image: psImage, name: 'Palestine' };
+images['pt'] = { image: ptImage, name: 'Portugal' };
+images['pw'] = { image: pwImage, name: 'Palau' };
+images['py'] = { image: pyImage, name: 'Paraguay' };
+images['qa'] = { image: qaImage, name: 'Qatar' };
+images['re'] = { image: reImage, name: 'Réunion' };
+images['ro'] = { image: roImage, name: 'Romania' };
+images['rs'] = { image: rsImage, name: 'Serbia' };
+images['ru'] = { image: ruImage, name: 'Russia' };
+images['rw'] = { image: rwImage, name: 'Rwanda' };
+images['sa'] = { image: saImage, name: 'Saudi Arabia' };
+images['sb'] = { image: sbImage, name: 'Solomon Islands' };
+images['sc'] = { image: scImage, name: 'Seychelles' };
+images['sd'] = { image: sdImage, name: 'Sudan' };
+images['se'] = { image: seImage, name: 'Sweden' };
+images['sg'] = { image: sgImage, name: 'Singapore' };
+images['sh'] = { image: shImage, name: 'Saint Helena, Ascension and Tristan da Cunha' };
+images['si'] = { image: siImage, name: 'Slovenia' };
+images['sj'] = { image: sjImage, name: 'Svalbard and Jan Mayen' };
+images['sk'] = { image: skImage, name: 'Slovakia' };
+images['sl'] = { image: slImage, name: 'Sierra Leone' };
+images['sm'] = { image: smImage, name: 'San Marino' };
+images['sn'] = { image: snImage, name: 'Senegal' };
+images['so'] = { image: soImage, name: 'Somalia' };
+images['sr'] = { image: srImage, name: 'Suriname' };
+images['ss'] = { image: ssImage, name: 'South Sudan' };
+images['st'] = { image: stImage, name: 'São Tomé and Príncipe' };
+images['sv'] = { image: svImage, name: 'El Salvador' };
+images['sx'] = { image: sxImage, name: 'Sint Maarten' };
+images['sy'] = { image: syImage, name: 'Syria' };
+images['sz'] = { image: szImage, name: 'Eswatini (Swaziland)' };
+images['tc'] = { image: tcImage, name: 'Turks and Caicos Islands' };
+images['td'] = { image: tdImage, name: 'Chad' };
+images['tf'] = { image: tfImage, name: 'French Southern and Antarctic Lands' };
+images['tg'] = { image: tgImage, name: 'Togo' };
+images['th'] = { image: thImage, name: 'Thailand' };
+images['tj'] = { image: tjImage, name: 'Tajikistan' };
+images['tk'] = { image: tkImage, name: 'Tokelau' };
+images['tl'] = { image: tlImage, name: 'Timor-Leste' };
+images['tm'] = { image: tmImage, name: 'Turkmenistan' };
+images['tn'] = { image: tnImage, name: 'Tunisia' };
+images['to'] = { image: toImage, name: 'Tonga' };
+images['tr'] = { image: trImage, name: 'Turkey' };
+images['tt'] = { image: ttImage, name: 'Trinidad and Tobago' };
+images['tv'] = { image: tvImage, name: 'Tuvalu' };
+images['tw'] = { image: twImage, name: 'Taiwan' };
+images['tz'] = { image: tzImage, name: 'Tanzania' };
+images['ua'] = { image: uaImage, name: 'Ukraine' };
+images['ug'] = { image: ugImage, name: 'Uganda' };
+images['um'] = { image: umImage, name: 'United States Minor Outlying Islands' };
+images['us'] = { image: usImage, name: 'United States' };
+images['uy'] = { image: uyImage, name: 'Uruguay' };
+images['uz'] = { image: uzImage, name: 'Uzbekistan' };
+images['va'] = { image: vaImage, name: 'Vatican City (Holy See)' };
+images['vc'] = { image: vcImage, name: 'Saint Vincent and the Grenadines' };
+images['ve'] = { image: veImage, name: 'Venezuela' };
+images['vg'] = { image: vgImage, name: 'British Virgin Islands' };
+images['vi'] = { image: viImage, name: 'United States Virgin Islands' };
+images['vn'] = { image: vnImage, name: 'Vietnam' };
+images['vu'] = { image: vuImage, name: 'Vanuatu' };
+images['wf'] = { image: wfImage, name: 'Wallis and Futuna' };
+images['ws'] = { image: wsImage, name: 'Samoa' };
+images['xk'] = { image: xkImage, name: 'Kosovo' };
+images['ye'] = { image: yeImage, name: 'Yemen' };
+images['yt'] = { image: ytImage, name: 'Mayotte' };
+images['za'] = { image: zaImage, name: 'South Africa' };
+images['zm'] = { image: zmImage, name: 'Zambia' };
+images['zw'] = { image: zwImage, name: 'Zimbabwe' };
+const imageKeys = Object.keys(images);
+
 
 let myApp: AppContent; 
 const numFlagsShown = 4;
+let image: any;
 
+
+//const json = require('./codes.json');
+/*
+console.log(`json = ${json}`);
+const codes = Object.keys(json);
+console.log(`codes = ${JSON.stringify(codes)}`);
+let printMe = '';
+codes.forEach((c)=>{
+  printMe += `import ${c}Image from './svgs/${c}.svg';\n`;
+})
+printMe += `let images = {};`;
+codes.forEach((c)=>{
+  printMe += `images['${c}'] = { image: ${c}Image, name: '${json[c]}' };\n`;
+})
+console.log(printMe);
+*/
 function App() {
+  const reqSvgs = require.context ( './svgs', true, /\.svg$/ )
+  const allSvgFilePaths = reqSvgs.keys();
+  const imagePath = allSvgFilePaths[0];
+  console.log(`imagePath = ${imagePath}`);
+  image = reqSvgs(imagePath);
+  console.log(`image = ${image}`);
   return (
     <AppContent
     >
     </AppContent>
   );
 }
-const danData = [
-  { name:"Afghanistan", url: "http://www.flags.net/images/largeflags/AFGH0001.GIF" },
-  { name:"Albania", url: "http://www.flags.net/images/largeflags/ALBA0001.GIF" },
-  { name:"Algeria", url: "http://www.flags.net/images/largeflags/ALGE0001.GIF" },
-  { name:"Andorra", url: "http://www.flags.net/images/largeflags/ANDR0001.GIF" },
-  { name:"Angola", url: "http://www.flags.net/images/largeflags/AGLA0001.GIF" },
-  { name:"Antigua & Barbuda", url: "http://www.flags.net/images/largeflags/ANBA0001.GIF" },
-  { name:"Argentina", url: "http://www.flags.net/images/largeflags/ARGE0001.GIF" },
-  { name:"Armenia", url: "http://www.flags.net/images/largeflags/ARME0001.GIF" },
-  { name:"Australia", url: "http://www.flags.net/images/largeflags/ASTL0001.GIF" },
-  { name:"Austria", url: "http://www.flags.net/images/largeflags/AUST0001.GIF" },
-  { name:"Azerbaijan", url: "http://www.flags.net/images/largeflags/AZER0001.GIF" },
-  { name:"The Bahamas", url: "http://www.flags.net/images/largeflags/BHMS0001.GIF" },
-  { name:"Bahrain", url: "http://www.flags.net/images/largeflags/BHRN0001.GIF" },
-  { name:"Bangladesh", url: "http://www.flags.net/images/largeflags/BNGL0001.GIF" },
-  { name:"Barbados", url: "http://www.flags.net/images/largeflags/BRBD0001.GIF" },
-  { name:"Belarus", url: "http://www.flags.net/images/largeflags/BLRU0001.GIF" },
-  { name:"Belgium", url: "http://www.flags.net/images/largeflags/BELG0001.GIF" },
-  { name:"Belize", url: "http://www.flags.net/images/largeflags/BLZE0001.GIF" },
-  { name:"Benin", url: "http://www.flags.net/images/largeflags/BNIN0001.GIF" },
-  { name:"Bhután", url: "http://www.flags.net/images/largeflags/BHUT0001.GIF" },
-  { name:"Bolivia", url: "http://www.flags.net/images/largeflags/BLVA0001.GIF" },
-  { name:"Bosnia & Herzegovina", url: "http://www.flags.net/images/largeflags/BOHE0001.GIF" },
-  { name:"Botswana", url: "http://www.flags.net/images/largeflags/BOTS0001.GIF" },
-  { name:"Brazil", url: "http://www.flags.net/images/largeflags/BRAZ0001.GIF" },
-  { name:"Brunei", url: "http://www.flags.net/images/largeflags/BRUN0001.GIF" },
-  { name:"Bulgaria", url: "http://www.flags.net/images/largeflags/BULG0001.GIF" },
-  { name:"Burkina Faso", url: "http://www.flags.net/images/largeflags/BUFA0001.GIF" },
-  { name:"Burundi", url: "http://www.flags.net/images/largeflags/BURU0001.GIF" },
-  { name:"Cambodia", url: "http://www.flags.net/images/largeflags/CAMB0001.GIF" },
-  { name:"Cameroon", url: "http://www.flags.net/images/largeflags/CAME0001.GIF" },
-  { name:"Canada", url: "http://www.flags.net/images/largeflags/CANA0001.GIF" },
-  { name:"Cape Verde", url: "http://www.flags.net/images/largeflags/CAVE0001.GIF" },
-  { name:"Central African Republic", url: "http://www.flags.net/images/largeflags/CAFR0001.GIF" },
-  { name:"Chad", url: "http://www.flags.net/images/largeflags/CHAD0001.GIF" },
-  { name:"Chile", url: "http://www.flags.net/images/largeflags/CHIL0001.GIF" },
-  { name:"China", url: "http://www.flags.net/images/largeflags/CHIN0001.GIF" },
-  { name:"Colombia", url: "http://www.flags.net/images/largeflags/CLMB0001.GIF" },
-  { name:"Comoros", url: "http://www.flags.net/images/largeflags/COMO0001.GIF" },
-  { name:"Congo-Brazzaville", url: "http://www.flags.net/images/largeflags/CONG0001.GIF" },
-  { name:"Congo-Kinshasa", url: "http://www.flags.net/images/largeflags/CODR0001.GIF" },
-  { name:"Costa Rica", url: "http://www.flags.net/images/largeflags/CORC0001.GIF" },
-  { name:"Côte d’Ivoire", url: "http://www.flags.net/images/largeflags/CDIV0001.GIF" },
-  { name:"Croatia", url: "http://www.flags.net/images/largeflags/CROA0001.GIF" },
-  { name:"Cuba", url: "http://www.flags.net/images/largeflags/CUBA0001.GIF" },
-  { name:"Cyprus", url: "http://www.flags.net/images/largeflags/CYPR0001.GIF" },
-  { name:"The Czech Republic", url: "http://www.flags.net/images/largeflags/CZEC0001.GIF" },
-  { name:"Denmark", url: "http://www.flags.net/images/largeflags/DENM0001.GIF" },
-  { name:"Djibouti", url: "http://www.flags.net/images/largeflags/DJIB0001.GIF" },
-  { name:"Dominica", url: "http://www.flags.net/images/largeflags/DOMN0001.GIF" },
-  { name:"Dominican Republic", url: "http://www.flags.net/images/largeflags/DORE0001.GIF" },
-  { name:"Ecuador", url: "http://www.flags.net/images/largeflags/ECUA0001.GIF" },
-  { name:"Egypt", url: "http://www.flags.net/images/largeflags/EGYP0001.GIF" },
-  { name:"El Salvador", url: "http://www.flags.net/images/largeflags/ELSA0001.GIF" },
-  { name:"Equatorial Guinea", url: "http://www.flags.net/images/largeflags/EQGU0001.GIF" },
-  { name:"Eritrea", url: "http://www.flags.net/images/largeflags/ERIT0001.GIF" },
-  { name:"Estonia", url: "http://www.flags.net/images/largeflags/ESTN0001.GIF" },
-  { name:"Ethiopia", url: "http://www.flags.net/images/largeflags/ETHP0001.GIF" },
-  { name:"Fiji", url: "http://www.flags.net/images/largeflags/FIJI0001.GIF" },
-  { name:"Finland", url: "http://www.flags.net/images/largeflags/FINL0001.GIF" },
-  { name:"France", url: "http://www.flags.net/images/largeflags/FRAN0001.GIF" },
-  { name:"Gabon", url: "http://www.flags.net/images/largeflags/GABN0001.GIF" },
-  { name:"The Gambia", url: "http://www.flags.net/images/largeflags/GAMB0001.GIF" },
-  { name:"Georgia", url: "http://www.flags.net/images/largeflags/GEOR0001.GIF" },
-  { name:"Germany", url: "http://www.flags.net/images/largeflags/GERM0001.GIF" },
-  { name:"Ghana", url: "http://www.flags.net/images/largeflags/GHAN0001.GIF" },
-  { name:"Greece", url: "http://www.flags.net/images/largeflags/GREC0001.GIF" },
-  { name:"Grenada", url: "http://www.flags.net/images/largeflags/GREN0001.GIF" },
-  { name:"Guatemala", url: "http://www.flags.net/images/largeflags/GUAT0001.GIF" },
-  { name:"Guinea", url: "http://www.flags.net/images/largeflags/GUIN0001.GIF" },
-  { name:"Guinea-Bissau", url: "http://www.flags.net/images/largeflags/GUBA0001.GIF" },
-  { name:"Guyana", url: "http://www.flags.net/images/largeflags/GUYA0001.GIF" },
-  { name:"Haiti", url: "http://www.flags.net/images/largeflags/HAIT0001.GIF" },
-  { name:"Honduras", url: "http://www.flags.net/images/largeflags/HOND0001.GIF" },
-  { name:"Hungary", url: "http://www.flags.net/images/largeflags/HUNG0001.GIF" },
-  { name:"Iceland", url: "http://www.flags.net/images/largeflags/ICEL0001.GIF" },
-  { name:"India", url: "http://www.flags.net/images/largeflags/INDA0001.GIF" },
-  { name:"Indonesia", url: "http://www.flags.net/images/largeflags/INDN0001.GIF" },
-  { name:"Irân", url: "http://www.flags.net/images/largeflags/IRAN0001.GIF" },
-  { name:"Iraq", url: "http://www.flags.net/images/largeflags/IRAQ0001.GIF" },
-  { name:"Ireland", url: "http://www.flags.net/images/largeflags/IREL0001.GIF" },
-  { name:"Israel", url: "http://www.flags.net/images/largeflags/ISRA0001.GIF" },
-  { name:"Italy", url: "http://www.flags.net/images/largeflags/ITAL0001.GIF" },
-  { name:"Jamaica", url: "http://www.flags.net/images/largeflags/JAMA0001.GIF" },
-  { name:"Japan", url: "http://www.flags.net/images/largeflags/JAPA0001.GIF" },
-  { name:"Jordan", url: "http://www.flags.net/images/largeflags/JORD0001.GIF" },
-  { name:"Kazakhstan", url: "http://www.flags.net/images/largeflags/KAZK0001.GIF" },
-  { name:"Kenya", url: "http://www.flags.net/images/largeflags/KENY0001.GIF" },
-  { name:"Kiribati", url: "http://www.flags.net/images/largeflags/KIRB0001.GIF" },
-  { name:"Kuwait", url: "http://www.flags.net/images/largeflags/KUWA0001.GIF" },
-  { name:"Kyrgyzstan", url: "http://www.flags.net/images/largeflags/KYRG0001.GIF" },
-  { name:"Laos", url: "http://www.flags.net/images/largeflags/LAOS0001.GIF" },
-  { name:"Latvia", url: "http://www.flags.net/images/largeflags/LATV0001.GIF" },
-  { name:"Lebanon", url: "http://www.flags.net/images/largeflags/LEBA0001.GIF" },
-  { name:"Lesotho", url: "http://www.flags.net/images/largeflags/LEST0001.GIF" },
-  { name:"Liberia", url: "http://www.flags.net/images/largeflags/LIBE0001.GIF" },
-  { name:"Libya", url: "http://www.flags.net/images/largeflags/LBYA0001.GIF" },
-  { name:"Liechtenstein", url: "http://www.flags.net/images/largeflags/LIEC0001.GIF" },
-  { name:"Lithuania", url: "http://www.flags.net/images/largeflags/LITH0001.GIF" },
-  { name:"Luxembourg", url: "http://www.flags.net/images/largeflags/LUXE0001.GIF" },
-  { name:"Macedonia", url: "http://www.flags.net/images/largeflags/MACE0001.GIF" },
-  { name:"Madagascar", url: "http://www.flags.net/images/largeflags/MADA0001.GIF" },
-  { name:"Malawi", url: "http://www.flags.net/images/largeflags/MALW0001.GIF" },
-  { name:"Malaysia", url: "http://www.flags.net/images/largeflags/MALS0001.GIF" },
-  { name:"Maldives", url: "http://www.flags.net/images/largeflags/MALD0001.GIF" },
-  { name:"Mali", url: "http://www.flags.net/images/largeflags/MALI0001.GIF" },
-  { name:"Malta", url: "http://www.flags.net/images/largeflags/MALT0001.GIF" },
-  { name:"Marshall Islands", url: "http://www.flags.net/images/largeflags/MAIS0001.GIF" },
-  { name:"Mauritania", url: "http://www.flags.net/images/largeflags/MAUR0001.GIF" },
-  { name:"Mauritius", url: "http://www.flags.net/images/largeflags/MRTS0001.GIF" },
-  { name:"México", url: "http://www.flags.net/images/largeflags/MEXC0001.GIF" },
-  { name:"Micronesia", url: "http://www.flags.net/images/largeflags/MICR0001.GIF" },
-  { name:"Moldova", url: "http://www.flags.net/images/largeflags/MOLD0001.GIF" },
-  { name:"Monaco", url: "http://www.flags.net/images/largeflags/MONA0001.GIF" },
-  { name:"Mongolia", url: "http://www.flags.net/images/largeflags/MONG0001.GIF" },
-  { name:"Montenegro", url: "http://www.flags.net/images/largeflags/MNGR0001.GIF" },
-  { name:"Morocco", url: "http://www.flags.net/images/largeflags/MORC0001.GIF" },
-  { name:"Mozambique", url: "http://www.flags.net/images/largeflags/MOZA0001.GIF" },
-  { name:"Myanmar", url: "http://www.flags.net/images/largeflags/MYAN0001.GIF" },
-  { name:"Namibia", url: "http://www.flags.net/images/largeflags/NAMB0001.GIF" },
-  { name:"Nauru", url: "http://www.flags.net/images/largeflags/NAUR0001.GIF" },
-  { name:"Nepal", url: "http://www.flags.net/images/largeflags/NEPA0001.GIF" },
-  { name:"The Netherlands", url: "http://www.flags.net/images/largeflags/NETH0001.GIF" },
-  { name:"New Zealand", url: "http://www.flags.net/images/largeflags/NWZE0001.GIF" },
-  { name:"Nicaragua", url: "http://www.flags.net/images/largeflags/NICA0001.GIF" },
-  { name:"Niger", url: "http://www.flags.net/images/largeflags/NIGR0001.GIF" },
-  { name:"Nigeria", url: "http://www.flags.net/images/largeflags/NGRA0001.GIF" },
-  { name:"North Korea", url: "http://www.flags.net/images/largeflags/NKOR0001.GIF" },
-  { name:"Norway", url: "http://www.flags.net/images/largeflags/NORW0001.GIF" },
-  { name:"Oman", url: "http://www.flags.net/images/largeflags/OMAN0001.GIF" },
-  { name:"Pakistan", url: "http://www.flags.net/images/largeflags/PAKS0001.GIF" },
-  { name:"Palau", url: "http://www.flags.net/images/largeflags/PALA0001.GIF" },
-  { name:"Panamá", url: "http://www.flags.net/images/largeflags/PANA0001.GIF" },
-  { name:"Papua New Guinea", url: "http://www.flags.net/images/largeflags/PANG0001.GIF" },
-  { name:"Paraguay", url: "http://www.flags.net/images/largeflags/PARA0001.GIF" },
-  { name:"Perú", url: "http://www.flags.net/images/largeflags/PERU0001.GIF" },
-  { name:"Philippines", url: "http://www.flags.net/images/largeflags/PHIL0001.GIF" },
-  { name:"Poland", url: "http://www.flags.net/images/largeflags/POLA0001.GIF" },
-  { name:"Portugal", url: "http://www.flags.net/images/largeflags/PORT0001.GIF" },
-  { name:"Qatar", url: "http://www.flags.net/images/largeflags/QATA0001.GIF" },
-  { name:"România", url: "http://www.flags.net/images/largeflags/RMNA0001.GIF" },
-  { name:"Russian Federation", url: "http://www.flags.net/images/largeflags/RUSS0001.GIF" },
-  { name:"Rwanda", url: "http://www.flags.net/images/largeflags/RWAN0001.GIF" },
-  { name:"St. Kitts & Nevis", url: "http://www.flags.net/images/largeflags/STKN0001.GIF" },
-  { name:"Saint Lucia", url: "http://www.flags.net/images/largeflags/STLU0001.GIF" },
-  { name:"St. Vincent & the Grenadines", url: "http://www.flags.net/images/largeflags/SVGR0001.GIF" },
-  { name:"Samoa", url: "http://www.flags.net/images/largeflags/SAMO0001.GIF" },
-  { name:"San Marino", url: "http://www.flags.net/images/largeflags/SAMA0001.GIF" },
-  { name:"São Tomé & Príncipe", url: "http://www.flags.net/images/largeflags/STPR0001.GIF" },
-  { name:"Saudi Arabia", url: "http://www.flags.net/images/largeflags/SAAR0001.GIF" },
-  { name:"Senegal", url: "http://www.flags.net/images/largeflags/SENE0001.GIF" },
-  { name:"Serbia", url: "http://www.flags.net/images/largeflags/SERB0001.GIF" },
-  { name:"Seychelles", url: "http://www.flags.net/images/largeflags/SEYC0001.GIF" },
-  { name:"Sierra Leone", url: "http://www.flags.net/images/largeflags/SILE0001.GIF" },
-  { name:"Singapore", url: "http://www.flags.net/images/largeflags/SING0001.GIF" },
-  { name:"Slovakia", url: "http://www.flags.net/images/largeflags/SVKA0001.GIF" },
-  { name:"Slovenia", url: "http://www.flags.net/images/largeflags/SLVA0001.GIF" },
-  { name:"Solomon Islands", url: "http://www.flags.net/images/largeflags/SOIS0001.GIF" },
-  { name:"Somalia", url: "http://www.flags.net/images/largeflags/SMLA0001.GIF" },
-  { name:"South Africa", url: "http://www.flags.net/images/largeflags/SOAF0001.GIF" },
-  { name:"South Korea", url: "http://www.flags.net/images/largeflags/SKOR0001.GIF" },
-  { name:"South Sudan", url: "http://www.flags.net/images/largeflags/SOSU0001.GIF" },
-  { name:"Spain", url: "http://www.flags.net/images/largeflags/SPAN0001.GIF" },
-  { name:"Sri Lanka", url: "http://www.flags.net/images/largeflags/SRLA0001.GIF" },
-  { name:"The Sudan", url: "http://www.flags.net/images/largeflags/SUDA0001.GIF" },
-  { name:"Suriname", url: "http://www.flags.net/images/largeflags/SURN0001.GIF" },
-  { name:"eSwatini", url: "http://www.flags.net/images/largeflags/SZLD0001.GIF" },
-  { name:"Sweden", url: "http://www.flags.net/images/largeflags/SWDN0001.GIF" },
-  { name:"Switzerland", url: "http://www.flags.net/images/largeflags/SWIT0001.GIF" },
-  { name:"Syria", url: "http://www.flags.net/images/largeflags/SYRA0001.GIF" },
-  { name:"Tajikistan", url: "http://www.flags.net/images/largeflags/TAJK0001.GIF" },
-  { name:"Tanzania", url: "http://www.flags.net/images/largeflags/TANZ0001.GIF" },
-  { name:"Thailand", url: "http://www.flags.net/images/largeflags/THAL0001.GIF" },
-  { name:"Timor-Leste", url: "http://www.flags.net/images/largeflags/ETIM0001.GIF" },
-  { name:"Togo", url: "http://www.flags.net/images/largeflags/TOGO0001.GIF" },
-  { name:"Tonga", url: "http://www.flags.net/images/largeflags/TONG0001.GIF" },
-  { name:"Trinidad & Tobago", url: "http://www.flags.net/images/largeflags/TRTB0001.GIF" },
-  { name:"Tunisia", url: "http://www.flags.net/images/largeflags/TUNS0001.GIF" },
-  { name:"Turkey", url: "http://www.flags.net/images/largeflags/TURK0001.GIF" },
-  { name:"Turkmenistan", url: "http://www.flags.net/images/largeflags/TKST0001.GIF" },
-  { name:"Tuvalu", url: "http://www.flags.net/images/largeflags/TUVA0001.GIF" },
-  { name:"Uganda", url: "http://www.flags.net/images/largeflags/UGAN0001.GIF" },
-  { name:"Ukraine", url: "http://www.flags.net/images/largeflags/UKRN0001.GIF" },
-  { name:"United Arab Emirates", url: "http://www.flags.net/images/largeflags/UAEM0001.GIF" },
-  { name:"United Kingdom", url: "http://www.flags.net/images/largeflags/UNKG0001.GIF" },
-  { name:"United States", url: "http://www.flags.net/images/largeflags/UNST0001.GIF" },
-  { name:"Uruguay", url: "http://www.flags.net/images/largeflags/URGY0001.GIF" },
-  { name:"Uzbekistan", url: "http://www.flags.net/images/largeflags/UZBK0001.GIF" },
-  { name:"Vanuatu", url: "http://www.flags.net/images/largeflags/VANT0001.GIF" },
-  { name:"Venezuela", url: "http://www.flags.net/images/largeflags/VENZ0001.GIF" },
-  { name:"Viêt Nam", url: "http://www.flags.net/images/largeflags/VIET0001.GIF" },
-  { name:"Yemen", url: "http://www.flags.net/images/largeflags/YEMN0001.GIF" },
-  { name:"Zambia", url: "http://www.flags.net/images/largeflags/ZAMB0001.GIF" },
-  { name:"Zimbabwe", url: "http://www.flags.net/images/largeflags/ZBWE0001.GIF" },  
-];
-
 export default App;
 
 interface AppState {
@@ -230,7 +567,7 @@ export class AppContent extends Component<AppProps, AppState> {
   }
   
   render(){
-  const numFlagsTotal = danData.length;
+  const numFlagsTotal = imageKeys.length;
   const numbersSelected: number[] = [];
 
   for(let i = 0; i < numFlagsShown; i = i + 1){
@@ -254,32 +591,31 @@ export class AppContent extends Component<AppProps, AppState> {
   //console.log(numbersSelected);
 
   const correctOne = Math.floor(Math.random() * numFlagsShown);
-  const correctPlace = danData[numbersSelected[correctOne]].name;
+  const correctPlace = images[imageKeys[numbersSelected[correctOne]]].name;
     
   return (
     <div>
     <FlagNavBar
     />
-    <img src={FlagImage}></img>
     <h2>
       Score {myApp.state.score}
     </h2>
     {numbersSelected.map((i)=>{
       return (<img
       key={i}
-      src={danData[i].url}
-      alt={danData[i].name}
+      src={images[imageKeys[i]].image}
+      alt={images[imageKeys[i]].name}
       width={200}
       height={'auto'}
       onClick={function(){
-        if(danData[i].name === correctPlace){
+        if(images[imageKeys[i]].name === correctPlace){
           // alert("WIN");
           myApp.setState({ 
             key: Math.random(),
             score: myApp.state.score + 1,
            });          
         } else {
-          alert(`that was ${danData[i].name} - try again!`);
+          alert(`that was ${images[imageKeys[i]].name} - try again!`);
         }
       }}
     ></img>)
