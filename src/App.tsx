@@ -2,6 +2,7 @@ import './App.css';
 import { Component } from 'react';
 
 import { FlagNavBar } from './NavBar';
+import FlagImage from './NICA0001.gif';
 
 let myApp: AppContent; 
 const numFlagsShown = 4;
@@ -259,6 +260,7 @@ export class AppContent extends Component<AppProps, AppState> {
     <div>
     <FlagNavBar
     />
+    <img src={FlagImage}></img>
     <h2>
       Score {myApp.state.score}
     </h2>
