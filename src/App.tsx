@@ -552,6 +552,9 @@ export default App;
 interface AppState {
   key: number;
   score: number;
+  message: string;
+  numbersSelected: number[];
+  correctPlace: string;
 }
 interface AppProps {
 }
@@ -562,36 +565,51 @@ export class AppContent extends Component<AppProps, AppState> {
     this.state = {
       key: Math.random(),
       score: 0,
+      message: '',
+      numbersSelected: [],
+      correctPlace: '',
     }
     myApp = this;
   }
   
   render(){
-  const numFlagsTotal = imageKeys.length;
-  const numbersSelected: number[] = [];
 
-  for(let i = 0; i < numFlagsShown; i = i + 1){
-    let randNum = Math.random();
-    randNum = Math.floor(randNum * (numFlagsTotal - i));
-    // console.log(`randNum = ${randNum}`);
-    let sorted:number[] = [];
-    sorted = sorted.concat(numbersSelected);
-    sorted.sort((a,b)=>{return a<b?-1:1});
-    // console.log(`sorted = ${sorted}`);
-    for(let j = 0; j < i; j = j + 1){
-      // console.log(`check ${randNum} against ${sorted[j]}`);
-      if(randNum >= sorted[j]){
-        // console.log(`${randNum} >= ${sorted[j]} so add one`);
-        randNum = randNum + 1;
+  if(this.state.numbersSelected.length === 0){
+    const numFlagsTotal = imageKeys.length;
+    const numbersSelected: number[] = [];
+
+    for(let i = 0; i < numFlagsShown; i = i + 1){
+      let randNum = Math.random();
+      randNum = Math.floor(randNum * (numFlagsTotal - i));
+      // console.log(`randNum = ${randNum}`);
+      let sorted:number[] = [];
+      sorted = sorted.concat(numbersSelected);
+      sorted.sort((a,b)=>{return a<b?-1:1});
+      // console.log(`sorted = ${sorted}`);
+      for(let j = 0; j < i; j = j + 1){
+        // console.log(`check ${randNum} against ${sorted[j]}`);
+        if(randNum >= sorted[j]){
+          // console.log(`${randNum} >= ${sorted[j]} so add one`);
+          randNum = randNum + 1;
+        }
       }
+      numbersSelected.push(randNum);
+      console.log(`numbersSelected = ${numbersSelected}`);
     }
-    numbersSelected.push(randNum);
-    console.log(`numbersSelected = ${numbersSelected}`);
-  }
-  //console.log(numbersSelected);
+    //console.log(numbersSelected);
 
-  const correctOne = Math.floor(Math.random() * numFlagsShown);
-  const correctPlace = images[imageKeys[numbersSelected[correctOne]]].name;
+    const correctOne = Math.floor(Math.random() * numFlagsShown);
+    const correctPlace = images[imageKeys[numbersSelected[correctOne]]].name;
+    this.setState({
+      numbersSelected: numbersSelected,
+      correctPlace: correctPlace,
+    });
+    return (    
+    <h2>
+      ...
+    </h2>
+    );
+  }
     
   return (
     <div>
@@ -600,7 +618,7 @@ export class AppContent extends Component<AppProps, AppState> {
     <h2>
       Score {myApp.state.score}
     </h2>
-    {numbersSelected.map((i)=>{
+    {this.state.numbersSelected.map((i)=>{
       return (<img
       key={i}
       src={images[imageKeys[i]].image}
@@ -608,14 +626,18 @@ export class AppContent extends Component<AppProps, AppState> {
       width={200}
       height={'auto'}
       onClick={function(){
-        if(images[imageKeys[i]].name === correctPlace){
+        if(images[imageKeys[i]].name === myApp.state.correctPlace){
           // alert("WIN");
           myApp.setState({ 
             key: Math.random(),
             score: myApp.state.score + 1,
+            numbersSelected: [],
+            message: '',
            });          
         } else {
-          alert(`that was ${images[imageKeys[i]].name} - try again!`);
+          myApp.setState({ 
+            message: `that was ${images[imageKeys[i]].name} - try again!`,
+          });
         }
       }}
     ></img>)
@@ -623,8 +645,9 @@ export class AppContent extends Component<AppProps, AppState> {
     )
     }
     <h2>
-      {correctPlace}
+      Your task : click on the flag for {this.state.correctPlace}
     </h2>
+    {this.state.message} 
     </div>
   );
   }
