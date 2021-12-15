@@ -1,12 +1,6 @@
 import './App.css';
 import { Component } from 'react';
-import { DbBoard } from './DbBoard';
 
-import {
-  BrowserRouter as Router, 
-  Switch,
-  Route,
-} from 'react-router-dom';
 import { FlagNavBar } from './NavBar';
 
 let myApp: AppContent; 
@@ -19,48 +13,6 @@ function App() {
     </AppContent>
   );
 }
-
-export default App;
-
-interface AppState {
-  key: number;
-  score: number;
-}
-interface AppProps {
-}
-
-export class AppContent extends Component<AppProps, AppState> { 
-  public constructor(props: AppProps) {
-    super(props);
-    this.state = {
-      key: Math.random(),
-      score: 0,
-    }
-    myApp = this;
-  }
-  
-  public render() {
-    return (
-  <Router>  
-  <Switch>
-    <Route exact path="/" component={(props:any)=>{
-      return <Home
-      />
-    }}/>
-    <Route path="/about" component={(props:any)=>{
-      return <About
-      />
-    }}/>
-    <Route path="/db" component={(props:any)=>{
-      return <DbBoard
-      />
-    }}/>
-  </Switch>
-  </Router>
-    );
-  }
-}
-
 const danData = [
   { name:"Afghanistan", url: "http://www.flags.net/images/largeflags/AFGH0001.GIF" },
   { name:"Albania", url: "http://www.flags.net/images/largeflags/ALBA0001.GIF" },
@@ -257,10 +209,26 @@ const danData = [
   { name:"Zimbabwe", url: "http://www.flags.net/images/largeflags/ZBWE0001.GIF" },  
 ];
 
-class Home extends Component<{
-}, {}>{
-  render(){
+export default App;
 
+interface AppState {
+  key: number;
+  score: number;
+}
+interface AppProps {
+}
+
+export class AppContent extends Component<AppProps, AppState> { 
+  public constructor(props: AppProps) {
+    super(props);
+    this.state = {
+      key: Math.random(),
+      score: 0,
+    }
+    myApp = this;
+  }
+  
+  render(){
   const numFlagsTotal = danData.length;
   const numbersSelected: number[] = [];
 
@@ -324,16 +292,3 @@ class Home extends Component<{
   }
 }
 
-class About extends Component<{
-}, {}>{
-  render(){
-  return (
-    <div>
-    <FlagNavBar
-    />
-      <h2>About</h2>
-      This is a toy app, with data hosted on the cloud.  It is liable to disruptions of service at any time and loss of data.  Upload data at your peril!
-    </div>
-  );
-  }
-}
