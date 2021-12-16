@@ -108,46 +108,43 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
     }
     myAppContent = this;
   }
-  
-  render(){
-    // console.log(`rendering AppContent with props = ${JSON.stringify(this.props)}`);
-    if(this.state.numbersSelected.length === 0){
-      const numFlagsTotal = imageKeys.length;
-      const numbersSelected: number[] = [];
 
-      for(let i = 0; i < this.props.numFlagsShown; i = i + 1){
-        let randNum = Math.random();
-        randNum = Math.floor(randNum * (numFlagsTotal - i));
-        // console.log(`randNum = ${randNum}`);
-        let sorted:number[] = [];
-        sorted = sorted.concat(numbersSelected);
-        sorted.sort((a,b)=>{return a<b?-1:1});
-        // console.log(`sorted = ${sorted}`);
-        for(let j = 0; j < i; j = j + 1){
-          // console.log(`check ${randNum} against ${sorted[j]}`);
-          if(randNum >= sorted[j]){
-            // console.log(`${randNum} >= ${sorted[j]} so add one`);
-            randNum = randNum + 1;
-          }
+  private generateRandomSelection(){
+    const numFlagsTotal = imageKeys.length;
+    const numbersSelected: number[] = [];
+
+    for(let i = 0; i < this.props.numFlagsShown; i = i + 1){
+      let randNum = Math.random();
+      randNum = Math.floor(randNum * (numFlagsTotal - i));
+      // console.log(`randNum = ${randNum}`);
+      let sorted:number[] = [];
+      sorted = sorted.concat(numbersSelected);
+      sorted.sort((a,b)=>{return a<b?-1:1});
+      // console.log(`sorted = ${sorted}`);
+      for(let j = 0; j < i; j = j + 1){
+        // console.log(`check ${randNum} against ${sorted[j]}`);
+        if(randNum >= sorted[j]){
+          // console.log(`${randNum} >= ${sorted[j]} so add one`);
+          randNum = randNum + 1;
         }
-        numbersSelected.push(randNum);
-        // console.log(`numbersSelected = ${numbersSelected}`);
       }
-      // console.log(numbersSelected);
-
-      const correctOne = Math.floor(Math.random() * this.props.numFlagsShown);
-      const correctPlace = images[imageKeys[numbersSelected[correctOne]]].name;
-      this.setState({
-        numbersSelected: numbersSelected,
-        correctPlace: correctPlace,
-      });
-      return (<h2>...</h2>);
+      numbersSelected.push(randNum);
+      // console.log(`numbersSelected = ${numbersSelected}`);
     }
+    // console.log(numbersSelected);
 
+    const correctOne = Math.floor(Math.random() * this.props.numFlagsShown);
+    const correctPlace = images[imageKeys[numbersSelected[correctOne]]].name;
+    this.setState({
+      numbersSelected: numbersSelected,
+      correctPlace: correctPlace,
+    });
+  }
+
+  private generateDisplayData(){
     const width = window.innerWidth;
-    console.log(`screen width ${width}`);
+    // console.log(`screen width ${width}`);
     const numTiles = myAppContent.state.numbersSelected.length;
-
     // make an array of rows
     // from myAppContent.state.numbersSelected
     let numRows = 1;
@@ -160,30 +157,45 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
       maxTileWidth = 150;
       numRows = 5;
     }
-    console.log(`numRows = ${numRows}`);
+    // console.log(`numRows = ${numRows}`);
     const rows = [];
     const rowLength = numTiles / numRows;
-    console.log(`rowLength = ${rowLength}`);
+    // console.log(`rowLength = ${rowLength}`);
     for(let i = 0; i < numRows; i++){
-      console.log(`slice from = ${i * rowLength} to ${i * (rowLength + 1)}`);
+      // console.log(`slice from = ${i * rowLength} to ${i * (rowLength + 1)}`);
       const subRow = myAppContent.state.numbersSelected.slice(i * rowLength, (i + 1) * rowLength);
-      console.log(`subRow = ${subRow}`);
+      // console.log(`subRow = ${subRow}`);
       rows.push(subRow);
     }
-    console.log(`rows = ${JSON.stringify(rows)}`);
+    // console.log(`rows = ${JSON.stringify(rows)}`);
 
-    const pad = 10;
+    const pad = 2;
     
     const tileWidth = Math.min(maxTileWidth, width / rowLength - 2 * pad);
+    return {
+      rows: rows,
+      pad: pad,
+      tileWidth: tileWidth,
+    }    
+  }
+  
+  render(){
+    // console.log(`rendering AppContent with props = ${JSON.stringify(this.props)}`);
+    if(this.state.numbersSelected.length === 0){
+      this.generateRandomSelection();
+      return (<h2>...</h2>);
+    }
 
-    console.log(`tileWidth = ${tileWidth}`)
+    const displayData = this.generateDisplayData();
+
+    // console.log(`tileWidth = ${tileWidth}`)
     return (
       <div>
       <h2>
         Select {this.state.correctPlace}
       </h2>
       <table>
-      {rows.map(
+      {displayData.rows.map(
         (row)=>{
           return (<tr>{row.map(
             (i)=>{
@@ -192,8 +204,8 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
                 key={i}
                 src={images[imageKeys[i]].image}
                 alt={images[imageKeys[i]].name}
-                style={{padding: '2px'}}
-                width={tileWidth}
+                style={{padding: `${displayData.pad}px`}}
+                width={displayData.tileWidth}
                 height={'auto'}
                 onClick={function(){
                   if(images[imageKeys[i]].name === myAppContent.state.correctPlace){
