@@ -516,11 +516,12 @@ const imageKeys = Object.keys(images);
 
 let myApp: AppContent; 
 const numFlagsShown = 4;
-let image: any;
 
-
-//const json = require('./codes.json');
+// generate code for importing flags 
+// from a json for country names and svgs
+// and building the images array 
 /*
+const json = require('./codes.json');
 console.log(`json = ${json}`);
 const codes = Object.keys(json);
 console.log(`codes = ${JSON.stringify(codes)}`);
@@ -535,12 +536,6 @@ codes.forEach((c)=>{
 console.log(printMe);
 */
 function App() {
-  const reqSvgs = require.context ( './svgs', true, /\.svg$/ )
-  const allSvgFilePaths = reqSvgs.keys();
-  const imagePath = allSvgFilePaths[0];
-  console.log(`imagePath = ${imagePath}`);
-  image = reqSvgs(imagePath);
-  console.log(`image = ${image}`);
   return (
     <AppContent
     >
@@ -551,10 +546,12 @@ export default App;
 
 interface AppState {
   key: number;
-  score: number;
   message: string;
   numbersSelected: number[];
   correctPlace: string;
+  numberTaps: number;
+  numberRight: number;
+  run: number;
 }
 interface AppProps {
 }
@@ -564,10 +561,12 @@ export class AppContent extends Component<AppProps, AppState> {
     super(props);
     this.state = {
       key: Math.random(),
-      score: 0,
       message: '',
       numbersSelected: [],
       correctPlace: '',
+      numberTaps: 0,
+      numberRight: 0,
+      run: 0,
     }
     myApp = this;
   }
@@ -594,7 +593,7 @@ export class AppContent extends Component<AppProps, AppState> {
         }
       }
       numbersSelected.push(randNum);
-      console.log(`numbersSelected = ${numbersSelected}`);
+      // console.log(`numbersSelected = ${numbersSelected}`);
     }
     //console.log(numbersSelected);
 
@@ -610,33 +609,38 @@ export class AppContent extends Component<AppProps, AppState> {
     </h2>
     );
   }
-    
+
   return (
     <div>
     <FlagNavBar
     />
     <h2>
-      Score {myApp.state.score}
+      Select {this.state.correctPlace}
     </h2>
     {this.state.numbersSelected.map((i)=>{
       return (<img
       key={i}
       src={images[imageKeys[i]].image}
       alt={images[imageKeys[i]].name}
-      width={200}
+      style={{padding: '2px'}}
+      width={150}
       height={'auto'}
       onClick={function(){
         if(images[imageKeys[i]].name === myApp.state.correctPlace){
           // alert("WIN");
           myApp.setState({ 
             key: Math.random(),
-            score: myApp.state.score + 1,
             numbersSelected: [],
             message: '',
+            numberTaps: myApp.state.numberTaps + 1,
+            numberRight: myApp.state.numberRight + 1,
+            run: myApp.state.run + 1,
            });          
         } else {
           myApp.setState({ 
-            message: `that was ${images[imageKeys[i]].name} - try again!`,
+            message: `That was ${images[imageKeys[i]].name}`,
+            numberTaps: myApp.state.numberTaps + 1,
+            run: 0,
           });
         }
       }}
@@ -645,9 +649,16 @@ export class AppContent extends Component<AppProps, AppState> {
     )
     }
     <h2>
-      Your task : click on the flag for {this.state.correctPlace}
+      {this.state.message} 
     </h2>
-    {this.state.message} 
+    <h2>
+      {this.state.numberTaps
+      ? Math.floor((this.state.numberRight * 100)/this.state.numberTaps)
+      : 0}% correct from {this.state.numberTaps} attempts
+    </h2>
+    <h2>
+      Run of {this.state.run} correct 
+    </h2>
     </div>
   );
   }
