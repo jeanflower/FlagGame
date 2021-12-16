@@ -1,10 +1,12 @@
 import { Nav, Navbar } from 'react-bootstrap';
 import { Component } from 'react';
 import VanImage from './van_icon_125866.png';
+import { gameNames, GameApp } from './App';
 
 interface FlagNavBarState {
 }
 interface FlagNavBarProps {
+  myApp: GameApp,
 }
 export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> { 
   public constructor(props: FlagNavBarProps) {
@@ -25,6 +27,18 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
+        {gameNames.map((name: string)=>{ return (
+          <button 
+            className="btn my-2 my-sm-0" 
+            key={name}
+            onClick={()=>{
+              this.props.myApp.setGame(name);
+            }}
+          >
+            {name}
+          </button>); 
+        })
+        }
       </Nav>
     </Navbar.Collapse>
   </Navbar>      
