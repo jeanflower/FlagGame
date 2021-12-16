@@ -1,6 +1,6 @@
 import { Nav, Navbar } from 'react-bootstrap';
 import { Component } from 'react';
-import VanImage from './flag-128.png';
+import VanImage from './finish-flag-128.png';
 import { gameNames, GameApp } from './App';
 
 interface FlagNavBarState {
