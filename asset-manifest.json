@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/FlagGame/static/css/main.36894b5e.chunk.css",
-    "main.js": "/FlagGame/static/js/main.4245384e.chunk.js",
-    "main.js.map": "/FlagGame/static/js/main.4245384e.chunk.js.map",
+    "main.js": "/FlagGame/static/js/main.ab4f0bae.chunk.js",
+    "main.js.map": "/FlagGame/static/js/main.ab4f0bae.chunk.js.map",
     "runtime-main.js": "/FlagGame/static/js/runtime-main.e91c3bd6.js",
     "runtime-main.js.map": "/FlagGame/static/js/runtime-main.e91c3bd6.js.map",
-    "static/js/2.2154fce6.chunk.js": "/FlagGame/static/js/2.2154fce6.chunk.js",
-    "static/js/2.2154fce6.chunk.js.map": "/FlagGame/static/js/2.2154fce6.chunk.js.map",
+    "static/js/2.bffbd9d8.chunk.js": "/FlagGame/static/js/2.bffbd9d8.chunk.js",
+    "static/js/2.bffbd9d8.chunk.js.map": "/FlagGame/static/js/2.bffbd9d8.chunk.js.map",
     "static/js/3.63b56fda.chunk.js": "/FlagGame/static/js/3.63b56fda.chunk.js",
     "static/js/3.63b56fda.chunk.js.map": "/FlagGame/static/js/3.63b56fda.chunk.js.map",
     "index.html": "/FlagGame/index.html",
     "static/css/main.36894b5e.chunk.css.map": "/FlagGame/static/css/main.36894b5e.chunk.css.map",
-    "static/js/2.2154fce6.chunk.js.LICENSE.txt": "/FlagGame/static/js/2.2154fce6.chunk.js.LICENSE.txt",
+    "static/js/2.bffbd9d8.chunk.js.LICENSE.txt": "/FlagGame/static/js/2.bffbd9d8.chunk.js.LICENSE.txt",
     "static/media/ad.25ac0ed2.svg": "/FlagGame/static/media/ad.25ac0ed2.svg",
     "static/media/ae.3cb683e7.svg": "/FlagGame/static/media/ae.3cb683e7.svg",
     "static/media/af.39e74801.svg": "/FlagGame/static/media/af.39e74801.svg",
@@ -269,8 +269,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.e91c3bd6.js",
-    "static/js/2.2154fce6.chunk.js",
+    "static/js/2.bffbd9d8.chunk.js",
     "static/css/main.36894b5e.chunk.css",
-    "static/js/main.4245384e.chunk.js"
+    "static/js/main.ab4f0bae.chunk.js"
   ]
 }
