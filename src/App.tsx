@@ -140,46 +140,81 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
       return (<h2>...</h2>);
     }
 
-    const ints = Array.from(Array(this.state.numbersSelected.length).keys());
+    const width = window.innerWidth;
+    console.log(`screen width ${width}`);
+    const numTiles = myAppContent.state.numbersSelected.length;
 
+    // make an array of rows
+    // from myAppContent.state.numbersSelected
+    let numRows = 1;
+    let maxTileWidth = 200;
+    if(numTiles === 4){
+      if(width < 800){
+        numRows = 2;
+      }
+    } else if(numTiles === 15){
+      maxTileWidth = 150;
+      numRows = 5;
+    }
+    console.log(`numRows = ${numRows}`);
+    const rows = [];
+    const rowLength = numTiles / numRows;
+    console.log(`rowLength = ${rowLength}`);
+    for(let i = 0; i < numRows; i++){
+      console.log(`slice from = ${i * rowLength} to ${i * (rowLength + 1)}`);
+      const subRow = myAppContent.state.numbersSelected.slice(i * rowLength, (i + 1) * rowLength);
+      console.log(`subRow = ${subRow}`);
+      rows.push(subRow);
+    }
+    console.log(`rows = ${JSON.stringify(rows)}`);
+
+    const pad = 10;
+    
+    const tileWidth = Math.min(maxTileWidth, width / rowLength - 2 * pad);
+
+    console.log(`tileWidth = ${tileWidth}`)
     return (
       <div>
       <h2>
         Select {this.state.correctPlace}
       </h2>
-      {ints.map((i)=>{
-        return (
-        <>
-        <img
-        key={i}
-        src={images[imageKeys[myAppContent.state.numbersSelected[i]]].image}
-        alt={images[imageKeys[myAppContent.state.numbersSelected[i]]].name}
-        style={{padding: '2px'}}
-        width={(myAppContent.props.numFlagsShown < 6) ? 200 : 120}
-        height={'auto'}
-        onClick={function(){
-          if(images[imageKeys[myAppContent.state.numbersSelected[i]]].name === myAppContent.state.correctPlace){
-            // alert("WIN");
-            myAppContent.setState({ 
-              key: Math.random(),
-              numbersSelected: [],
-              message: '',
-              numberTaps: myAppContent.state.numberTaps + 1,
-              numberRight: myAppContent.state.numberRight + 1,
-              run: myAppContent.state.run + 1,
-            });          
-          } else {
-            myAppContent.setState({ 
-              message: `That was ${images[imageKeys[myAppContent.state.numbersSelected[i]]].name}`,
-              numberTaps: myAppContent.state.numberTaps + 1,
-              run: 0,
-            });
-          }
-        }}
-      ></img></>)
-      }
-      )
-      }
+      <table>
+      {rows.map(
+        (row)=>{
+          return (<tr>{row.map(
+            (i)=>{
+              return (<td>{
+                <img
+                key={i}
+                src={images[imageKeys[i]].image}
+                alt={images[imageKeys[i]].name}
+                style={{padding: '2px'}}
+                width={tileWidth}
+                height={'auto'}
+                onClick={function(){
+                  if(images[imageKeys[i]].name === myAppContent.state.correctPlace){
+                    // alert("WIN");
+                    myAppContent.setState({ 
+                      key: Math.random(),
+                      numbersSelected: [],
+                      message: '',
+                      numberTaps: myAppContent.state.numberTaps + 1,
+                      numberRight: myAppContent.state.numberRight + 1,
+                      run: myAppContent.state.run + 1,
+                    });          
+                  } else {
+                    myAppContent.setState({ 
+                      message: `That was ${images[imageKeys[i]].name}`,
+                      numberTaps: myAppContent.state.numberTaps + 1,
+                      run: 0,
+                    });
+                  }
+                }}
+                ></img>                
+              }</td>);
+            })}</tr>);
+        })}
+      </table>
       <h2>
         {this.state.message} 
       </h2>
@@ -191,8 +226,7 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
       <h2>
         Run of {this.state.run} correct 
       </h2>
-      </div>
-    );
+    </div>);
   }
 }
 
