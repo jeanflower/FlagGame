@@ -140,21 +140,25 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
       return (<h2>...</h2>);
     }
 
+    const ints = Array.from(Array(this.state.numbersSelected.length).keys());
+
     return (
       <div>
       <h2>
         Select {this.state.correctPlace}
       </h2>
-      {this.state.numbersSelected.map((i)=>{
-        return (<img
+      {ints.map((i)=>{
+        return (
+        <>
+        <img
         key={i}
-        src={images[imageKeys[i]].image}
-        alt={images[imageKeys[i]].name}
+        src={images[imageKeys[myAppContent.state.numbersSelected[i]]].image}
+        alt={images[imageKeys[myAppContent.state.numbersSelected[i]]].name}
         style={{padding: '2px'}}
-        width={150}
+        width={(myAppContent.props.numFlagsShown < 6) ? 200 : 120}
         height={'auto'}
         onClick={function(){
-          if(images[imageKeys[i]].name === myAppContent.state.correctPlace){
+          if(images[imageKeys[myAppContent.state.numbersSelected[i]]].name === myAppContent.state.correctPlace){
             // alert("WIN");
             myAppContent.setState({ 
               key: Math.random(),
@@ -166,13 +170,13 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
             });          
           } else {
             myAppContent.setState({ 
-              message: `That was ${images[imageKeys[i]].name}`,
+              message: `That was ${images[imageKeys[myAppContent.state.numbersSelected[i]]].name}`,
               numberTaps: myAppContent.state.numberTaps + 1,
               run: 0,
             });
           }
         }}
-      ></img>)
+      ></img></>)
       }
       )
       }
