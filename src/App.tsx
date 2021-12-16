@@ -84,7 +84,9 @@ interface AppContentState {
   correctPlace: string;
   numberTaps: number;
   numberRight: number;
-  run: number;
+  currentRun: number;
+  bestRun: number;
+  lastRun: number;
 }
 interface AppContentProps {
   numFlagsShown: number,
@@ -100,7 +102,9 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
       correctPlace: '',
       numberTaps: 0,
       numberRight: 0,
-      run: 0,
+      currentRun: 0,
+      bestRun: 0,
+      lastRun: 0,
     }
     myAppContent = this;
   }
@@ -194,19 +198,23 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
                 onClick={function(){
                   if(images[imageKeys[i]].name === myAppContent.state.correctPlace){
                     // alert("WIN");
+                    const newCurrentRun = myAppContent.state.currentRun + 1;
+                    let newBestRun = Math.max(myAppContent.state.bestRun, newCurrentRun);
                     myAppContent.setState({ 
                       key: Math.random(),
                       numbersSelected: [],
                       message: '',
                       numberTaps: myAppContent.state.numberTaps + 1,
                       numberRight: myAppContent.state.numberRight + 1,
-                      run: myAppContent.state.run + 1,
+                      currentRun: newCurrentRun,
+                      bestRun: newBestRun,
                     });          
                   } else {
                     myAppContent.setState({ 
                       message: `That was ${images[imageKeys[i]].name}`,
                       numberTaps: myAppContent.state.numberTaps + 1,
-                      run: 0,
+                      currentRun: 0,
+                      lastRun: myAppContent.state.currentRun,
                     });
                   }
                 }}
@@ -224,7 +232,7 @@ export class AppContent extends Component<AppContentProps, AppContentState> {
         : 0}% correct from {this.state.numberTaps} attempts
       </h2>
       <h2>
-        Run of {this.state.run} correct 
+        Runs: current {this.state.currentRun}, previous {this.state.lastRun}, best {this.state.bestRun}
       </h2>
     </div>);
   }
