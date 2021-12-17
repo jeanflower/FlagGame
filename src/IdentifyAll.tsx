@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { images } from './images';
 import { generateDisplayData } from './displayData';
 import { generateRandomSelection } from './random';
 
@@ -14,6 +13,7 @@ interface IdentifyAllState {
 }
 interface IdentifyAllProps {
   numFlagsShown: number,
+  images: any[],
 }
 
 export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllState> { 
@@ -29,11 +29,14 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
   }
   private getRandomSelection(start: Date){
     // console.log(`generate random selection for IdentifyAllGame`);
-    const selection = generateRandomSelection(this.props.numFlagsShown);
+    const selection = generateRandomSelection(
+      this.props.images,
+      this.props.numFlagsShown,
+    );
     const now = new Date();
     const selectionWithGray = {
       ...selection,
-      activeFlag: Object.keys(images).map(()=>{
+      activeFlag: this.props.images.map(()=>{
         return true;
       }),
       numbersLeft: [...selection.numbersSelected],
@@ -52,12 +55,11 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
     // console.log(`oneLeftIndex = ${oneLeftIndex}`);
     const imageIndex = numbersLeft[oneLeftIndex];
     // console.log(`imageIndex = ${imageIndex}`);
-    const imageKeys = Object.keys(images);
-    return images[imageKeys[imageIndex]].name;
+    return this.props.images[imageIndex].name;
   }
 
-  onClickWork(i: number, image: any){
-    if(images[image].name === this.state.correctPlace){
+  onClickWork(i: number){
+    if(this.props.images[i].name === this.state.correctPlace){
       // alert("WIN");
       // console.log(`colour ${i}th flag gray`);
       const newActiveFlag = [...this.state.activeFlag];
@@ -93,7 +95,6 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
     // console.log(`rendering IdentifyAllGame with state = ${JSON.stringify(this.state)}`);
 
     const displayData = generateDisplayData(this.state.numbersSelected);
-    const imageKeys = Object.keys(images);
     return (
       <div>
       <h2>
@@ -120,8 +121,8 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
                 >
                 <img
                   key={`im${i}`}
-                  src={images[imageKeys[i]].image}
-                  alt={images[imageKeys[i]].name}
+                  src={this.props.images[i].image}
+                  alt={this.props.images[i].name}
                   style={{
                     padding: `${displayData.pad}px`,
                     filter: `grayscale(${this.state.activeFlag[i]?0:90}%)`,
@@ -129,7 +130,7 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
                   }}
                   width={displayData.tileWidth}
                   height={'auto'}
-                  onClick={()=>this.onClickWork(i, imageKeys[i])}
+                  onClick={()=>this.onClickWork(i)}
                 ></img>
                 </div>
               }</td>);

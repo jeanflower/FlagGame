@@ -4,6 +4,7 @@ import { Component } from 'react';
 import { FlagNavBar } from './NavBar';
 import { SelectFromGame } from './SelectFrom';
 import { IdentifyAllGame } from './IdentifyAll';
+import { getImages } from './images';
 
 const selectFromFour = 'Select from 4';
 const selectFromFifteen = 'Select from 15';
@@ -59,6 +60,7 @@ export class Game4 extends Component {
 
 interface AppState {
   gameName: string;
+  gameLevel: number;
 }
 interface AppProps {
 }
@@ -68,6 +70,7 @@ export class GameApp extends Component<AppProps, AppState> {
     super(props);
     this.state = {
       gameName: selectFromFour,
+      gameLevel: 0,
     }
     myGameApp = this;
   }
@@ -78,6 +81,7 @@ export class GameApp extends Component<AppProps, AppState> {
       return (
         <SelectFromGame
           numFlagsShown={4}
+          images={getImages(this.state.gameLevel)}
         >
         </SelectFromGame>
       );
@@ -86,6 +90,7 @@ export class GameApp extends Component<AppProps, AppState> {
       return (
         <SelectFromGame
           numFlagsShown={15}
+          images={getImages(this.state.gameLevel)}
         >
         </SelectFromGame>
       );
@@ -94,6 +99,7 @@ export class GameApp extends Component<AppProps, AppState> {
       return (
         <IdentifyAllGame
           numFlagsShown={4}
+          images={getImages(this.state.gameLevel)}
         >
         </IdentifyAllGame>
       );
@@ -102,6 +108,7 @@ export class GameApp extends Component<AppProps, AppState> {
       return (
         <IdentifyAllGame
           numFlagsShown={15}
+          images={getImages(this.state.gameLevel)}
         >
         </IdentifyAllGame>
       );
@@ -134,5 +141,19 @@ export function setGame(name: string){
     }
   )
 }
-
+export function setLevel(l: number){
+  //console.log(`setting game ${name}`);
+  const gameName = myGameApp.state.gameName;
+  myGameApp.setState(
+    {
+      gameName: 'none',
+    }, ()=>{
+    myGameApp.setState(
+      {
+        gameLevel: l,
+        gameName: gameName,
+      }
+    )}
+  );
+}
 export default App;

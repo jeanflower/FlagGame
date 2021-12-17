@@ -1,10 +1,9 @@
-import { images } from './images';
 
 export function generateRandomSelection(
+  images: any[],
   numFlagsShown: number,
 ){
-  const imageKeys = Object.keys(images);
-  const numFlagsTotal = imageKeys.length;
+  const numFlagsTotal = images.length;
   const numbersSelected: number[] = [];
 
   for(let i = 0; i < numFlagsShown; i = i + 1){
@@ -28,7 +27,7 @@ export function generateRandomSelection(
   // console.log(numbersSelected);
 
   const correctOne = Math.floor(Math.random() * numFlagsShown);
-  const correctPlace = images[imageKeys[numbersSelected[correctOne]]].name;
+  const correctPlace = images[numbersSelected[correctOne]].name;
   return {
     numbersSelected: Array.from(numbersSelected),
     correctPlace: correctPlace,

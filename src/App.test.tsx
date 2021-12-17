@@ -1,4 +1,4 @@
-import { VehicleAdvert } from "./interfaces.d";
+import { getImages } from "./images";
 
 let alreadyRunning = false;
 const webdriver = require("selenium-webdriver");
@@ -6,11 +6,49 @@ const webdriver = require("selenium-webdriver");
 const fs = require('fs');
 const fetch = require("node-fetch");
 
-async function scrapeAutotraderData(
+async function scrapeWorldometersData(
+  driver: any,
+){
+  const url = 'https://www.worldometers.info/geography/alphabetical-list-of-countries/';
+  await driver.get(url);
+
+  let result = '';
+
+  const x = await driver.findElements(
+    webdriver.By.tagName('tr')
+  );
+  const names = [];
+  for(let j = 0; j < x.length; j = j + 1){
+    const children = await x[j].findElements(
+      webdriver.By.xpath("./child::*"));
+    const name = await children[1].getText();
+    names.push(name);
+  }
+  const images = getImages(10);
+  for(const im of images){
+    const match = names.find((name)=>{
+      return name === im.name;
+    });
+    if(match === undefined){
+      result += `worldometer has no match for ${im.name}\n`;
+    }
+  }
+  for(const name of names){
+    const match = images.find((im)=>{
+      return im.name === name;
+    });
+    if(match === undefined){
+      result += `images has no match for ${name}\n`;
+    }
+  }
+  console.log(result);
+}
+
+async function scrapeFlagsNetData(
   driver: any,
 ){
   let result = "";
-  const alpha = 'yz';
+  const alpha = 'abcdefgh';
   for(let pageNum = 0; pageNum < alpha.length; pageNum = pageNum + 1){
 
     console.log(`look on page ${alpha[pageNum]}`);
@@ -113,15 +151,14 @@ describe('scrape ad data', () => {
     return;
   }
   const driver = driverSimple;
-  jest.setTimeout(10000000); // allow time for all these tests to run
+  jest.setTimeout(100000); // allow time for all these tests to run
 
 
-  it('scrape trader data', () => {
+  it('scrape data', () => {
     return new Promise<void>(async (resolve, reject) => {
 
-      await scrapeAutotraderData(
-        driver, 
-      );
+      //await scrapeFlagsNetData( driver );
+      await scrapeWorldometersData( driver );
 
       resolve();
     });  

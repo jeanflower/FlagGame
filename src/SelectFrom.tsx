@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { images } from './images';
 import { generateDisplayData } from './displayData';
 import { generateRandomSelection } from './random';
 
@@ -15,6 +14,7 @@ interface SelectFromState {
 }
 interface SelectFromProps {
   numFlagsShown: number,
+  images: any[],
 }
 
 export class SelectFromGame extends Component<SelectFromProps, SelectFromState> { 
@@ -22,7 +22,10 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
     super(props);
     // console.log(`props for SelectFromGame ${JSON.stringify(props)}`);
     this.state = {
-      ...generateRandomSelection(this.props.numFlagsShown),
+      ...generateRandomSelection(
+        this.props.images,
+        this.props.numFlagsShown
+      ),
       message: '',
       numberTaps: 0,
       numberRight: 0,
@@ -37,16 +40,22 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
   private setRandomSelection(){
     // console.log(`generate random selection for SelectFromGame`);
     this.setState(
-      generateRandomSelection(this.props.numFlagsShown)
+      generateRandomSelection(
+        this.props.images,
+        this.props.numFlagsShown
+      )
     );
   }
-  onClickWork(image: any){
-    if(images[image].name === this.state.correctPlace){
+  onClickWork(i: number){
+    if(this.props.images[i].name === this.state.correctPlace){
       // alert("WIN");
       const newCurrentRun = this.state.currentRun + 1;
       let newBestRun = Math.max(this.state.bestRun, newCurrentRun);
       this.setState({
-        ...generateRandomSelection(this.props.numFlagsShown),
+        ...generateRandomSelection(
+          this.props.images,
+          this.props.numFlagsShown,
+        ),
         message: '',
         numberTaps: this.state.numberTaps + 1,
         numberRight: this.state.numberRight + 1,
@@ -55,7 +64,7 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
       });          
     } else {
       this.setState({ 
-        message: `That was ${images[image].name}`,
+        message: `That was ${this.props.images[i].name}`,
         numberTaps: this.state.numberTaps + 1,
         currentRun: 0,
         lastRun: this.state.currentRun,
@@ -68,7 +77,6 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
     // console.log(`rendering SelectFromGame with state = ${JSON.stringify(this.state)}`);
 
     const displayData = generateDisplayData(this.state.numbersSelected);
-    const imageKeys = Object.keys(images);
     return (
       <div>
       <h2>
@@ -89,13 +97,13 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
                 >{
                 <img
                   key={`im${i}`}
-                  src={images[imageKeys[i]].image}
-                  alt={images[imageKeys[i]].name}
+                  src={this.props.images[i].image}
+                  alt={this.props.images[i].name}
                   style={{padding: `${displayData.pad}px`}}
                   width={displayData.tileWidth}
                   height={'auto'}
                   onClick={()=>{
-                    return this.onClickWork(imageKeys[i]);
+                    return this.onClickWork(i);
                   }}
                 ></img>                
               }</td>);
