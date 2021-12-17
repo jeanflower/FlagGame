@@ -21,20 +21,25 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
   public constructor(props: IdentifyAllProps) {
     super(props);
     // console.log(`props for IdentifyAllGame ${JSON.stringify(props)}`);
-    const randomSel = this.getRandomSelection(new Date());
+    const lastThree = [-1, -1, -1];
+    const randomSel = this.getRandomSelection(new Date(), lastThree);
+    const correctIndex = this.newCorrectPlace(randomSel.numbersLeft);
     this.state = {
       ...randomSel,
       message: '',
-      correctIndex: this.newCorrectPlace(randomSel.numbersLeft),
-      lastThree: [randomSel.correctIndex, -1, -1],
+      correctIndex: correctIndex,
+      lastThree: lastThree,
     }
   }
-  private getRandomSelection(start: Date){
+  private getRandomSelection(
+    start: Date,
+    lastThree: number[],
+  ){
     // console.log(`generate random selection for IdentifyAllGame`);
     const selection = generateRandomSelection(
       this.props.images,
       this.props.numFlagsShown,
-      this.state.lastThree,
+      lastThree,
     );
     const now = new Date();
     const selectionWithGray = {
@@ -83,7 +88,10 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
       } else {
         // console.log(`reset task`);
         this.setState(
-          this.getRandomSelection(this.state.start)
+          this.getRandomSelection(
+            this.state.start,
+            this.state.lastThree,
+          )
         );        
       }
     } else {
