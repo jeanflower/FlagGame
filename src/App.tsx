@@ -4,7 +4,7 @@ import { Component } from 'react';
 import { FlagNavBar } from './NavBar';
 import { SelectFromGame } from './SelectFrom';
 import { IdentifyAllGame } from './IdentifyAll';
-import { getImages } from './images';
+import { getFlagImages } from './flagImages';
 
 const selectFromFour = 'Select from 4';
 const selectFromFifteen = 'Select from 15';
@@ -81,7 +81,7 @@ export class GameApp extends Component<AppProps, AppState> {
       return (
         <SelectFromGame
           numFlagsShown={4}
-          images={getImages(this.state.gameLevel)}
+          images={getFlagImages(this.state.gameLevel)}
         >
         </SelectFromGame>
       );
@@ -90,7 +90,7 @@ export class GameApp extends Component<AppProps, AppState> {
       return (
         <SelectFromGame
           numFlagsShown={15}
-          images={getImages(this.state.gameLevel)}
+          images={getFlagImages(this.state.gameLevel)}
         >
         </SelectFromGame>
       );
@@ -99,7 +99,7 @@ export class GameApp extends Component<AppProps, AppState> {
       return (
         <IdentifyAllGame
           numFlagsShown={4}
-          images={getImages(this.state.gameLevel)}
+          images={getFlagImages(this.state.gameLevel)}
         >
         </IdentifyAllGame>
       );
@@ -108,7 +108,7 @@ export class GameApp extends Component<AppProps, AppState> {
       return (
         <IdentifyAllGame
           numFlagsShown={15}
-          images={getImages(this.state.gameLevel)}
+          images={getFlagImages(this.state.gameLevel)}
         >
         </IdentifyAllGame>
       );

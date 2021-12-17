@@ -1,4 +1,4 @@
-import { getImages } from "./images";
+import { getFlagImages } from "./flagImages";
 
 let alreadyRunning = false;
 const webdriver = require("selenium-webdriver");
@@ -24,7 +24,7 @@ async function scrapeWorldometersData(
     const name = await children[1].getText();
     names.push(name);
   }
-  const images = getImages(10);
+  const images = getFlagImages(10);
   for(const im of images){
     const match = names.find((name)=>{
       return name === im.name;
