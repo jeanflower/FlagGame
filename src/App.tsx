@@ -5,6 +5,7 @@ import { FlagNavBar } from './NavBar';
 import { SelectFromGame } from './SelectFrom';
 import { IdentifyAllGame } from './IdentifyAll';
 import { getFlagImages } from './flagImages';
+import { getIndianDesertImages } from "./indianDesertImages";
 
 const selectFromFour = 'Select from 4';
 const selectFromFifteen = 'Select from 15';
@@ -25,42 +26,13 @@ function App() {
   );
 }
 
-export class Game1 extends Component { 
-  public constructor(props: any) {
-    super(props);
-  }
-  render(){
-    return ('Game1');
-  }
-}
-export class Game2 extends Component { 
-  public constructor(props: any) {
-    super(props);
-  }
-  render(){
-    return ('Game2');
-  }
-}
-export class Game3 extends Component { 
-  public constructor(props: any) {
-    super(props);
-  }
-  render(){
-    return ('Game3');
-  }
-}
-export class Game4 extends Component { 
-  public constructor(props: any) {
-    super(props);
-  }
-  render(){
-    return ('Game4');
-  }
-}
+export const FlagGame = 0;
+export const IndianDesertGame = 1;
 
 interface AppState {
   gameName: string;
   gameLevel: number;
+  gameType: number;
 }
 interface AppProps {
 }
@@ -71,49 +43,64 @@ export class GameApp extends Component<AppProps, AppState> {
     this.state = {
       gameName: selectFromFour,
       gameLevel: 0,
+      gameType: FlagGame,
     }
     myGameApp = this;
   }
 
+  private getImages():{
+    level: number,
+    image: any,
+    name: string,
+  }[]{
+    if(this.state.gameType === FlagGame){
+      return getFlagImages(this.state.gameLevel);
+    } else {
+      return getIndianDesertImages(this.state.gameLevel);
+    }
+  }
+
   private getGameComponent(){
     if(this.state.gameName === selectFromFour){
-      //return (<Game1/>)
       return (
         <SelectFromGame
           numFlagsShown={4}
-          images={getFlagImages(this.state.gameLevel)}
+          images={this.getImages()}
         >
         </SelectFromGame>
       );
     } else if(this.state.gameName === selectFromFifteen){
-      // return (<Game2/>)
+      if(this.getImages().length < 15){
+        return <h2>Not enough data to select from 15</h2>
+      }
       return (
         <SelectFromGame
           numFlagsShown={15}
-          images={getFlagImages(this.state.gameLevel)}
+          images={this.getImages()}
         >
         </SelectFromGame>
       );
     } else if(this.state.gameName === identifyFour){
-      // return (<Game3/>)
       return (
         <IdentifyAllGame
           numFlagsShown={4}
-          images={getFlagImages(this.state.gameLevel)}
+          images={this.getImages()}
         >
         </IdentifyAllGame>
       );
     } else if(this.state.gameName === identifyFifteen){
-      // return (<Game4/>)
+      if(this.getImages().length < 15){
+        return <h2>Not enough data to identify 15</h2>
+      }
       return (
         <IdentifyAllGame
           numFlagsShown={15}
-          images={getFlagImages(this.state.gameLevel)}
+          images={this.getImages()}
         >
         </IdentifyAllGame>
       );
     } else {
-      // console.log(`rendering default game`);
+      // console.log(`rendering no game`);
       return (<>inbetween games</>);
     }
   }
@@ -151,6 +138,21 @@ export function setLevel(l: number){
     myGameApp.setState(
       {
         gameLevel: l,
+        gameName: gameName,
+      }
+    )}
+  );
+}
+export function setGameType(type: number){
+  //console.log(`setting game ${name}`);
+  const gameName = myGameApp.state.gameName;
+  myGameApp.setState(
+    {
+      gameName: 'none',
+    }, ()=>{
+    myGameApp.setState(
+      {
+        gameType: type,
         gameName: gameName,
       }
     )}

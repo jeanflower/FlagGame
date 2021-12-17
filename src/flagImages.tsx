@@ -31,7 +31,6 @@ import bqImage from './flagSvgs/bq.svg';
 import brImage from './flagSvgs/br.svg';
 import bsImage from './flagSvgs/bs.svg';
 import btImage from './flagSvgs/bt.svg';
-import bvImage from './flagSvgs/bv.svg';
 import bwImage from './flagSvgs/bw.svg';
 import byImage from './flagSvgs/by.svg';
 import bzImage from './flagSvgs/bz.svg';
@@ -202,7 +201,6 @@ import seImage from './flagSvgs/se.svg';
 import sgImage from './flagSvgs/sg.svg';
 import shImage from './flagSvgs/sh.svg';
 import siImage from './flagSvgs/si.svg';
-import sjImage from './flagSvgs/sj.svg';
 import skImage from './flagSvgs/sk.svg';
 import slImage from './flagSvgs/sl.svg';
 import smImage from './flagSvgs/sm.svg';
@@ -513,7 +511,12 @@ images.push({code: 'za', level: 0, image: zaImage, name: 'South Africa' });
 images.push({code: 'zm', level: 0, image: zmImage, name: 'Zambia' });
 images.push({code: 'zw', level: 0, image: zwImage, name: 'Zimbabwe' });
 
-export function getFlagImages(level: number){
+export function getFlagImages(level: number): {
+  code: string,
+  level: number,
+  image: any,
+  name: string,
+}[]{
   return images.filter((im)=>{
     return im.level <= level;
   })

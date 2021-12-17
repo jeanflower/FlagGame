@@ -1,7 +1,7 @@
-import { Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Component } from 'react';
 import FlagImage from './finish-flag-128.png';
-import { gameNames, setGame, setLevel } from './App';
+import { FlagGame, gameNames, IndianDesertGame, setGame, setGameType, setLevel } from './App';
 
 interface FlagNavBarState {
 }
@@ -15,50 +15,73 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
   }
   public render(){
     return (
-    <Navbar bg="primary" variant="dark" expand="lg">
+  <Navbar bg="primary" variant="dark" expand="lg">
     <img
       src={FlagImage}
       alt="Van"
       width={40}
       height={'auto'}
     ></img>
-    <Navbar.Brand href="#home">Flags galore</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="mr-auto">
-        <button 
-          className="btn my-2 my-sm-0" 
-          onClick={()=>{
-            setLevel(0);
-          }}
-        >Easy</button>
-        <button 
-          className="btn my-2 my-sm-0" 
-          onClick={()=>{
-            setLevel(1);
-          }}
-        >Medium</button>
-        <button 
-          className="btn my-2 my-sm-0" 
-          onClick={()=>{
-            setLevel(2);
-          }}
-        >Hard</button>
-        {gameNames.map((name: string)=>{ return (
-          <button 
-            className="btn my-2 my-sm-0" 
-            key={name}
-            onClick={()=>{
-              setGame(name);
-            }}
-          >
-            {name}
-          </button>); 
-        })
-        }
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>      
-    );
+    <Container>
+      <Navbar.Brand href="#home">Flags galore</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto">
+          <NavDropdown title="Difficulty" id="basic-nav-dropdown" key="ndd">
+            <NavDropdown.Item 
+              href="#"
+              onClick={()=>{
+                setLevel(0);
+              }}
+              eventKey="1.1"
+            >Easy</NavDropdown.Item>
+            <NavDropdown.Item 
+              href="#"
+              onClick={()=>{
+                setLevel(0);
+              }}
+              eventKey="1.2"
+            >Medium</NavDropdown.Item>
+            <NavDropdown.Item 
+              href="#"
+              onClick={()=>{
+                setLevel(0);
+              }}
+              eventKey="1.3"
+            >Hard</NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown title="Game Style" id="basic-nav-dropdown" key="ndgs">
+            {gameNames.map((name: string)=>{ 
+              return (
+                <NavDropdown.Item 
+                  href="#"
+                  onClick={()=>{
+                    setGame(name);
+                  }}
+                  eventKey={`2.{name}`}
+                >{name}</NavDropdown.Item>
+              );
+            })}
+          </NavDropdown>
+          <NavDropdown title="Game content" id="basic-nav-dropdown" key="ndgc">
+            <NavDropdown.Item 
+              href="#"
+              onClick={()=>{
+                setGameType(FlagGame);
+              }}
+              eventKey="3.1"
+            >Flags</NavDropdown.Item>
+            <NavDropdown.Item 
+              href="#"
+              onClick={()=>{
+                setGameType(IndianDesertGame);
+              }}
+              eventKey="3.2"
+            >Indian deserts</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>);
   }
 }
