@@ -30,7 +30,7 @@ export function generateRandomSelection(
   const correctOne = Math.floor(Math.random() * numFlagsShown);
   const correctPlace = images[imageKeys[numbersSelected[correctOne]]].name;
   return {
-    numbersSelected: numbersSelected,
+    numbersSelected: Array.from(numbersSelected),
     correctPlace: correctPlace,
   };
 }

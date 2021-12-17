@@ -3,11 +3,6 @@ import { images } from './images';
 import { generateDisplayData } from './displayData';
 import { generateRandomSelection } from './random';
 
-let mySelectFromGame: SelectFromGame;
-export function getSelectFromGame(): SelectFromGame{
-  return mySelectFromGame;
-}
-
 interface SelectFromState {
   key: number;
   message: string;
@@ -24,8 +19,9 @@ interface SelectFromProps {
 }
 
 export class SelectFromGame extends Component<SelectFromProps, SelectFromState> { 
-  public constructor(props: SelectFromProps) {
+  public constructor(props: SelectFromProps) {    
     super(props);
+    // console.log(`props for SelectFromGame ${JSON.stringify(props)}`);
     this.state = {
       key: Math.random(),
       message: '',
@@ -37,22 +33,47 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
       bestRun: 0,
       lastRun: 0,
     }
-    mySelectFromGame = this;
+    //mySelectFromGame = this;
   }
   private setRandomSelection(){
+    // console.log(`generate random selection for SelectFromGame`);
     this.setState(
       generateRandomSelection(this.props.numFlagsShown)
     );
   }
+  onClickWork(image: any){
+    if(images[image].name === this.state.correctPlace){
+      // alert("WIN");
+      const newCurrentRun = this.state.currentRun + 1;
+      let newBestRun = Math.max(this.state.bestRun, newCurrentRun);
+      this.setState({ 
+        key: Math.random(),
+        numbersSelected: [],
+        message: '',
+        numberTaps: this.state.numberTaps + 1,
+        numberRight: this.state.numberRight + 1,
+        currentRun: newCurrentRun,
+        bestRun: newBestRun,
+      });          
+    } else {
+      this.setState({ 
+        message: `That was ${images[image].name}`,
+        numberTaps: this.state.numberTaps + 1,
+        currentRun: 0,
+        lastRun: this.state.currentRun,
+      });
+    }
+  }
   
   render(){
-    // console.log(`rendering AppContent with props = ${JSON.stringify(this.props)}`);
+    // console.log(`rendering SelectFromGame with props = ${JSON.stringify(this.props)}`);
+    // console.log(`rendering SelectFromGame with state = ${JSON.stringify(this.state)}`);
     if(this.state.numbersSelected.length === 0){
       this.setRandomSelection();
       return (<h2>...</h2>);
     }
 
-    const displayData = generateDisplayData();
+    const displayData = generateDisplayData(this.state.numbersSelected);
     const imageKeys = Object.keys(images);
     return (
       <div>
@@ -61,9 +82,9 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
       </h2>
       <table>
       {displayData.rows.map(
-        (row)=>{
+        (row: number[])=>{
           return (<tr>{row.map(
-            (i)=>{
+            (i: number)=>{
               return (<td>{
                 <img
                 key={i}
@@ -72,28 +93,8 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
                 style={{padding: `${displayData.pad}px`}}
                 width={displayData.tileWidth}
                 height={'auto'}
-                onClick={function(){
-                  if(images[imageKeys[i]].name === mySelectFromGame.state.correctPlace){
-                    // alert("WIN");
-                    const newCurrentRun = mySelectFromGame.state.currentRun + 1;
-                    let newBestRun = Math.max(mySelectFromGame.state.bestRun, newCurrentRun);
-                    mySelectFromGame.setState({ 
-                      key: Math.random(),
-                      numbersSelected: [],
-                      message: '',
-                      numberTaps: mySelectFromGame.state.numberTaps + 1,
-                      numberRight: mySelectFromGame.state.numberRight + 1,
-                      currentRun: newCurrentRun,
-                      bestRun: newBestRun,
-                    });          
-                  } else {
-                    mySelectFromGame.setState({ 
-                      message: `That was ${images[imageKeys[i]].name}`,
-                      numberTaps: mySelectFromGame.state.numberTaps + 1,
-                      currentRun: 0,
-                      lastRun: mySelectFromGame.state.currentRun,
-                    });
-                  }
+                onClick={()=>{
+                  return this.onClickWork(imageKeys[i]);
                 }}
                 ></img>                
               }</td>);

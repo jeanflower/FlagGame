@@ -1,12 +1,11 @@
 import { Nav, Navbar } from 'react-bootstrap';
 import { Component } from 'react';
 import VanImage from './finish-flag-128.png';
-import { gameNames, GameApp } from './App';
+import { gameNames, setGame } from './App';
 
 interface FlagNavBarState {
 }
 interface FlagNavBarProps {
-  myApp: GameApp,
 }
 export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> { 
   public constructor(props: FlagNavBarProps) {
@@ -32,7 +31,7 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
             className="btn my-2 my-sm-0" 
             key={name}
             onClick={()=>{
-              this.props.myApp.setGame(name);
+              setGame(name);
             }}
           >
             {name}
