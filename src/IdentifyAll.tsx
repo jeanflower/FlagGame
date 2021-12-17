@@ -3,13 +3,14 @@ import { generateDisplayData } from './displayData';
 import { generateRandomSelection } from './random';
 
 interface IdentifyAllState {
-  numbersSelected: number[];
+  indicesToShow: number[];
   numbersLeft: number[];
   activeFlag: boolean[];
-  correctPlace: string;
+  correctIndex: string;
   highlightBorder: number;
   message: string;
   start: Date;
+  lastThree: number[];
 }
 interface IdentifyAllProps {
   numFlagsShown: number,
@@ -24,7 +25,8 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
     this.state = {
       ...randomSel,
       message: '',
-      correctPlace: this.newCorrectPlace(randomSel.numbersLeft),
+      correctIndex: this.newCorrectPlace(randomSel.numbersLeft),
+      lastThree: [randomSel.correctIndex, -1, -1],
     }
   }
   private getRandomSelection(start: Date){
@@ -32,6 +34,7 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
     const selection = generateRandomSelection(
       this.props.images,
       this.props.numFlagsShown,
+      this.state.lastThree,
     );
     const now = new Date();
     const selectionWithGray = {
@@ -39,7 +42,7 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
       activeFlag: this.props.images.map(()=>{
         return true;
       }),
-      numbersLeft: [...selection.numbersSelected],
+      numbersLeft: [...selection.indicesToShow],
       highlightBorder: -1,
       start: now,
       message: `Last game: ${
@@ -59,7 +62,7 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
   }
 
   onClickWork(i: number){
-    if(this.props.images[i].name === this.state.correctPlace){
+    if(this.props.images[i].name === this.state.correctIndex){
       // alert("WIN");
       // console.log(`colour ${i}th flag gray`);
       const newActiveFlag = [...this.state.activeFlag];
@@ -74,7 +77,7 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
         this.setState({
           activeFlag: newActiveFlag,
           numbersLeft: this.state.numbersLeft,
-          correctPlace: this.newCorrectPlace(this.state.numbersLeft),
+          correctIndex: this.newCorrectPlace(this.state.numbersLeft),
           highlightBorder: -1,
         });
       } else {
@@ -94,11 +97,11 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
     // console.log(`rendering IdentifyAllGame with props = ${JSON.stringify(this.props)}`);
     // console.log(`rendering IdentifyAllGame with state = ${JSON.stringify(this.state)}`);
 
-    const displayData = generateDisplayData(this.state.numbersSelected);
+    const displayData = generateDisplayData(this.state.indicesToShow);
     return (
       <div>
       <h2>
-        Select {this.state.correctPlace}
+        Select {this.state.correctIndex}
       </h2>
       <table>
       <tbody>

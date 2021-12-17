@@ -4,13 +4,14 @@ import { generateRandomSelection } from './random';
 
 interface SelectFromState {
   message: string;
-  numbersSelected: number[];
-  correctPlace: string;
+  indicesToShow: number[];
+  correctIndex: string;
   numberTaps: number;
   numberRight: number;
   currentRun: number;
   bestRun: number;
   lastRun: number;
+  lastThree: number[];
 }
 interface SelectFromProps {
   numFlagsShown: number,
@@ -20,20 +21,24 @@ interface SelectFromProps {
 export class SelectFromGame extends Component<SelectFromProps, SelectFromState> { 
   public constructor(props: SelectFromProps) {    
     super(props);
+    const lastThree = [-1,-1,-1];
     // console.log(`props for SelectFromGame ${JSON.stringify(props)}`);
+    const selection = generateRandomSelection(
+      this.props.images,
+      this.props.numFlagsShown,
+      lastThree,
+    );
     this.state = {
-      ...generateRandomSelection(
-        this.props.images,
-        this.props.numFlagsShown
-      ),
+      ...selection,
       message: '',
       numberTaps: 0,
       numberRight: 0,
       currentRun: 0,
       bestRun: 0,
       lastRun: 0,
+      lastThree: lastThree,
     }
-    if(this.state.numbersSelected.length === 0){
+    if(this.state.indicesToShow.length === 0){
       this.setRandomSelection();
     }
   }
@@ -42,12 +47,13 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
     this.setState(
       generateRandomSelection(
         this.props.images,
-        this.props.numFlagsShown
-      )
+        this.props.numFlagsShown,
+        this.state.lastThree,
+        )
     );
   }
   onClickWork(i: number){
-    if(this.props.images[i].name === this.state.correctPlace){
+    if(this.props.images[i].name === this.state.correctIndex){
       // alert("WIN");
       const newCurrentRun = this.state.currentRun + 1;
       let newBestRun = Math.max(this.state.bestRun, newCurrentRun);
@@ -55,7 +61,8 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
         ...generateRandomSelection(
           this.props.images,
           this.props.numFlagsShown,
-        ),
+          this.state.lastThree,
+          ),
         message: '',
         numberTaps: this.state.numberTaps + 1,
         numberRight: this.state.numberRight + 1,
@@ -76,11 +83,11 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
     // console.log(`rendering SelectFromGame with props = ${JSON.stringify(this.props)}`);
     // console.log(`rendering SelectFromGame with state = ${JSON.stringify(this.state)}`);
 
-    const displayData = generateDisplayData(this.state.numbersSelected);
+    const displayData = generateDisplayData(this.state.indicesToShow);
     return (
       <div>
       <h2>
-        Select {this.state.correctPlace}
+        Select {this.state.correctIndex}
       </h2>
       <table>
       <tbody>
