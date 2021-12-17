@@ -4,7 +4,6 @@ import { generateDisplayData } from './displayData';
 import { generateRandomSelection } from './random';
 
 interface SelectFromState {
-  key: number;
   message: string;
   numbersSelected: number[];
   correctPlace: string;
@@ -23,17 +22,17 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
     super(props);
     // console.log(`props for SelectFromGame ${JSON.stringify(props)}`);
     this.state = {
-      key: Math.random(),
+      ...generateRandomSelection(this.props.numFlagsShown),
       message: '',
-      numbersSelected: [],
-      correctPlace: '',
       numberTaps: 0,
       numberRight: 0,
       currentRun: 0,
       bestRun: 0,
       lastRun: 0,
     }
-    //mySelectFromGame = this;
+    if(this.state.numbersSelected.length === 0){
+      this.setRandomSelection();
+    }
   }
   private setRandomSelection(){
     // console.log(`generate random selection for SelectFromGame`);
@@ -46,9 +45,8 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
       // alert("WIN");
       const newCurrentRun = this.state.currentRun + 1;
       let newBestRun = Math.max(this.state.bestRun, newCurrentRun);
-      this.setState({ 
-        key: Math.random(),
-        numbersSelected: [],
+      this.setState({
+        ...generateRandomSelection(this.props.numFlagsShown),
         message: '',
         numberTaps: this.state.numberTaps + 1,
         numberRight: this.state.numberRight + 1,
@@ -68,10 +66,6 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
   render(){
     // console.log(`rendering SelectFromGame with props = ${JSON.stringify(this.props)}`);
     // console.log(`rendering SelectFromGame with state = ${JSON.stringify(this.state)}`);
-    if(this.state.numbersSelected.length === 0){
-      this.setRandomSelection();
-      return (<h2>...</h2>);
-    }
 
     const displayData = generateDisplayData(this.state.numbersSelected);
     const imageKeys = Object.keys(images);
