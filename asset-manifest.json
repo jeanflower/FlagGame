@@ -1,17 +1,31 @@
 {
   "files": {
     "main.css": "/FlagGame/static/css/main.36894b5e.chunk.css",
-    "main.js": "/FlagGame/static/js/main.d68177c2.chunk.js",
-    "main.js.map": "/FlagGame/static/js/main.d68177c2.chunk.js.map",
-    "runtime-main.js": "/FlagGame/static/js/runtime-main.617939f4.js",
-    "runtime-main.js.map": "/FlagGame/static/js/runtime-main.617939f4.js.map",
-    "static/js/2.6aad63e8.chunk.js": "/FlagGame/static/js/2.6aad63e8.chunk.js",
-    "static/js/2.6aad63e8.chunk.js.map": "/FlagGame/static/js/2.6aad63e8.chunk.js.map",
-    "static/js/3.efdabdba.chunk.js": "/FlagGame/static/js/3.efdabdba.chunk.js",
-    "static/js/3.efdabdba.chunk.js.map": "/FlagGame/static/js/3.efdabdba.chunk.js.map",
+    "main.js": "/FlagGame/static/js/main.0e8b95ad.chunk.js",
+    "main.js.map": "/FlagGame/static/js/main.0e8b95ad.chunk.js.map",
+    "runtime-main.js": "/FlagGame/static/js/runtime-main.05fd376a.js",
+    "runtime-main.js.map": "/FlagGame/static/js/runtime-main.05fd376a.js.map",
+    "static/js/2.75c87991.chunk.js": "/FlagGame/static/js/2.75c87991.chunk.js",
+    "static/js/2.75c87991.chunk.js.map": "/FlagGame/static/js/2.75c87991.chunk.js.map",
+    "static/js/3.07be0c00.chunk.js": "/FlagGame/static/js/3.07be0c00.chunk.js",
+    "static/js/3.07be0c00.chunk.js.map": "/FlagGame/static/js/3.07be0c00.chunk.js.map",
     "index.html": "/FlagGame/index.html",
     "static/css/main.36894b5e.chunk.css.map": "/FlagGame/static/css/main.36894b5e.chunk.css.map",
-    "static/js/2.6aad63e8.chunk.js.LICENSE.txt": "/FlagGame/static/js/2.6aad63e8.chunk.js.LICENSE.txt",
+    "static/js/2.75c87991.chunk.js.LICENSE.txt": "/FlagGame/static/js/2.75c87991.chunk.js.LICENSE.txt",
+    "static/media/Barfi.9369c089.png": "/FlagGame/static/media/Barfi.9369c089.png",
+    "static/media/GulabJamun.c4c7fd0f.png": "/FlagGame/static/media/GulabJamun.c4c7fd0f.png",
+    "static/media/Halwa.aa9def8d.png": "/FlagGame/static/media/Halwa.aa9def8d.png",
+    "static/media/Jalebi.b679112d.png": "/FlagGame/static/media/Jalebi.b679112d.png",
+    "static/media/KesarPeda.06a95303.png": "/FlagGame/static/media/KesarPeda.06a95303.png",
+    "static/media/Kheer.23f243bc.png": "/FlagGame/static/media/Kheer.23f243bc.png",
+    "static/media/Kulfi.6a6dcfa8.png": "/FlagGame/static/media/Kulfi.6a6dcfa8.png",
+    "static/media/Laddoo.327d073d.png": "/FlagGame/static/media/Laddoo.327d073d.png",
+    "static/media/MishtiDoi.dd8547ac.png": "/FlagGame/static/media/MishtiDoi.dd8547ac.png",
+    "static/media/MysorePak.0024af74.png": "/FlagGame/static/media/MysorePak.0024af74.png",
+    "static/media/Rabri.4fa27400.png": "/FlagGame/static/media/Rabri.4fa27400.png",
+    "static/media/RasMalai.78c4c10d.png": "/FlagGame/static/media/RasMalai.78c4c10d.png",
+    "static/media/Rasagola.099d4d7f.png": "/FlagGame/static/media/Rasagola.099d4d7f.png",
+    "static/media/SoanPapdi.e5790624.png": "/FlagGame/static/media/SoanPapdi.e5790624.png",
     "static/media/ad.25ac0ed2.svg": "/FlagGame/static/media/ad.25ac0ed2.svg",
     "static/media/ae.3cb683e7.svg": "/FlagGame/static/media/ae.3cb683e7.svg",
     "static/media/af.39e74801.svg": "/FlagGame/static/media/af.39e74801.svg",
@@ -266,9 +280,9 @@
     "static/media/zw.0f24efd0.svg": "/FlagGame/static/media/zw.0f24efd0.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.617939f4.js",
-    "static/js/2.6aad63e8.chunk.js",
+    "static/js/runtime-main.05fd376a.js",
+    "static/js/2.75c87991.chunk.js",
     "static/css/main.36894b5e.chunk.css",
-    "static/js/main.d68177c2.chunk.js"
+    "static/js/main.0e8b95ad.chunk.js"
   ]
 }
