@@ -20,17 +20,14 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
   public constructor(props: IdentifyAllProps) {
     super(props);
     // console.log(`props for IdentifyAllGame ${JSON.stringify(props)}`);
+    const randomSel = this.getRandomSelection(new Date());
     this.state = {
-      numbersSelected: [],
-      numbersLeft: [],
-      activeFlag: [],
-      correctPlace: '',
-      highlightBorder: -1,
+      ...randomSel,
       message: '',
-      start: new Date(),
+      correctPlace: this.newCorrectPlace(randomSel.numbersLeft),
     }
   }
-  private setRandomSelection(){
+  private getRandomSelection(start: Date){
     // console.log(`generate random selection for IdentifyAllGame`);
     const selection = generateRandomSelection(this.props.numFlagsShown);
     const now = new Date();
@@ -43,42 +40,46 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
       highlightBorder: -1,
       start: now,
       message: `Last game: ${
-        Math.floor((now.getTime() - this.state.start.getTime())/100)/10} seconds`
+        Math.floor((now.getTime() - start.getTime())/100)/10} seconds`
     };
-    this.setState(
-      selectionWithGray
-    );
+    return selectionWithGray;
   }
+
+  newCorrectPlace(numbersLeft: number[]){
+    const oneLeftIndex = Math.floor(
+      Math.random() * numbersLeft.length
+    );
+    // console.log(`oneLeftIndex = ${oneLeftIndex}`);
+    const imageIndex = numbersLeft[oneLeftIndex];
+    // console.log(`imageIndex = ${imageIndex}`);
+    const imageKeys = Object.keys(images);
+    return images[imageKeys[imageIndex]].name;
+  }
+
   onClickWork(i: number, image: any){
     if(images[image].name === this.state.correctPlace){
       // alert("WIN");
       // console.log(`colour ${i}th flag gray`);
-      this.state.activeFlag[i] = false;
+      const newActiveFlag = [...this.state.activeFlag];
+      newActiveFlag[i] = false;
       const index = this.state.numbersLeft.indexOf(i);
       if (index > -1) {
         this.state.numbersLeft.splice(index, 1);
         // console.log(`this.state.numbersLeft = ${this.state.numbersLeft}`);
       }
 
-      let newCorrectPlace = "WON!";
       if(this.state.numbersLeft.length >= 1){
-        const oneLeftIndex = Math.floor(
-          Math.random() * this.state.numbersLeft.length
-        );
-        // console.log(`oneLeftIndex = ${oneLeftIndex}`);
-        const imageIndex = this.state.numbersLeft[oneLeftIndex];
-        // console.log(`imageIndex = ${imageIndex}`);
-        const imageKeys = Object.keys(images);
-        newCorrectPlace = images[imageKeys[imageIndex]].name;      
         this.setState({
-          activeFlag: this.state.activeFlag,
+          activeFlag: newActiveFlag,
           numbersLeft: this.state.numbersLeft,
-          correctPlace: newCorrectPlace,
+          correctPlace: this.newCorrectPlace(this.state.numbersLeft),
           highlightBorder: -1,
         });
       } else {
         // console.log(`reset task`);
-        this.setRandomSelection();
+        this.setState(
+          this.getRandomSelection(this.state.start)
+        );        
       }
     } else {
       this.setState({
@@ -90,10 +91,6 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
   render(){
     // console.log(`rendering IdentifyAllGame with props = ${JSON.stringify(this.props)}`);
     // console.log(`rendering IdentifyAllGame with state = ${JSON.stringify(this.state)}`);
-    if(this.state.numbersSelected.length === 0){
-      this.setRandomSelection();
-      return (<h2>...</h2>);
-    }
 
     const displayData = generateDisplayData(this.state.numbersSelected);
     const imageKeys = Object.keys(images);
@@ -103,11 +100,18 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
         Select {this.state.correctPlace}
       </h2>
       <table>
+      <tbody>
       {displayData.rows.map(
         (row: number[])=>{
-          return (<tr>{row.map(
+          return (
+          <tr
+            key={`tr${JSON.stringify(row)}`}
+          >{row.map(
             (i: number)=>{
-              return (<td>{
+              return (
+                <td
+                  key={`td${i}`}
+                >{
                 <div 
                   style={{
                     padding: `${displayData.pad}px`,
@@ -115,7 +119,7 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
                   }}
                 >
                 <img
-                  key={i}
+                  key={`im${i}`}
                   src={images[imageKeys[i]].image}
                   alt={images[imageKeys[i]].name}
                   style={{
@@ -132,6 +136,7 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
             })
           }</tr>);
         })}
+      </tbody>
       </table>
       <h2>{this.state.message}</h2>
     </div>);

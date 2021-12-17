@@ -106,8 +106,8 @@ export class GameApp extends Component<AppProps, AppState> {
         </IdentifyAllGame>
       );
     } else {
-      console.log(`rendering default game - unexpected!`);
-      return (<>bug</>);
+      // console.log(`rendering default game`);
+      return (<>inbetween games</>);
     }
   }
   render() {

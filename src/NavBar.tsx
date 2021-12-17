@@ -1,6 +1,6 @@
 import { Nav, Navbar } from 'react-bootstrap';
 import { Component } from 'react';
-import VanImage from './finish-flag-128.png';
+import FlagImage from './finish-flag-128.png';
 import { gameNames, setGame } from './App';
 
 interface FlagNavBarState {
@@ -17,9 +17,9 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
     return (
     <Navbar bg="primary" variant="dark" expand="lg">
     <img
-      src={VanImage}
+      src={FlagImage}
       alt="Van"
-      width={70}
+      width={40}
       height={'auto'}
     ></img>
     <Navbar.Brand href="#home">Flags galore</Navbar.Brand>

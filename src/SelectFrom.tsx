@@ -75,25 +75,33 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
         Select {this.state.correctPlace}
       </h2>
       <table>
+      <tbody>
       {displayData.rows.map(
         (row: number[])=>{
-          return (<tr>{row.map(
+          return (
+            <tr
+              key={`tr${JSON.stringify(row)}`}
+            >{row.map(
             (i: number)=>{
-              return (<td>{
+              return (
+                <td
+                  key={`td${i}`}
+                >{
                 <img
-                key={i}
-                src={images[imageKeys[i]].image}
-                alt={images[imageKeys[i]].name}
-                style={{padding: `${displayData.pad}px`}}
-                width={displayData.tileWidth}
-                height={'auto'}
-                onClick={()=>{
-                  return this.onClickWork(imageKeys[i]);
-                }}
+                  key={`im${i}`}
+                  src={images[imageKeys[i]].image}
+                  alt={images[imageKeys[i]].name}
+                  style={{padding: `${displayData.pad}px`}}
+                  width={displayData.tileWidth}
+                  height={'auto'}
+                  onClick={()=>{
+                    return this.onClickWork(imageKeys[i]);
+                  }}
                 ></img>                
               }</td>);
             })}</tr>);
         })}
+      </tbody>
       </table>
       <h2>
         {this.state.message} 
