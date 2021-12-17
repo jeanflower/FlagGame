@@ -293,7 +293,6 @@ images.push({code: 'bq', level: 2, image: bqImage, name: 'Caribbean Netherlands'
 images.push({code: 'br', level: 0, image: brImage, name: 'Brazil' });
 images.push({code: 'bs', level: 1, image: bsImage, name: 'Bahamas' });
 images.push({code: 'bt', level: 1, image: btImage, name: 'Bhutan' });
-images.push({code: 'bv', level: 2, image: bvImage, name: 'Bouvet Island' });
 images.push({code: 'bw', level: 1, image: bwImage, name: 'Botswana' });
 images.push({code: 'by', level: 1, image: byImage, name: 'Belarus' });
 images.push({code: 'bz', level: 1, image: bzImage, name: 'Belize' });
@@ -464,7 +463,6 @@ images.push({code: 'se', level: 0, image: seImage, name: 'Sweden' });
 images.push({code: 'sg', level: 1, image: sgImage, name: 'Singapore' });
 images.push({code: 'sh', level: 2, image: shImage, name: 'Saint Helena, Ascension and Tristan da Cunha' });
 images.push({code: 'si', level: 0, image: siImage, name: 'Slovenia' });
-images.push({code: 'sj', level: 2, image: sjImage, name: 'Svalbard and Jan Mayen' });
 images.push({code: 'sk', level: 0, image: skImage, name: 'Slovakia' });
 images.push({code: 'sl', level: 1, image: slImage, name: 'Sierra Leone' });
 images.push({code: 'sm', level: 1, image: smImage, name: 'San Marino' });
