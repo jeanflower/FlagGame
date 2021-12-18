@@ -1,6 +1,8 @@
+import { PeppaPigGame } from "./App";
 
 export function generateDisplayData(
   indicesToShow: number[],
+  gameType: number,
 ){
   const width = window.innerWidth;
   // console.log(`screen width ${width}`);
@@ -14,8 +16,13 @@ export function generateDisplayData(
       numRows = 2;
     }
   } else if(numTiles === 15){
-    maxTileWidth = 150;
-    numRows = 5;
+    if(gameType === PeppaPigGame){
+      numRows = 3;
+      maxTileWidth = 120;
+    } else {
+      numRows = 5;
+      maxTileWidth = 150;
+    }
   }
   // console.log(`numRows = ${numRows}`);
   const rows = [];

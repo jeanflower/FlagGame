@@ -72,6 +72,7 @@ export class GameApp extends Component<AppProps, AppState> {
         <SelectFromGame
           numFlagsShown={4}
           images={this.getImages()}
+          gameType={this.state.gameType}
         >
         </SelectFromGame>
       );
@@ -83,6 +84,7 @@ export class GameApp extends Component<AppProps, AppState> {
         <SelectFromGame
           numFlagsShown={15}
           images={this.getImages()}
+          gameType={this.state.gameType}
         >
         </SelectFromGame>
       );
@@ -91,6 +93,7 @@ export class GameApp extends Component<AppProps, AppState> {
         <IdentifyAllGame
           numFlagsShown={4}
           images={this.getImages()}
+          gameType={this.state.gameType}
         >
         </IdentifyAllGame>
       );
@@ -102,6 +105,7 @@ export class GameApp extends Component<AppProps, AppState> {
         <IdentifyAllGame
           numFlagsShown={15}
           images={this.getImages()}
+          gameType={this.state.gameType}
         >
         </IdentifyAllGame>
       );

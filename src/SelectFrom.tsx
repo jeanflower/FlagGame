@@ -6,6 +6,7 @@ interface SelectFromState {
   message: string;
   indicesToShow: number[];
   correctIndex: string;
+  highlightBorder: number;
   numberTaps: number;
   numberRight: number;
   currentRun: number;
@@ -16,6 +17,7 @@ interface SelectFromState {
 interface SelectFromProps {
   numFlagsShown: number,
   images: any[],
+  gameType: number,
 }
 
 export class SelectFromGame extends Component<SelectFromProps, SelectFromState> { 
@@ -37,6 +39,7 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
       bestRun: 0,
       lastRun: 0,
       lastThree: lastThree,
+      highlightBorder: -1,
     }
     if(this.state.indicesToShow.length === 0){
       this.setRandomSelection();
@@ -68,6 +71,7 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
         numberRight: this.state.numberRight + 1,
         currentRun: newCurrentRun,
         bestRun: newBestRun,
+        highlightBorder: -1,
       });          
     } else {
       this.setState({ 
@@ -75,6 +79,7 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
         numberTaps: this.state.numberTaps + 1,
         currentRun: 0,
         lastRun: this.state.currentRun,
+        highlightBorder: i,
       });
     }
   }
@@ -83,7 +88,10 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
     // console.log(`rendering SelectFromGame with props = ${JSON.stringify(this.props)}`);
     // console.log(`rendering SelectFromGame with state = ${JSON.stringify(this.state)}`);
 
-    const displayData = generateDisplayData(this.state.indicesToShow);
+    const displayData = generateDisplayData(
+      this.state.indicesToShow,
+      this.props.gameType,
+    );
     return (
       <div>
       <h2>
@@ -102,17 +110,26 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
                 <td
                   key={`td${i}`}
                 >{
+                  <div 
+                  style={{
+                    padding: `${displayData.pad}px`,
+                    backgroundColor: `${this.state.highlightBorder === i?'red':'grey'}`
+                  }}
+                >
                 <img
                   key={`im${i}`}
                   src={this.props.images[i].image}
                   alt={this.props.images[i].name}
-                  style={{padding: `${displayData.pad}px`}}
+                  style={{
+                    padding: `${displayData.pad}px`
+                  }}
                   width={displayData.tileWidth}
                   height={'auto'}
                   onClick={()=>{
                     return this.onClickWork(i);
                   }}
                 ></img>                
+                </div>
               }</td>);
             })}</tr>);
         })}

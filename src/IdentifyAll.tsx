@@ -15,6 +15,7 @@ interface IdentifyAllState {
 interface IdentifyAllProps {
   numFlagsShown: number,
   images: any[],
+  gameType: number,
 }
 
 export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllState> { 
@@ -88,10 +89,12 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
       } else {
         // console.log(`reset task`);
         this.setState(
-          this.getRandomSelection(
+          {...this.getRandomSelection(
             this.state.start,
             this.state.lastThree,
-          )
+          ),
+          highlightBorder: -1,
+          }
         );        
       }
     } else {
@@ -105,7 +108,10 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
     // console.log(`rendering IdentifyAllGame with props = ${JSON.stringify(this.props)}`);
     // console.log(`rendering IdentifyAllGame with state = ${JSON.stringify(this.state)}`);
 
-    const displayData = generateDisplayData(this.state.indicesToShow);
+    const displayData = generateDisplayData(
+      this.state.indicesToShow, 
+      this.props.gameType,
+    );
     return (
       <div>
       <h2>
