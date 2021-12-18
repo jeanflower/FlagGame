@@ -38,14 +38,14 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
-                setLevel(0);
+                setLevel(1);
               }}
               eventKey="1.2"
             >Medium</NavDropdown.Item>
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
-                setLevel(0);
+                setLevel(2);
               }}
               eventKey="1.3"
             >Hard</NavDropdown.Item>

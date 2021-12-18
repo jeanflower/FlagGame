@@ -55,15 +55,20 @@ export class GameApp extends Component<AppProps, AppState> {
     image: any,
     name: string,
   }[]{
+    // console.log(`looking for level ${this.state.gameLevel} images`);
+
+    let result;
     if(this.state.gameType === FlagGame) {
-      return getFlagImages(this.state.gameLevel);
+      result = getFlagImages(this.state.gameLevel);
     } else if(this.state.gameType === IndianDesertGame) {
-      return getIndianDesertImages(this.state.gameLevel);
+      result = getIndianDesertImages(this.state.gameLevel);
     } else if(this.state.gameType === PeppaPigGame) {
-      return getPeppaPigImages(this.state.gameLevel);
+      result = getPeppaPigImages(this.state.gameLevel);
     } else {
-      return getFlagImages(this.state.gameLevel);
+      result = getFlagImages(this.state.gameLevel);
     } 
+    // console.log(`returning ${result.length} images`);
+    return result;
   }
 
   private getGameComponent(){
@@ -145,6 +150,7 @@ export function setLevel(l: number){
     {
       gameName: 'none',
     }, ()=>{
+    console.log(`set game level to ${l}`);
     myGameApp.setState(
       {
         gameLevel: l,

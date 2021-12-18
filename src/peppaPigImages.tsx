@@ -110,7 +110,7 @@ images.push({level: 1, image: MummySheep, name: 'Mummy Sheep' });
 images.push({level: 2, image: MummyZebra, name: 'Mummy Zebra' });
 images.push({level: 2, image: PedroPony, name: 'Pedro Pony' });
 images.push({level: 0, image: PeggiPanda, name: 'Peggi Panda' });
-images.push({level: 0, image: Pippa, name: 'Pippa' });
+images.push({level: 0, image: Pippa, name: 'Peppa' });
 images.push({level: 1, image: RebeccaRabbit, name: 'Rebecca Rabbit' });
 images.push({level: 1, image: RichardRabbit, name: 'Richard Rabbit' });
 images.push({level: 0, image: RosieAndRobbieRabbit, name: 'Rosie And Robbie Rabbit' });
@@ -124,11 +124,12 @@ export function getPeppaPigImages(level: number): {
   image: any,
   name: string,
 }[]{
-  return images.filter((im)=>{
+  const result = images.filter((im)=>{
     return im.level <= level;
-  })
+  });
+  return result;
 }
-
+/*
 const names = [
   'Auntie Pig',
   'Aunty Goat',
@@ -200,3 +201,4 @@ for(const name of names){
 }
 console.log(result1);
 console.log(result2);
+*/
