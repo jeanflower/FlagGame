@@ -32,7 +32,6 @@ import MissRabbit from './PeppaPigChars/MissRabbit.png';
 import MollyMole from './PeppaPigChars/MollyMole.png';
 import MommyMole from './PeppaPigChars/MommyMole.png';
 import MrBull from './PeppaPigChars/MrBull.jpg';
-import MrElephant from './PeppaPigChars/MrElephant.png';
 import MrLion from './PeppaPigChars/MrLion.png';
 import MrPony from './PeppaPigChars/MrPony.jpg';
 import MrWolf from './PeppaPigChars/MrWolf.png';
@@ -96,7 +95,6 @@ images.push({level: 1, image: MissRabbit, name: 'Miss Rabbit' });
 images.push({level: 2, image: MollyMole, name: 'Molly Mole' });
 images.push({level: 2, image: MommyMole, name: 'Mommy Mole' });
 images.push({level: 2, image: MrBull, name: 'Mr Bull' });
-images.push({level: 2, image: MrElephant, name: 'Mr Elephant' });
 images.push({level: 0, image: MrLion, name: 'Mr Lion' });
 images.push({level: 2, image: MrPony, name: 'Mr Pony' });
 images.push({level: 2, image: MrWolf, name: 'Mr Wolf' });
@@ -166,7 +164,6 @@ const names = [
   'Molly Mole',
   'Mommy Mole',
   'Mr Bull',
-  'Mr Elephant',
   'Mr Lion',
   'Mr Pony',
   'Mr Wolf',
