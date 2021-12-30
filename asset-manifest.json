@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/FlagGame/static/css/main.36894b5e.chunk.css",
-    "main.js": "/FlagGame/static/js/main.d45656c7.chunk.js",
-    "main.js.map": "/FlagGame/static/js/main.d45656c7.chunk.js.map",
+    "main.js": "/FlagGame/static/js/main.25f1056f.chunk.js",
+    "main.js.map": "/FlagGame/static/js/main.25f1056f.chunk.js.map",
     "runtime-main.js": "/FlagGame/static/js/runtime-main.05fd376a.js",
     "runtime-main.js.map": "/FlagGame/static/js/runtime-main.05fd376a.js.map",
     "static/js/2.39cf8c80.chunk.js": "/FlagGame/static/js/2.39cf8c80.chunk.js",
@@ -363,6 +363,6 @@
     "static/js/runtime-main.05fd376a.js",
     "static/js/2.39cf8c80.chunk.js",
     "static/css/main.36894b5e.chunk.css",
-    "static/js/main.d45656c7.chunk.js"
+    "static/js/main.25f1056f.chunk.js"
   ]
 }
