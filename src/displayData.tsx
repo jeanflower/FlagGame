@@ -20,8 +20,13 @@ export function generateDisplayData(
       numRows = 3;
       maxTileWidth = 120;
     } else if(gameType === BSLGame){
-      numRows = 5;
-      maxTileWidth = 110;
+      if(width > 600){
+        numRows = 3;
+        maxTileWidth = 160;
+      } else {
+        numRows = 5;
+        maxTileWidth = 110;
+      }
     } else {
       numRows = 5;
       maxTileWidth = 150;
