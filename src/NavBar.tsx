@@ -93,7 +93,7 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
               onClick={()=>{
                 setGameType(BSLGame);
               }}
-              eventKey="3.3"
+              eventKey="3.4"
             >BSL signs</NavDropdown.Item>
 
           </NavDropdown>

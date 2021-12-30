@@ -1,4 +1,4 @@
-import { PeppaPigGame } from "./App";
+import { BSLGame, PeppaPigGame } from "./App";
 
 export function generateDisplayData(
   indicesToShow: number[],
@@ -14,11 +14,14 @@ export function generateDisplayData(
   if(numTiles === 4){
     if(width < 800){
       numRows = 2;
-    }
+    } 
   } else if(numTiles === 15){
     if(gameType === PeppaPigGame){
       numRows = 3;
       maxTileWidth = 120;
+    } else if(gameType === BSLGame){
+      numRows = 5;
+      maxTileWidth = 110;
     } else {
       numRows = 5;
       maxTileWidth = 150;
