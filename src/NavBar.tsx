@@ -3,6 +3,7 @@ import { Component } from 'react';
 import FlagImage from './finish-flag-128.png';
 import { FlagGame, gameNames, IndianDesertGame, PeppaPigGame, setGame, setGameType, setLevel } from './App';
 import { BSLGame } from './App';
+import React from 'react'
 
 interface FlagNavBarState {
 }
