@@ -7,6 +7,7 @@ import { IdentifyAllGame } from './IdentifyAll';
 import { getFlagImages } from './flagImages';
 import { getIndianDesertImages } from "./indianDesertImages";
 import { getPeppaPigImages } from './peppaPigImages';
+import { getBSLImages } from "./bSLImages";
 
 const selectFromFour = 'Select from 4';
 const selectFromFifteen = 'Select from 15';
@@ -30,6 +31,7 @@ function App() {
 export const FlagGame = 0;
 export const IndianDesertGame = 1;
 export const PeppaPigGame = 2;
+export const BSLGame = 3;
 
 interface AppState {
   gameName: string;
@@ -64,6 +66,8 @@ export class GameApp extends Component<AppProps, AppState> {
       result = getIndianDesertImages(this.state.gameLevel);
     } else if(this.state.gameType === PeppaPigGame) {
       result = getPeppaPigImages(this.state.gameLevel);
+    } else if(this.state.gameType === BSLGame) {
+      result = getBSLImages(this.state.gameLevel);
     } else {
       result = getFlagImages(this.state.gameLevel);
     } 
