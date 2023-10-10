@@ -34,7 +34,7 @@ images.push({level: 0, image: Rasagola, name: 'Rasagola' });
 images.push({level: 0, image: RasMalai, name: 'Ras Malai' });
 images.push({level: 0, image: SoanPapdi, name: 'Soan Papdi' });
 
-export function getIndianDesertImages(level: number): {
+export function getIndianDessertImages(level: number): {
   level: number,
   image: any,
   name: string,

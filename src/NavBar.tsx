@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Component } from 'react';
 import FlagImage from './finish-flag-128.png';
-import { FlagGame, gameNames, IndianDesertGame, PeppaPigGame, setGame, setGameType, setLevel } from './App';
+import { FlagGame, gameNames, IndianDessertGame, PeppaPigGame, setGame, setGameType, setLevel } from './App';
 import { BSLGame } from './App';
 import React from 'react'
 
@@ -76,10 +76,10 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
-                setGameType(IndianDesertGame);
+                setGameType(IndianDessertGame);
               }}
               eventKey="3.2"
-            >Indian deserts</NavDropdown.Item>
+            >Indian desserts</NavDropdown.Item>
             <NavDropdown.Item 
               href="#"
               onClick={()=>{

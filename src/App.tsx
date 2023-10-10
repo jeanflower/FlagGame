@@ -5,7 +5,7 @@ import { FlagNavBar } from './NavBar';
 import { SelectFromGame } from './SelectFrom';
 import { IdentifyAllGame } from './IdentifyAll';
 import { getFlagImages } from './flagImages';
-import { getIndianDesertImages } from "./indianDesertImages";
+import { getIndianDessertImages } from "./indianDessertImages";
 import { getPeppaPigImages } from './peppaPigImages';
 import { getBSLImages } from "./bSLImages";
 
@@ -29,7 +29,7 @@ function App() {
 }
 
 export const FlagGame = 0;
-export const IndianDesertGame = 1;
+export const IndianDessertGame = 1;
 export const PeppaPigGame = 2;
 export const BSLGame = 3;
 
@@ -62,8 +62,8 @@ export class GameApp extends Component<AppProps, AppState> {
     let result;
     if(this.state.gameType === FlagGame) {
       result = getFlagImages(this.state.gameLevel);
-    } else if(this.state.gameType === IndianDesertGame) {
-      result = getIndianDesertImages(this.state.gameLevel);
+    } else if(this.state.gameType === IndianDessertGame) {
+      result = getIndianDessertImages(this.state.gameLevel);
     } else if(this.state.gameType === PeppaPigGame) {
       result = getPeppaPigImages(this.state.gameLevel);
     } else if(this.state.gameType === BSLGame) {
