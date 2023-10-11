@@ -3,23 +3,42 @@
 import './App.css';
 import { Component } from 'react';
 
-import { FlagNavBar } from './NavBar';
+import { MyNavBar } from './NavBar';
 import { SelectFromGame } from './SelectFrom';
 import { IdentifyAllGame } from './IdentifyAll';
 import { getFlagImages } from './flagImages';
 import { getIndianDessertImages } from "./indianDessertImages";
 import { getPeppaPigImages } from './peppaPigImages';
 import { getBSLAlphabetImages } from "./bSLImages";
+import { FlashCardGame } from './FlashCard';
 
-const selectFromFour = 'Select from 4';
-const selectFromFifteen = 'Select from 15';
-const identifyFour = 'Identify 4';
-const identifyFifteen = 'Identify 15';
-export const gameNames = [
-  selectFromFour,
-  selectFromFifteen,
-  identifyFour,
-  identifyFifteen,
+export const selectFromFour = 'selectFromFour';
+export const selectFromFifteen = 'selectFromFifteen';
+export const identifyFour = 'identifyFour';
+export const identifyFifteen = 'identifyFifteen';
+export const flashCard = 'flashCard';
+
+export const gameModes = [
+  {
+    name: selectFromFour,
+    screenName: 'Select from 4',
+  }, 
+  {
+    name: selectFromFifteen,
+    screenName: 'Select from 15',
+  },
+  {
+    name: identifyFour,
+    screenName: 'Identify 4',
+  }, 
+  {
+    name: identifyFifteen,
+    screenName: 'Identify 15',
+  }, 
+  {
+    name: flashCard,
+    screenName: 'Flash cards',
+  },
 ];
 
 export const gameTypes = {
@@ -72,6 +91,19 @@ export class GameApp extends Component<AppProps, AppState> {
     return result;
   }
 
+  private getNavBarTitle(){
+    if(this.props.defaultGameType === gameTypes.flagGame){
+      return 'Flags Galore';
+    } else if(this.props.defaultGameType === gameTypes.bslAlphabet){
+      return 'BSL Alphabet challenge';
+    } else if(this.props.defaultGameType === gameTypes.indianDessertGame){
+      return 'Indian desserts';
+    } else if(this.props.defaultGameType === gameTypes.peppaPigGame){
+      return 'Peppa pig characters';
+    } else {
+      return 'Flags Galore';
+    }
+  }
   private getGameComponent(){
     if(this.state.gameName === selectFromFour){
       return (
@@ -111,6 +143,13 @@ export class GameApp extends Component<AppProps, AppState> {
           gameType={this.state.gameType}
         />
       );
+    } else if(this.state.gameName === flashCard){
+      return (
+        <FlashCardGame
+          images={this.getImages()}
+          gameType={this.state.gameType}
+        />
+      );
     } else {
       // console.log(`rendering no game`);
       return (<>inbetween games</>);
@@ -120,7 +159,9 @@ export class GameApp extends Component<AppProps, AppState> {
     // console.log(`rendering App with state ${JSON.stringify(this.state)}`);
     return (
       <>
-      <FlagNavBar/>
+      <MyNavBar
+        title={this.getNavBarTitle()}
+      />
       {this.getGameComponent()}
       </>
     );

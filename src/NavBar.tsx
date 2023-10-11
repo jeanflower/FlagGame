@@ -1,16 +1,17 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Component } from 'react';
 import FlagImage from './finish-flag-128.png';
-import { gameTypes, gameNames, setGame, setGameType, setLevel } from './App';
+import { gameTypes, gameModes, setGame, setGameType, setLevel } from './App';
 import React from 'react';
 import Image from 'next/image';
 
-interface FlagNavBarState {
+interface NavBarState {
 }
-interface FlagNavBarProps {
+interface NavBarProps {
+  title: string,
 }
-export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> { 
-  public constructor(props: FlagNavBarProps) {
+export class MyNavBar extends Component<NavBarProps, NavBarState> { 
+  public constructor(props: NavBarProps) {
     super(props);
     this.state = {
     }
@@ -25,7 +26,7 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
       height={60}
     />
     <Container>
-      <Navbar.Brand href="#home">Flags galore</Navbar.Brand>
+      <Navbar.Brand href="#home">{this.props.title}</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
@@ -53,16 +54,19 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
             >Hard</NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title="Game Style" id="basic-nav-dropdown" key="ndgs">
-            {gameNames.map((name: string)=>{ 
+            {gameModes.map((mode: {
+              name: string,
+              screenName: string, 
+            })=>{ 
               return (
                 <NavDropdown.Item 
                   href="#"
                   onClick={()=>{
-                    setGame(name);
+                    setGame(mode.name);
                   }}
-                  eventKey={`2.${name}`}
-                  key={`2.${name}`}
-                >{name}</NavDropdown.Item>
+                  eventKey={`2.${mode.name}`}
+                  key={`2.${mode.name}`}
+                >{mode.screenName}</NavDropdown.Item>
               );
             })}
           </NavDropdown>

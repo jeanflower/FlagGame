@@ -125,7 +125,7 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
                 <td
                   key={`td${i}`}
                 >{
-                  <div 
+                <div 
                   style={{
                     padding: `${displayData.pad}px`,
                     backgroundColor: `${this.state.highlightBorder === i?'red':'grey'}`
