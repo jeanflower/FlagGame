@@ -67,6 +67,7 @@ interface AppState {
 interface AppProps {
   defaultGameMode: string;
   defaultGameType: string;
+  defaultGameLevel: number;
 }
 let myGameApp: GameApp;
 export class GameApp extends Component<AppProps, AppState> {
@@ -74,7 +75,7 @@ export class GameApp extends Component<AppProps, AppState> {
     super(props);
     this.state = {
       gameMode: props.defaultGameMode,
-      gameLevel: 0,
+      gameLevel: props.defaultGameLevel,
       gameType: props.defaultGameType,
     }
     myGameApp = this;

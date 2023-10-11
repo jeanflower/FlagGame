@@ -9,12 +9,17 @@ export default function FlagGame() {
 
   const searchParams = useSearchParams();
   const mode = searchParams.get('mode')
+  const level = searchParams.get('level')
 
   let defaultMode = selectFromFour;
   let chosenMode = gameModes.find((m) => {
     return m.name === mode;
   });
   // console.log(`chosenMode = ${chosenMode}`);
+  let defaultLevel = 0;
+  let chosenLevel = [0,1,2].find((l) => {
+    return `${l}` === level;
+  });
 
   return (<ClientOnly><GameApp
     defaultGameMode={
@@ -23,6 +28,8 @@ export default function FlagGame() {
     defaultGameType={
       gameTypes.flagGame
     }
-
+    defaultGameLevel={
+      chosenLevel ? chosenLevel : defaultLevel
+    }
   /></ClientOnly>);
 }
