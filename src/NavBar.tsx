@@ -9,6 +9,7 @@ interface NavBarState {
 }
 interface NavBarProps {
   title: string,
+  type: string,
 }
 export class MyNavBar extends Component<NavBarProps, NavBarState> { 
   public constructor(props: NavBarProps) {
@@ -25,6 +26,7 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
       width={40}
       height={60}
     />
+    {this.props.type !== gameTypes.bslVideos &&
     <Container>
       <Navbar.Brand href="#home">{this.props.title}</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -113,6 +115,7 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
         </Nav>
       </Navbar.Collapse>
     </Container>
+  }
   </Navbar>);
   }
 }

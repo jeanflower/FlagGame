@@ -173,6 +173,7 @@ export class GameApp extends Component<AppProps, AppState> {
       <>
       <MyNavBar
         title={this.getNavBarTitle()}
+        type={this.props.defaultGameType}
       />
       {this.getGameComponent()}
       </>
