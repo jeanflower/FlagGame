@@ -49,11 +49,12 @@ export const gameTypes = {
 }
 
 interface AppState {
-  gameName: string;
+  gameMode: string;
   gameLevel: number;
   gameType: string;
 }
 interface AppProps {
+  defaultGameMode: string;
   defaultGameType: string;
 }
 let myGameApp: GameApp;
@@ -61,7 +62,7 @@ export class GameApp extends Component<AppProps, AppState> {
   public constructor(props: AppProps) {
     super(props);
     this.state = {
-      gameName: selectFromFour,
+      gameMode: props.defaultGameMode,
       gameLevel: 0,
       gameType: props.defaultGameType,
     }
@@ -105,7 +106,7 @@ export class GameApp extends Component<AppProps, AppState> {
     }
   }
   private getGameComponent(){
-    if(this.state.gameName === selectFromFour){
+    if(this.state.gameMode === selectFromFour){
       return (
         <SelectFromGame
           numFlagsShown={4}
@@ -113,7 +114,7 @@ export class GameApp extends Component<AppProps, AppState> {
           gameType={this.state.gameType}
         />
       );
-    } else if(this.state.gameName === selectFromFifteen){
+    } else if(this.state.gameMode === selectFromFifteen){
       if(this.getImages().length < 15){
         return <h2>Not enough data to select from 15</h2>
       }
@@ -124,7 +125,7 @@ export class GameApp extends Component<AppProps, AppState> {
           gameType={this.state.gameType}
         />
       );
-    } else if(this.state.gameName === identifyFour){
+    } else if(this.state.gameMode === identifyFour){
       return (
         <IdentifyAllGame
           numFlagsShown={4}
@@ -132,7 +133,7 @@ export class GameApp extends Component<AppProps, AppState> {
           gameType={this.state.gameType}
         />
       );
-    } else if(this.state.gameName === identifyFifteen){
+    } else if(this.state.gameMode === identifyFifteen){
       if(this.getImages().length < 15){
         return <h2>Not enough data to identify 15</h2>
       }
@@ -143,7 +144,7 @@ export class GameApp extends Component<AppProps, AppState> {
           gameType={this.state.gameType}
         />
       );
-    } else if(this.state.gameName === flashCard){
+    } else if(this.state.gameMode === flashCard){
       return (
         <FlashCardGame
           images={this.getImages()}
@@ -171,11 +172,11 @@ export function setGame(name: string){
   //console.log(`setting game ${name}`);
   myGameApp.setState(
     {
-      gameName: 'none',
+      gameMode: 'none',
     }, ()=>{
     myGameApp.setState(
       {
-        gameName: name,
+        gameMode: name,
       }
       )
     }
@@ -183,31 +184,31 @@ export function setGame(name: string){
 }
 export function setLevel(l: number){
   //console.log(`setting game ${name}`);
-  const gameName = myGameApp.state.gameName;
+  const gameName = myGameApp.state.gameMode;
   myGameApp.setState(
     {
-      gameName: 'none',
+      gameMode: 'none',
     }, ()=>{
     console.log(`set game level to ${l}`);
     myGameApp.setState(
       {
         gameLevel: l,
-        gameName: gameName,
+        gameMode: gameName,
       }
     )}
   );
 }
 export function setGameType(type: string){
   //console.log(`setting game ${name}`);
-  const gameName = myGameApp.state.gameName;
+  const gameName = myGameApp.state.gameMode;
   myGameApp.setState(
     {
-      gameName: 'none',
+      gameMode: 'none',
     }, ()=>{
     myGameApp.setState(
       {
         gameType: type,
-        gameName: gameName,
+        gameMode: gameName,
       }
     )}
   );
