@@ -24,12 +24,9 @@ import W from './BSL/W.png';
 import X from './BSL/X.png';
 import Y from './BSL/Y.png';
 import Z from './BSL/Z.png';
+import { MediaData } from './App';
 
-export let images:{
-  level: number,
-  image: any,
-  name: string,
-}[] = [];
+export let images:any[] = [];
 
 images.push({level: 0, image: A, name: 'A' });
 images.push({level: 0, image: B, name: 'B' });
@@ -58,11 +55,11 @@ images.push({level: 0, image: X, name: 'X' });
 images.push({level: 0, image: Y, name: 'Y' });
 images.push({level: 0, image: Z, name: 'Z' });
 
-export function getBSLAlphabetImages(level: number): {
-  level: number,
-  image: any,
-  name: string,
-}[]{
+images.forEach((i) => {
+  i.code = i.name;
+})
+
+export function getBSLAlphabetImages(level: number): MediaData[]{
   // console.log('in getBSLImages');
   return images.filter((im)=>{
     return im.level <= level;

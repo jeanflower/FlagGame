@@ -250,13 +250,9 @@ import ytImage from './flagSvgs/yt.svg';
 import zaImage from './flagSvgs/za.svg';
 import zmImage from './flagSvgs/zm.svg';
 import zwImage from './flagSvgs/zw.svg';
+import { MediaData } from './App';
 
-export let images:{
-  code: string,
-  level: number,
-  image: any,
-  name: string,
-}[] = [];
+export let images:MediaData[] = [];
 
 images.push({code: 'ad', level: 2, image: adImage, name: 'Andorra' });
 images.push({code: 'ae', level: 1, image: aeImage, name: 'United Arab Emirates' });
@@ -511,12 +507,7 @@ images.push({code: 'za', level: 0, image: zaImage, name: 'South Africa' });
 images.push({code: 'zm', level: 0, image: zmImage, name: 'Zambia' });
 images.push({code: 'zw', level: 0, image: zwImage, name: 'Zimbabwe' });
 
-export function getFlagImages(level: number): {
-  code: string,
-  level: number,
-  image: any,
-  name: string,
-}[]{
+export function getFlagImages(level: number): MediaData[]{
   return images.filter((im)=>{
     return im.level <= level;
   })

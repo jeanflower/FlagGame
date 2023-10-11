@@ -12,12 +12,9 @@ import Rabri from './indianDeserts/Rabri.png';
 import Rasagola from './indianDeserts/Rasagola.png';
 import RasMalai from './indianDeserts/RasMalai.png';
 import SoanPapdi from './indianDeserts/SoanPapdi.png';
+import { MediaData } from './App';
 
-export let images:{
-  level: number,
-  image: any,
-  name: string,
-}[] = [];
+export let images:any[] = [];
 
 images.push({level: 0, image: Barfi, name: 'Barfi' });
 images.push({level: 0, image: GulabJamun, name: 'Gulab Jamun' });
@@ -34,11 +31,11 @@ images.push({level: 0, image: Rasagola, name: 'Rasagola' });
 images.push({level: 0, image: RasMalai, name: 'Ras Malai' });
 images.push({level: 0, image: SoanPapdi, name: 'Soan Papdi' });
 
-export function getIndianDessertImages(level: number): {
-  level: number,
-  image: any,
-  name: string,
-}[]{
+images.forEach((i) => {
+  i.code = i.name;
+})
+
+export function getIndianDessertImages(level: number): MediaData[]{
   return images.filter((im)=>{
     return im.level <= level;
   })

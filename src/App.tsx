@@ -11,12 +11,20 @@ import { getIndianDessertImages } from "./indianDessertImages";
 import { getPeppaPigImages } from './peppaPigImages';
 import { getBSLAlphabetImages } from "./bSLImages";
 import { FlashCardGame } from './FlashCard';
+import { StaticImageData } from 'next/image';
 
 export const selectFromFour = 'selectFromFour';
 export const selectFromFifteen = 'selectFromFifteen';
 export const identifyFour = 'identifyFour';
 export const identifyFifteen = 'identifyFifteen';
 export const flashCard = 'flashCard';
+
+export type MediaData = {
+    code: string|undefined,
+    level: number,
+    image: StaticImageData,
+    name: string,
+};
 
 export const gameModes = [
   {
@@ -69,11 +77,7 @@ export class GameApp extends Component<AppProps, AppState> {
     myGameApp = this;
   }
 
-  private getImages():{
-    level: number,
-    image: any,
-    name: string,
-  }[]{
+  private getImages():MediaData[]{
     // console.log(`looking for level ${this.state.gameLevel} images`);
 
     let result;

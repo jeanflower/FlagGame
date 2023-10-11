@@ -142,7 +142,7 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
                   onClick={()=>{
                     return this.onClickWork(i);
                   }}
-                />             
+                />
                 </div>
               }</td>);
             })}</tr>);

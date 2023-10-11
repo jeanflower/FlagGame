@@ -54,12 +54,9 @@ import UncleGoat from './PeppaPigChars/UncleGoat.png';
 import UnclePig from './PeppaPigChars/UnclePig.png';
 import ZoeZebra from './PeppaPigChars/ZoeZebra.png';
 import ZuzuAndZazaZebra from './PeppaPigChars/ZuZuAndZazaZebra.jpg';
+import { MediaData } from './App';
 
-export let images:{
-  level: number,
-  image: any,
-  name: string,
-}[] = [];
+export let images:any[] = [];
 
 images.push({level: 0, image: AuntiePig, name: 'Auntie Pig' });
 images.push({level: 2, image: AuntyGoat, name: 'Aunty Goat' });
@@ -117,11 +114,12 @@ images.push({level: 2, image: UncleGoat, name: 'Uncle Goat' });
 images.push({level: 0, image: UnclePig, name: 'Uncle Pig' });
 images.push({level: 2, image: ZoeZebra, name: 'Zoe Zebra' });
 images.push({level: 2, image: ZuzuAndZazaZebra, name: 'Zuzu And Zaza Zebra' });
-export function getPeppaPigImages(level: number): {
-  level: number,
-  image: any,
-  name: string,
-}[]{
+
+images.forEach((i) => {
+  i.code = i.name;
+})
+
+export function getPeppaPigImages(level: number): MediaData[]{
   const result = images.filter((im)=>{
     return im.level <= level;
   });
