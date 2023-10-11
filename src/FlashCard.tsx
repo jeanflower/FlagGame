@@ -4,15 +4,16 @@ import { generateRandomSelection } from './random';
 import Image from 'next/image';
 import { Button, Card } from 'react-bootstrap';
 import { gameTypes } from './App';
-import Script from 'next/script';
 
 interface FlashCardGameState {
   indexToShow: number;
-  message: string;
   start: Date;
   lastThree: number[];
   isMounted: boolean;
   showImage: boolean;
+  currentRun: number;
+  bestRun: number;
+  lastRun: number;
 }
 interface FlashCardProps {
   images: any[],
@@ -27,10 +28,12 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     const randomSel = this.getRandomSelection(new Date(), lastThree);
     this.state = {
       ...randomSel,
-      message: '',
       lastThree: lastThree,
       isMounted: false,
       showImage: false,
+      currentRun: 0,
+      bestRun: 0,
+      lastRun: 0,
     }
   }
 
@@ -92,18 +95,26 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     });
   }
 
-  onClickNext(){
+  
+  onClickRight(){
     console.log('clicked right');
+    const newCurrentRun = this.state.currentRun + 1;
+    let newBestRun = Math.max(this.state.bestRun, newCurrentRun);
     this.setState({
       showImage: false,
-    });
-    // we need to refresh the whole page to get the embedded video to play again
-    //console.log(`window.location.hostname = ${window.location.hostname}`);
-    //console.log(`window.location.href = ${window.location.href}`);
+      currentRun: newCurrentRun,
+      bestRun: newBestRun,
+  });
+    this.getNewGame();
+  }
+
+  onClickWrong(){
+    console.log('clicked wrong');
     this.setState({
       showImage: false,
-    });
-    //window.location.replace(`${window.location.href}`);
+      currentRun: 0,
+      lastRun: this.state.currentRun,
+  });
     this.getNewGame();
   }
 
@@ -185,14 +196,23 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
           <div>
             <Button
               key={`right`}
-              onClick={()=>this.onClickNext()}
+              onClick={()=>this.onClickRight()}
               variant={this.state.showImage ? "primary" : "secondary"}
             >
-              Next challenge!
+              I got this right!
+            </Button>
+            <Button
+              key={`right`}
+              onClick={()=>this.onClickWrong()}
+              variant={this.state.showImage ? "primary" : "secondary"}
+            >
+              I need more practice...
             </Button>
           </div>
         </div>
-      <h3>{this.state.message}</h3>
+      <h3>
+        Runs: current {this.state.currentRun}, previous {this.state.lastRun}, best {this.state.bestRun}
+      </h3>
     </div>);
   }
 }
