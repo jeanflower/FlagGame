@@ -104,7 +104,7 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
     }
 
     if(this.props.gameType === gameTypes.bslVideos) {
-      return <>Sorry, this game style doesn't work with the BSL Video game</>
+      return <>Sorry, this game style doesn&apos;t work with the BSL Video game</>
     }
     
     const displayData = generateDisplayData(
