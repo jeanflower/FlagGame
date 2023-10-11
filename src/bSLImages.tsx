@@ -58,7 +58,7 @@ images.push({level: 0, image: X, name: 'X' });
 images.push({level: 0, image: Y, name: 'Y' });
 images.push({level: 0, image: Z, name: 'Z' });
 
-export function getBSLImages(level: number): {
+export function getBSLAlphabetImages(level: number): {
   level: number,
   image: any,
   name: string,

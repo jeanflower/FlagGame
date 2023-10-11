@@ -1,9 +1,9 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Component } from 'react';
 import FlagImage from './finish-flag-128.png';
-import { FlagGame, gameNames, IndianDessertGame, PeppaPigGame, setGame, setGameType, setLevel } from './App';
-import { BSLGame } from './App';
-import React from 'react'
+import { gameTypes, gameNames, setGame, setGameType, setLevel } from './App';
+import React from 'react';
+import Image from 'next/image';
 
 interface FlagNavBarState {
 }
@@ -18,12 +18,12 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
   public render(){
     return (
   <Navbar bg="primary" variant="dark" expand="lg">
-    <img
-      src={FlagImage}
+    <Image
+      src={FlagImage.src}
       alt="Van"
       width={40}
-      height={'auto'}
-    ></img>
+      height={60}
+    />
     <Container>
       <Navbar.Brand href="#home">Flags galore</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -61,6 +61,7 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
                     setGame(name);
                   }}
                   eventKey={`2.${name}`}
+                  key={`2.${name}`}
                 >{name}</NavDropdown.Item>
               );
             })}
@@ -69,21 +70,21 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
-                setGameType(FlagGame);
+                setGameType(gameTypes.flagGame);
               }}
               eventKey="3.1"
             >Flags</NavDropdown.Item>
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
-                setGameType(IndianDessertGame);
+                setGameType(gameTypes.indianDessertGame);
               }}
               eventKey="3.2"
             >Indian desserts</NavDropdown.Item>
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
-                setGameType(PeppaPigGame);
+                setGameType(gameTypes.peppaPigGame);
               }}
               eventKey="3.3"
             >Peppa Pig characters</NavDropdown.Item>
@@ -91,10 +92,10 @@ export class FlagNavBar extends Component<FlagNavBarProps, FlagNavBarState> {
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
-                setGameType(BSLGame);
+                setGameType(gameTypes.bslAlphabet);
               }}
               eventKey="3.4"
-            >BSL signs</NavDropdown.Item>
+            >BSL alphabet</NavDropdown.Item>
 
           </NavDropdown>
         </Nav>

@@ -1,3 +1,5 @@
+'use client'
+
 import './App.css';
 import { Component } from 'react';
 
@@ -7,7 +9,7 @@ import { IdentifyAllGame } from './IdentifyAll';
 import { getFlagImages } from './flagImages';
 import { getIndianDessertImages } from "./indianDessertImages";
 import { getPeppaPigImages } from './peppaPigImages';
-import { getBSLImages } from "./bSLImages";
+import { getBSLAlphabetImages } from "./bSLImages";
 
 const selectFromFour = 'Select from 4';
 const selectFromFifteen = 'Select from 15';
@@ -20,25 +22,20 @@ export const gameNames = [
   identifyFifteen,
 ];
 
-function App() {
-  return (
-    <GameApp
-    >
-    </GameApp>
-  );
+export const gameTypes = {
+  flagGame: "FlagGame",
+  indianDessertGame: "IndianDessertGame",
+  peppaPigGame: "PeppaPigGame",
+  bslAlphabet: "bslAlphabet",
 }
-
-export const FlagGame = 0;
-export const IndianDessertGame = 1;
-export const PeppaPigGame = 2;
-export const BSLGame = 3;
 
 interface AppState {
   gameName: string;
   gameLevel: number;
-  gameType: number;
+  gameType: string;
 }
 interface AppProps {
+  defaultGameType: string;
 }
 let myGameApp: GameApp;
 export class GameApp extends Component<AppProps, AppState> {
@@ -47,7 +44,7 @@ export class GameApp extends Component<AppProps, AppState> {
     this.state = {
       gameName: selectFromFour,
       gameLevel: 0,
-      gameType: FlagGame,
+      gameType: props.defaultGameType,
     }
     myGameApp = this;
   }
@@ -60,14 +57,14 @@ export class GameApp extends Component<AppProps, AppState> {
     // console.log(`looking for level ${this.state.gameLevel} images`);
 
     let result;
-    if(this.state.gameType === FlagGame) {
+    if(this.state.gameType === gameTypes.flagGame) {
       result = getFlagImages(this.state.gameLevel);
-    } else if(this.state.gameType === IndianDessertGame) {
+    } else if(this.state.gameType === gameTypes.indianDessertGame) {
       result = getIndianDessertImages(this.state.gameLevel);
-    } else if(this.state.gameType === PeppaPigGame) {
+    } else if(this.state.gameType === gameTypes.peppaPigGame) {
       result = getPeppaPigImages(this.state.gameLevel);
-    } else if(this.state.gameType === BSLGame) {
-      result = getBSLImages(this.state.gameLevel);
+    } else if(this.state.gameType === gameTypes.bslAlphabet) {
+      result = getBSLAlphabetImages(this.state.gameLevel);
     } else {
       result = getFlagImages(this.state.gameLevel);
     } 
@@ -82,8 +79,7 @@ export class GameApp extends Component<AppProps, AppState> {
           numFlagsShown={4}
           images={this.getImages()}
           gameType={this.state.gameType}
-        >
-        </SelectFromGame>
+        />
       );
     } else if(this.state.gameName === selectFromFifteen){
       if(this.getImages().length < 15){
@@ -94,8 +90,7 @@ export class GameApp extends Component<AppProps, AppState> {
           numFlagsShown={15}
           images={this.getImages()}
           gameType={this.state.gameType}
-        >
-        </SelectFromGame>
+        />
       );
     } else if(this.state.gameName === identifyFour){
       return (
@@ -103,8 +98,7 @@ export class GameApp extends Component<AppProps, AppState> {
           numFlagsShown={4}
           images={this.getImages()}
           gameType={this.state.gameType}
-        >
-        </IdentifyAllGame>
+        />
       );
     } else if(this.state.gameName === identifyFifteen){
       if(this.getImages().length < 15){
@@ -115,8 +109,7 @@ export class GameApp extends Component<AppProps, AppState> {
           numFlagsShown={15}
           images={this.getImages()}
           gameType={this.state.gameType}
-        >
-        </IdentifyAllGame>
+        />
       );
     } else {
       // console.log(`rendering no game`);
@@ -163,7 +156,7 @@ export function setLevel(l: number){
     )}
   );
 }
-export function setGameType(type: number){
+export function setGameType(type: string){
   //console.log(`setting game ${name}`);
   const gameName = myGameApp.state.gameName;
   myGameApp.setState(
@@ -178,4 +171,3 @@ export function setGameType(type: number){
     )}
   );
 }
-export default App;

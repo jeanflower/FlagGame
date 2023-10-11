@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { generateDisplayData } from './displayData';
 import { generateRandomSelection } from './random';
+import Image from 'next/image';
 
 interface IdentifyAllState {
   indicesToShow: number[];
@@ -11,11 +12,12 @@ interface IdentifyAllState {
   message: string;
   start: Date;
   lastThree: number[];
+  isMounted: boolean;
 }
 interface IdentifyAllProps {
   numFlagsShown: number,
   images: any[],
-  gameType: number,
+  gameType: string,
 }
 
 export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllState> { 
@@ -30,6 +32,7 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
       message: '',
       correctIndex: correctIndex,
       lastThree: lastThree,
+      isMounted: false,
     }
   }
   private getRandomSelection(
@@ -104,14 +107,26 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
     }
   }
 
+  componentDidMount(){
+    console.log("Did mount called in IdentifyAll");
+    this.setState({
+        isMounted: true,
+    });
+  }
+
   render(){
     // console.log(`rendering IdentifyAllGame with props = ${JSON.stringify(this.props)}`);
     // console.log(`rendering IdentifyAllGame with state = ${JSON.stringify(this.state)}`);
 
+    if(!this.state.isMounted) {
+      return <></>;
+    }
+
     const displayData = generateDisplayData(
-      this.state.indicesToShow, 
+      this.state.indicesToShow,
       this.props.gameType,
     );
+
     return (
       <div>
       <h2>
@@ -136,7 +151,7 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
                     backgroundColor: `${this.state.highlightBorder === i?'red':'grey'}`
                   }}
                 >
-                <img
+                <Image
                   key={`im${i}`}
                   src={this.props.images[i].image}
                   alt={this.props.images[i].name}
@@ -146,9 +161,9 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
                     opacity: `${this.state.activeFlag[i]?1:0.5}`
                   }}
                   width={displayData.tileWidth}
-                  height={'auto'}
+                  height={0.4 * displayData.tileWidth}
                   onClick={()=>this.onClickWork(i)}
-                ></img>
+                />
                 </div>
               }</td>);
             })

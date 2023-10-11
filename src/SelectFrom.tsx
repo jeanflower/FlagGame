@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { generateDisplayData } from './displayData';
 import { generateRandomSelection } from './random';
+import Image from 'next/image';
 
 interface SelectFromState {
   message: string;
@@ -13,11 +14,12 @@ interface SelectFromState {
   bestRun: number;
   lastRun: number;
   lastThree: number[];
+  isMounted: boolean;
 }
 interface SelectFromProps {
   numFlagsShown: number,
   images: any[],
-  gameType: number,
+  gameType: string,
 }
 
 export class SelectFromGame extends Component<SelectFromProps, SelectFromState> { 
@@ -40,6 +42,7 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
       lastRun: 0,
       lastThree: lastThree,
       highlightBorder: -1,
+      isMounted: false,
     }
     if(this.state.indicesToShow.length === 0){
       this.setRandomSelection();
@@ -83,15 +86,27 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
       });
     }
   }
+
+  componentDidMount(){
+    console.log("Did mount called in SelectFrom");
+    this.setState({
+      isMounted: true,
+    });
+  }
   
   render(){
     // console.log(`rendering SelectFromGame with props = ${JSON.stringify(this.props)}`);
     // console.log(`rendering SelectFromGame with state = ${JSON.stringify(this.state)}`);
 
+    if(!this.state.isMounted){
+      return <></>;
+    }
+    
     const displayData = generateDisplayData(
       this.state.indicesToShow,
       this.props.gameType,
     );
+
     return (
       <div>
       <h2>
@@ -116,7 +131,7 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
                     backgroundColor: `${this.state.highlightBorder === i?'red':'grey'}`
                   }}
                 >
-                <img
+                <Image
                   key={`im${i}`}
                   src={this.props.images[i].image}
                   alt={this.props.images[i].name}
@@ -124,11 +139,10 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
                     padding: `${displayData.pad}px`
                   }}
                   width={displayData.tileWidth}
-                  height={'auto'}
                   onClick={()=>{
                     return this.onClickWork(i);
                   }}
-                ></img>                
+                />             
                 </div>
               }</td>);
             })}</tr>);

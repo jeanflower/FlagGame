@@ -1,9 +1,22 @@
-import { BSLGame, PeppaPigGame } from "./App";
+'use client'
+
+import { gameTypes } from "./App";
 
 export function generateDisplayData(
   indicesToShow: number[],
-  gameType: number,
-){
+  gameType: string,
+): {
+  rows: number[][],
+  pad: number,
+  tileWidth: number,
+}{
+  if (window === undefined) {
+    return {
+      rows: [],
+      pad: 0,
+      tileWidth: 0,
+    };  ;
+  }
   const width = window.innerWidth;
   // console.log(`screen width ${width}`);
   const numTiles = indicesToShow.length;
@@ -16,10 +29,10 @@ export function generateDisplayData(
       numRows = 2;
     } 
   } else if(numTiles === 15){
-    if(gameType === PeppaPigGame){
+    if(gameType === gameTypes.peppaPigGame){
       numRows = 3;
       maxTileWidth = 120;
-    } else if(gameType === BSLGame){
+    } else if(gameType === gameTypes.bslAlphabet){
       if(width > 600){
         numRows = 3;
         maxTileWidth = 160;
@@ -51,5 +64,5 @@ export function generateDisplayData(
     rows: rows,
     pad: pad,
     tileWidth: tileWidth,
-  }    
+  };  
 }
