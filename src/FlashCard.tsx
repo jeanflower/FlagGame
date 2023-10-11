@@ -143,9 +143,9 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
 
     return (
       <div>
-      <h3>
+      <h4>
       What&apos;s the {this.getNameOfThing()} for {this.props.images[i].name}?
-      </h3>
+      </h4>
         <div 
           style={{
             padding: `${displayData.pad}px`,
@@ -157,7 +157,7 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
             onClick={()=>this.revealImage()}
             disabled={this.state.showImage}
           >
-            Reveal
+            Reveal the answer
           </Button>
           }
 
@@ -210,9 +210,9 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
             </Button>
           </div>
         </div>
-      <h3>
+      <h4>
         Runs: current {this.state.currentRun}, previous {this.state.lastRun}, best {this.state.bestRun}
-      </h3>
+      </h4>
     </div>);
   }
 }
