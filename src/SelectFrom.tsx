@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { generateDisplayData } from './displayData';
 import { generateRandomSelection } from './random';
 import Image from 'next/image';
+import { gameTypes } from './App';
 
 interface SelectFromState {
   message: string;
@@ -100,6 +101,10 @@ export class SelectFromGame extends Component<SelectFromProps, SelectFromState> 
 
     if(!this.state.isMounted){
       return <></>;
+    }
+
+    if(this.props.gameType === gameTypes.bslVideos) {
+      return <>Sorry, this game style doesn't work with the BSL Video game</>
     }
     
     const displayData = generateDisplayData(

@@ -103,15 +103,15 @@ export class GameApp extends Component<AppProps, AppState> {
   }
 
   private getNavBarTitle(){
-    if(this.props.defaultGameType === gameTypes.flagGame){
+    if(this.state.gameType === gameTypes.flagGame){
       return 'Flags Galore';
-    } else if(this.props.defaultGameType === gameTypes.bslAlphabet){
+    } else if(this.state.gameType === gameTypes.bslAlphabet){
       return 'BSL Alphabet challenge';
-    } else if(this.props.defaultGameType === gameTypes.indianDessertGame){
+    } else if(this.state.gameType === gameTypes.indianDessertGame){
       return 'Indian desserts';
-    } else if(this.props.defaultGameType === gameTypes.peppaPigGame){
+    } else if(this.state.gameType === gameTypes.peppaPigGame){
       return 'Peppa pig characters';
-    } else if(this.props.defaultGameType === gameTypes.bslVideos){
+    } else if(this.state.gameType === gameTypes.bslVideos){
       return 'BSL video challenge';
     } else {
       return 'Flags Galore';

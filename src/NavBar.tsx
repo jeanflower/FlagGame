@@ -26,7 +26,6 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
       width={40}
       height={60}
     />
-    {this.props.type !== gameTypes.bslVideos &&
     <Container>
       <Navbar.Brand href="#home">{this.props.title}</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -55,7 +54,7 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
               eventKey="1.3"
             >Hard</NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title="Game Style" id="basic-nav-dropdown" key="ndgs">
+          <NavDropdown title="Game style" id="basic-nav-dropdown" key="ndgs">
             {gameModes.map((mode: {
               name: string,
               screenName: string, 
@@ -115,7 +114,6 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
         </Nav>
       </Navbar.Collapse>
     </Container>
-  }
   </Navbar>);
   }
 }
