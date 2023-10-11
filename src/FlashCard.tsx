@@ -103,8 +103,8 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     this.setState({
       showImage: false,
     });
-    window.location.replace(`${window.location.href}`);
-    //this.getNewGame();
+    //window.location.replace(`${window.location.href}`);
+    this.getNewGame();
   }
 
   componentDidMount(){
@@ -168,9 +168,17 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
               width={displayData.tileWidth}
             />}
             {this.props.images[i].embedCode && 
-            <>{this.props.images[i].embedCode}</>}
-
-            {/*<Script src="https://embed.signbsl.com/widgets.js"/>*/}
+              <iframe 
+                key={`iframe${this.props.images[i].name}`}
+                height="410"
+                srcDoc={`<html>
+                          <body>
+                          ${/*<blockquote class="signbsldata-embed" data-vidref="vyweujxrb6"><a href="https://www.signbsl.com/sign/good-morning">Watch how to sign 'good morning' in British Sign Language</a></blockquote><script async src="https://embed.signbsl.com/widgets.js" charset="utf-8"></script>*/""}
+                          ${this.props.images[i].embedCode}
+                          </body>
+                        </html>`}>
+              </iframe>
+            }
             </div>
           }
 
