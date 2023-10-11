@@ -12,6 +12,7 @@ import { getPeppaPigImages } from './peppaPigImages';
 import { getBSLAlphabetImages } from "./bSLImages";
 import { FlashCardGame } from './FlashCard';
 import { StaticImageData } from 'next/image';
+import { getBSLVideos } from './bSLVideos';
 
 export const selectFromFour = 'selectFromFour';
 export const selectFromFifteen = 'selectFromFifteen';
@@ -22,7 +23,8 @@ export const flashCard = 'flashCard';
 export type MediaData = {
     code: string|undefined,
     level: number,
-    image: StaticImageData,
+    image: StaticImageData|undefined,
+    embedCode: any,
     name: string,
 };
 
@@ -54,6 +56,7 @@ export const gameTypes = {
   indianDessertGame: "IndianDessertGame",
   peppaPigGame: "PeppaPigGame",
   bslAlphabet: "bslAlphabet",
+  bslVideos: "bslVideos",
 }
 
 interface AppState {
@@ -89,6 +92,8 @@ export class GameApp extends Component<AppProps, AppState> {
       result = getPeppaPigImages(this.state.gameLevel);
     } else if(this.state.gameType === gameTypes.bslAlphabet) {
       result = getBSLAlphabetImages(this.state.gameLevel);
+    } else if(this.state.gameType === gameTypes.bslVideos) {
+      result = getBSLVideos(this.state.gameLevel);
     } else {
       result = getFlagImages(this.state.gameLevel);
     } 
@@ -105,6 +110,8 @@ export class GameApp extends Component<AppProps, AppState> {
       return 'Indian desserts';
     } else if(this.props.defaultGameType === gameTypes.peppaPigGame){
       return 'Peppa pig characters';
+    } else if(this.props.defaultGameType === gameTypes.bslVideos){
+      return 'BSL video challenge';
     } else {
       return 'Flags Galore';
     }

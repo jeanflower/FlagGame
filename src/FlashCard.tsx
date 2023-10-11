@@ -4,6 +4,7 @@ import { generateRandomSelection } from './random';
 import Image from 'next/image';
 import { Button, Card } from 'react-bootstrap';
 import { gameTypes } from './App';
+import Script from 'next/script';
 
 interface FlashCardGameState {
   indexToShow: number;
@@ -42,6 +43,8 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
       return 'dish';
     } else if(this.props.gameType === gameTypes.peppaPigGame) {
       return 'character';
+    } else if(this.props.gameType === gameTypes.bslVideos) {
+      return 'sign';
     } else {
       return 'thing'; // should never happen!
     }
@@ -89,17 +92,19 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     });
   }
 
-  onClickRight(name: string){
+  onClickNext(){
+    console.log('clicked right');
     this.setState({
-      message: `Well done imagining ${name}!`,
+      showImage: false,
     });
-    this.getNewGame();
-  }
-  onClickWrong(name: string){
+    // we need to refresh the whole page to get the embedded video to play again
+    //console.log(`window.location.hostname = ${window.location.hostname}`);
+    //console.log(`window.location.href = ${window.location.href}`);
     this.setState({
-      message: "keep working on it...",
+      showImage: false,
     });
-    this.getNewGame();
+    window.location.replace(`${window.location.href}`);
+    //this.getNewGame();
   }
 
   componentDidMount(){
@@ -135,6 +140,7 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
             padding: `${displayData.pad}px`,
           }}
         >
+          {!this.state.showImage &&
           <Button 
             variant="primary"
             onClick={()=>this.revealImage()}
@@ -142,6 +148,7 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
           >
             Reveal
           </Button>
+          }
 
           {this.state.showImage &&
             <div 
@@ -150,6 +157,7 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
                 backgroundColor: `grey`,
               }}
             >
+            {this.props.images[i].image && 
             <Image
               key={`im${i}`}
               src={this.props.images[i].image}
@@ -158,24 +166,21 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
                 padding: `${displayData.pad}px`
               }}
               width={displayData.tileWidth}
-            />
+            />}
+            {this.props.images[i].embedCode && 
+            <>{this.props.images[i].embedCode}</>}
+
+            {/*<Script src="https://embed.signbsl.com/widgets.js"/>*/}
             </div>
           }
 
           <div>
             <Button
               key={`right`}
-              onClick={()=>this.onClickRight(this.props.images[i].name)}
+              onClick={()=>this.onClickNext()}
               variant={this.state.showImage ? "primary" : "secondary"}
             >
-              I got it right!
-            </Button>
-            <Button
-              key={`wrong`}
-              onClick={()=>this.onClickWrong(this.props.images[i].name)}
-              variant={this.state.showImage ? "primary" : "secondary"}
-            >
-              I need more practice
+              Next challenge!
             </Button>
           </div>
         </div>

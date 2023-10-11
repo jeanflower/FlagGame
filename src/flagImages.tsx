@@ -252,7 +252,7 @@ import zmImage from './flagSvgs/zm.svg';
 import zwImage from './flagSvgs/zw.svg';
 import { MediaData } from './App';
 
-export let images:MediaData[] = [];
+export let images:any[] = [];
 
 images.push({code: 'ad', level: 2, image: adImage, name: 'Andorra' });
 images.push({code: 'ae', level: 1, image: aeImage, name: 'United Arab Emirates' });

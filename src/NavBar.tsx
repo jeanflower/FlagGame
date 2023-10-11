@@ -101,6 +101,14 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
               eventKey="3.4"
             >BSL alphabet</NavDropdown.Item>
 
+            <NavDropdown.Item 
+              href="#"
+              onClick={()=>{
+                setGameType(gameTypes.bslVideos);
+              }}
+              eventKey="3.5"
+            >BSL videos</NavDropdown.Item>
+
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
