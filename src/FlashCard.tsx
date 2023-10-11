@@ -133,7 +133,7 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     return (
       <div>
       <h3>
-      Imagine the {this.getNameOfThing()} for {this.props.images[i].name}
+      What's the {this.getNameOfThing()} for {this.props.images[i].name}?
       </h3>
         <div 
           style={{
