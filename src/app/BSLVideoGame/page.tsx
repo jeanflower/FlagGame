@@ -14,7 +14,7 @@ export default function BSLAphabetGame() {
   let chosenMode = gameModes.find((m) => {
     return m.name === mode;
   });
-  console.log(`chosenMode = ${chosenMode}`);
+  // console.log(`chosenMode = ${chosenMode}`);
   return (<ClientOnly>
     <GameApp
     defaultGameMode={
