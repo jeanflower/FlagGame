@@ -124,7 +124,8 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
     }
 
     if(this.props.gameType === gameTypes.bslVideos) {
-      return <>Sorry, this game style doesn&apos;t work with the BSL Video game</>
+      return <>Sorry, this game style doesn&apos;t work with the BSL Video game.  
+      Change to a different content or tey the FlashCard style</>
     }
 
     const displayData = generateDisplayData(

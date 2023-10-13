@@ -30,13 +30,17 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
       ...randomSel,
       lastThree: lastThree,
       isMounted: false,
-      showImage: false,
+      showImage: this.showImageAtStart(),
       currentRun: 0,
       bestRun: 0,
       lastRun: 0,
     }
   }
 
+  private showImageAtStart() {
+    return this.props.gameType === gameTypes.bslVideos
+  }
+  
   private getNameOfThing(){
     if(this.props.gameType === gameTypes.flagGame) {
       return 'flag';
@@ -76,22 +80,17 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     return selectionWithGray;
   }
 
-  onClickImage(){
-    this.setState({
-      showImage: false,
-    })
-  }
   revealImage(){
     this.setState({
       showImage: true,
-    })
+    });
   }
 
   getNewGame(){
     const randomSel = this.getRandomSelection(new Date(), this.state.lastThree);
     this.setState({
       indexToShow: randomSel.indexToShow,
-      showImage: false,
+      showImage: this.showImageAtStart(),
     });
   }
 
@@ -101,7 +100,7 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     const newCurrentRun = this.state.currentRun + 1;
     let newBestRun = Math.max(this.state.bestRun, newCurrentRun);
     this.setState({
-      showImage: false,
+      showImage: this.showImageAtStart(),
       currentRun: newCurrentRun,
       bestRun: newBestRun,
   });
@@ -111,7 +110,7 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
   onClickWrong(){
     console.log('clicked wrong');
     this.setState({
-      showImage: false,
+      showImage: this.showImageAtStart(),
       currentRun: 0,
       lastRun: this.state.currentRun,
   });
@@ -151,7 +150,8 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
             padding: `${displayData.pad}px`,
           }}
         >
-          {!this.state.showImage &&
+          {!this.state.showImage && 
+          this.props.gameType !== gameTypes.bslVideos &&
           <Button 
             variant="primary"
             onClick={()=>this.revealImage()}
