@@ -2,7 +2,7 @@
 
 Inspired by the not-always-supported [Flags Fun](https://apps.apple.com/us/app/flags-fun-free/id318095646/) app. 
 
-Go to [https://jeanflower.github.io/FlagGame/](https://jeanflower.github.io/FlagGame/) to play.
+Heroku URL is, for example, https://flags-and-more-ee0e3d453aed.herokuapp.com/FlagGame?mode=flashCard or https://flags-and-more-ee0e3d453aed.herokuapp.com/BSLVideoGame?mode=flashCard 
 
 ## Available Scripts
 
