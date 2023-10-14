@@ -97,8 +97,26 @@ export class GameApp extends Component<AppProps, AppState> {
       result = getBSLVideos(this.state.gameLevel);
     } else {
       result = getFlagImages(this.state.gameLevel);
-    } 
+    }
     // console.log(`returning ${result.length} images`);
+
+
+    for(const i of result){
+      const nameMatches = result.filter((entry) => {
+        return entry.name.toLowerCase() === i.name.toLowerCase();
+      });
+      if(nameMatches.length !== 1){
+        console.log(`found duplicates of ${i.name}; ${JSON.stringify(i)} and ${JSON.stringify(nameMatches)}`);
+      }
+    }
+
+    for(const i of result){
+
+      if((i.name.toLowerCase() === i.name) && isNaN(parseInt(i.name))){
+        console.log(`found lowercase ${i.name}`);
+      }
+    }
+
     return result;
   }
 
@@ -161,6 +179,7 @@ export class GameApp extends Component<AppProps, AppState> {
         <FlashCardGame
           images={this.getImages()}
           gameType={this.state.gameType}
+          gameLevel={this.state.gameLevel}
         />
       );
     } else {
@@ -181,8 +200,13 @@ export class GameApp extends Component<AppProps, AppState> {
     );
   }
 }
-export function setGame(name: string){
-  //console.log(`setting game ${name}`);
+export function setGameMode(name: string){
+  let nextLevel = myGameApp.state.gameLevel;
+  if([0,1,2].includes(nextLevel) && name === gameTypes.bslVideos ){
+    nextLevel = 3;
+  } else if([3, 4, 5].includes(nextLevel) && name !== gameTypes.bslVideos ){
+    nextLevel = 0;
+  }
   myGameApp.setState(
     {
       gameMode: 'none',
@@ -190,7 +214,7 @@ export function setGame(name: string){
     myGameApp.setState(
       {
         gameMode: name,
-      }
+      },
       )
     }
   )
@@ -212,8 +236,14 @@ export function setLevel(l: number){
   );
 }
 export function setGameType(type: string){
-  //console.log(`setting game ${name}`);
-  const gameName = myGameApp.state.gameMode;
+
+  //console.log(`setting game ${name}`);  
+  let gameMode = myGameApp.state.gameMode;
+
+  if(type === gameTypes.bslVideos){
+    gameMode = flashCard;
+  }
+
   myGameApp.setState(
     {
       gameMode: 'none',
@@ -221,7 +251,7 @@ export function setGameType(type: string){
     myGameApp.setState(
       {
         gameType: type,
-        gameMode: gameName,
+        gameMode: gameMode,
       }
     )}
   );

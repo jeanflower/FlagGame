@@ -1,11 +1,12 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Component } from 'react';
 import FlagImage from './finish-flag-128.png';
-import { gameTypes, gameModes, setGame, setGameType, setLevel } from './App';
+import { gameTypes, gameModes, setGameMode, setGameType, setLevel } from './App';
 import React from 'react';
 import Image from 'next/image';
 
 interface NavBarState {
+  type: string,
 }
 interface NavBarProps {
   title: string,
@@ -15,6 +16,7 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
   public constructor(props: NavBarProps) {
     super(props);
     this.state = {
+      type: props.type,
     }
   }
   public render(){
@@ -31,6 +33,7 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
+          {this.state.type !== gameTypes.bslVideos &&
           <NavDropdown title="Difficulty" id="basic-nav-dropdown" key="ndd">
             <NavDropdown.Item 
               href="#"
@@ -54,6 +57,33 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
               eventKey="1.3"
             >Hard</NavDropdown.Item>
           </NavDropdown>
+          }
+          {this.state.type === gameTypes.bslVideos &&
+          <NavDropdown title="Play type" id="basic-nav-dropdown" key="ndd">
+            <NavDropdown.Item 
+              href="#"
+              onClick={()=>{
+                setLevel(3);
+              }}
+              eventKey="1.1"
+            >Play in order</NavDropdown.Item>
+            <NavDropdown.Item 
+              href="#"
+              onClick={()=>{
+                setLevel(4);
+              }}
+              eventKey="1.2"
+            >Shuffle the order</NavDropdown.Item>
+            <NavDropdown.Item 
+              href="#"
+              onClick={()=>{
+                setLevel(5);
+              }}
+              eventKey="1.3"
+            >Pick one at random</NavDropdown.Item>
+          </NavDropdown>
+          }
+          {this.state.type !== gameTypes.bslVideos &&
           <NavDropdown title="Game style" id="basic-nav-dropdown" key="ndgs">
             {gameModes.map((mode: {
               name: string,
@@ -63,7 +93,7 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
                 <NavDropdown.Item 
                   href="#"
                   onClick={()=>{
-                    setGame(mode.name);
+                    setGameMode(mode.name);
                   }}
                   eventKey={`2.${mode.name}`}
                   key={`2.${mode.name}`}
@@ -71,10 +101,14 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
               );
             })}
           </NavDropdown>
+          }
           <NavDropdown title="Game content" id="basic-nav-dropdown" key="ndgc">
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
+                this.setState({
+                  type: gameTypes.flagGame,
+                });
                 setGameType(gameTypes.flagGame);
               }}
               eventKey="3.1"
@@ -82,6 +116,9 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
+                this.setState({
+                  type: gameTypes.indianDessertGame,
+                });
                 setGameType(gameTypes.indianDessertGame);
               }}
               eventKey="3.2"
@@ -89,6 +126,9 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
+                this.setState({
+                  type: gameTypes.peppaPigGame,
+                });
                 setGameType(gameTypes.peppaPigGame);
               }}
               eventKey="3.3"
@@ -97,6 +137,9 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
+                this.setState({
+                  type: gameTypes.bslAlphabet,
+                });
                 setGameType(gameTypes.bslAlphabet);
               }}
               eventKey="3.4"
@@ -105,6 +148,9 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
             <NavDropdown.Item 
               href="#"
               onClick={()=>{
+                this.setState({
+                  type: gameTypes.bslVideos,
+                });
                 setGameType(gameTypes.bslVideos);
               }}
               eventKey="3.5"

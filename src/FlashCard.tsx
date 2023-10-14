@@ -22,6 +22,7 @@ interface FlashCardGameState {
 interface FlashCardProps {
   images: any[],
   gameType: string,
+  gameLevel: number,
 }
 
 function shuffleArray(array: any[]) {
@@ -172,11 +173,17 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
       return <></>;
     }
 
+    let indexToShow = 0;
+    if(this.props.gameLevel === 3){
+      indexToShow = this.state.taskNum % this.props.images.length;
+    } else if(this.props.gameLevel === 4){
+      indexToShow = this.state.shuffledArray[this.state.taskNum];
+    } else if(this.props.gameLevel === 5){
+      indexToShow = this.state.indexToShow;
+    }
+
     const displayData = generateDisplayData(
-
-      // [this.state.indexToShow],
-      [this.state.shuffledArray[this.state.taskNum]],
-
+      [indexToShow],
       this.props.gameType,
     );
 
@@ -245,7 +252,7 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
               I got this right!
             </Button>
             <Button
-              key={`right`}
+              key={`wrong`}
               onClick={()=>this.onClickWrong()}
               variant={this.state.showImage ? "primary" : "secondary"}
             >

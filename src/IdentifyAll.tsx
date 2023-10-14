@@ -25,6 +25,20 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
   public constructor(props: IdentifyAllProps) {
     super(props);
     // console.log(`props for IdentifyAllGame ${JSON.stringify(props)}`);
+    if(this.props.images.length < this.props.numFlagsShown){
+      this.state = {
+        indicesToShow:[0],
+        numbersLeft: [0],
+        activeFlag: [true],
+        highlightBorder: 0,
+        start: new Date(),
+        message: '',
+        correctIndex: '0',
+        lastThree: [-1,-1,-1],
+        isMounted: false,
+      }
+      return;
+    }
     const lastThree = [-1, -1, -1];
     const randomSel = this.getRandomSelection(new Date(), lastThree);
     const correctIndex = this.newCorrectPlace(randomSel.numbersLeft);
@@ -125,7 +139,11 @@ export class IdentifyAllGame extends Component<IdentifyAllProps, IdentifyAllStat
 
     if(this.props.gameType === gameTypes.bslVideos) {
       return <>Sorry, this game style doesn&apos;t work with the BSL Video game.  
-      Change to a different content or tey the FlashCard style</>
+      Change to a different content or try the FlashCard style</>
+    }
+
+    if(this.props.images.length < this.props.numFlagsShown){
+      return <>Sorry, this game content doesn&apos;t have enough data to support the chosen game style</>
     }
 
     const displayData = generateDisplayData(
