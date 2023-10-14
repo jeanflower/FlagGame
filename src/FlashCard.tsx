@@ -6,9 +6,13 @@ import { Button, Card } from 'react-bootstrap';
 import { gameTypes } from './App';
 
 interface FlashCardGameState {
-  indexToShow: number;
+  shuffledArray: number[],
+  taskNum: number,
   start: Date;
+
+  indexToShow: number;
   lastThree: number[];
+
   isMounted: boolean;
   showImage: boolean;
   currentRun: number;
@@ -20,17 +24,37 @@ interface FlashCardProps {
   gameType: string,
 }
 
-export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState> { 
+function shuffleArray(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+
+export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState> {
   public constructor(props: FlashCardProps) {
     super(props);
     // console.log(`props for IdentifyAllGame ${JSON.stringify(props)}`);
     const lastThree = [-1, -1, -1];
     const randomSel = this.getRandomSelection(new Date(), lastThree);
+
+    const numImages = this.props.images.length;
+    const shuffledArray = [...Array(numImages).keys()];
+    shuffleArray(shuffledArray);
+
     this.state = {
-      ...randomSel,
+
+      indexToShow: randomSel.indexToShow,
       lastThree: lastThree,
+
+      shuffledArray: shuffledArray,
+      taskNum: 0,
+
       isMounted: false,
       showImage: this.showImageAtStart(),
+      start: new Date(),
       currentRun: 0,
       bestRun: 0,
       lastRun: 0,
@@ -55,6 +79,21 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     } else {
       return 'thing'; // should never happen!
     }
+  }
+
+  private getNextImage(): any{
+    const result = this.state.shuffledArray[this.state.taskNum];
+    if(this.state.taskNum < this.state.shuffledArray.length - 1){
+      this.setState({
+        taskNum: this.state.taskNum + 1,
+      });
+      return result;
+    }
+    shuffleArray(this.state.shuffledArray);
+    this.setState({
+      taskNum: 0,
+    });
+    return result;
   }
 
   private getRandomSelection(
@@ -88,6 +127,7 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
 
   getNewGame(){
     const randomSel = this.getRandomSelection(new Date(), this.state.lastThree);
+    this.getNextImage();
     this.setState({
       indexToShow: randomSel.indexToShow,
       showImage: this.showImageAtStart(),
@@ -133,7 +173,10 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     }
 
     const displayData = generateDisplayData(
-      [this.state.indexToShow],
+
+      // [this.state.indexToShow],
+      [this.state.shuffledArray[this.state.taskNum]],
+
       this.props.gameType,
     );
 
@@ -182,9 +225,9 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
               <iframe 
                 key={`iframe${this.props.images[i].name}`}
                 height="410"
+                width="100%"
                 srcDoc={`<html>
                           <body>
-                          ${/*<blockquote class="signbsldata-embed" data-vidref="vyweujxrb6"><a href="https://www.signbsl.com/sign/good-morning">Watch how to sign 'good morning' in British Sign Language</a></blockquote><script async src="https://embed.signbsl.com/widgets.js" charset="utf-8"></script>*/""}
                           ${this.props.images[i].embedCode}
                           </body>
                         </html>`}>
