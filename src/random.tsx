@@ -14,15 +14,17 @@ export function generateRandomSelection(
   //      return images[i].name;
   //    }
   //  }))}`);
-  const skipThese:number[] = [...lastThree];
-  skipThese.sort((a,b)=>{return (a<b)?1:-1;});
-  // console.log(`skipThese = ${skipThese} from ${selectFromThese}`);
-  for(let prev of skipThese){
-    if(prev >= 0 && selectFromThese.length > numFlagsShown){
-      // console.log(`remove ${prev} as an option`);
-      // console.log(`selectFromThese was = ${JSON.stringify(selectFromThese)}`);
-      selectFromThese.splice(prev, 1);
-      // console.log(`selectFromThese becomes = ${JSON.stringify(selectFromThese)}`);
+  if(images.length >= 4) {
+    const skipThese:number[] = [...lastThree];
+    skipThese.sort((a,b)=>{return (a<b)?1:-1;});
+    // console.log(`skipThese = ${skipThese} from ${selectFromThese}`);
+    for(let prev of skipThese){
+      if(prev >= 0 && selectFromThese.length > numFlagsShown){
+        // console.log(`remove ${prev} as an option`);
+        // console.log(`selectFromThese was = ${JSON.stringify(selectFromThese)}`);
+        selectFromThese.splice(prev, 1);
+        // console.log(`selectFromThese becomes = ${JSON.stringify(selectFromThese)}`);
+      }
     }
   }
   // console.log(`selectFromThese after removal = ${
@@ -72,13 +74,22 @@ export function generateRandomSelection(
   //  })
   //)}`);
   let correctOne = 0;
+  let attemptCount = 0;
   while(true){
+    attemptCount = attemptCount + 1;
+    if (attemptCount > 100) {
+      break;
+    }
     correctOne = Math.floor(Math.random() * numFlagsShown);
-    const entry = lastThree.find((i)=>{ 
-      return i === indicesToShow[correctOne]; 
-    });
-    if( entry !== undefined ){
-      continue;
+    if(images.length >= 4){
+      const entry = lastThree.find((i)=>{ 
+        return i === indicesToShow[correctOne]; 
+      });
+      if( entry !== undefined ){
+        continue;
+      } else {
+        break;
+      }
     } else {
       break;
     }
