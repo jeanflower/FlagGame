@@ -72,6 +72,7 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
                   setLevel(g.level * 100 + g.group);
                 }}
                 eventKey={g.title}
+                key={g.title}
               >
                 {g.title}
               </NavDropdown.Item>)
