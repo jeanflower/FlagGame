@@ -95,9 +95,9 @@ group1Videos.push({
 });
 group1Videos.push({
   level: 0,
-  name: 'Nephew ',
-  embedCode: `<blockquote class="signbsldata-embed" data-vidref="fhoqsqskua"><a href="https://www.signbsl.com/sign/niece">Watch how to sign 'niece' in British Sign Language</a></blockquote><script async src="https://embed.signbsl.com/widgets.js" charset="utf-8"></script>`
-});
+  name: 'Nephew',
+  embedCode: `<blockquote class="signbsldata-embed" data-vidref="j58j2wjzue"><a href="https://www.signbsl.com/sign/nephew">Watch how to sign 'nephew' in British Sign Language</a></blockquote><script async src="https://embed.signbsl.com/widgets.js" charset="utf-8"></script>`
+  });
 group1Videos.push({
   level: 0,
   name: 'Niece',
@@ -192,11 +192,6 @@ group1Videos.push({
   level: 0,
   name: 'Fat',
   embedCode: `<blockquote class="signbsldata-embed" data-vidref="qls8pnbbux"><a href="https://www.signbsl.com/sign/fat">Watch how to sign 'fat' in British Sign Language</a></blockquote><script async src="https://embed.signbsl.com/widgets.js" charset="utf-8"></script>`
-});
-group1Videos.push({
-  level: 0,
-  name: 'Buy',
-  embedCode: `<blockquote class="signbsldata-embed" data-vidref="wqvdrqm3gs"><a href="https://www.signbsl.com/sign/buy">Watch how to sign 'buy' in British Sign Language</a></blockquote><script async src="https://embed.signbsl.com/widgets.js" charset="utf-8"></script>`
 });
 group1Videos.push({
   level: 0,
@@ -943,7 +938,11 @@ group6Videos.push({
 });
 
 let group7Videos: any[] = [];
-
+group7Videos.push({
+  level: 0,
+  name: 'Buy',
+  embedCode: `<blockquote class="signbsldata-embed" data-vidref="wqvdrqm3gs"><a href="https://www.signbsl.com/sign/buy">Watch how to sign 'buy' in British Sign Language</a></blockquote><script async src="https://embed.signbsl.com/widgets.js" charset="utf-8"></script>`
+});
 group7Videos.push({
   level: 0,
   name: 'Fast',
