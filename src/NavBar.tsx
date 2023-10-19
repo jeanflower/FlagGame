@@ -60,14 +60,18 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
           </NavDropdown>
           }
           {this.state.type === gameTypes.bslVideos &&
-          <NavDropdown title="Play type" id="basic-nav-dropdown" key="ndd">
+          <NavDropdown 
+            title="Play type" 
+            id="basic-nav-dropdown" 
+            key="ndd"
+          >
             {getBSLVideos().map((g)=>{
               return (<NavDropdown.Item 
                 href="#"
                 onClick={()=>{
                   setLevel(g.level * 100 + g.group);
                 }}
-                eventKey="1.1"
+                eventKey={g.title}
               >
                 {g.title}
               </NavDropdown.Item>)
