@@ -174,13 +174,13 @@ export class FlashCardGame extends Component<FlashCardProps, FlashCardGameState>
     }
 
     let indexToShow = 0;
-    if(this.props.gameLevel === 3){
-      indexToShow = this.state.taskNum % this.props.images.length;
-    } else if(this.props.gameLevel === 4){
+    //if(this.props.gameLevel === 3){
+    //  indexToShow = this.state.taskNum % this.props.images.length;
+    //} else if(this.props.gameLevel === 4){
       indexToShow = this.state.shuffledArray[this.state.taskNum];
-    } else if(this.props.gameLevel === 5){
-      indexToShow = this.state.indexToShow;
-    }
+    //} else if(this.props.gameLevel === 5){
+    //  indexToShow = this.state.indexToShow;
+    //}
 
     const displayData = generateDisplayData(
       [indexToShow],

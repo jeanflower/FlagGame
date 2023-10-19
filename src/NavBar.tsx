@@ -4,6 +4,7 @@ import FlagImage from './finish-flag-128.png';
 import { gameTypes, gameModes, setGameMode, setGameType, setLevel } from './App';
 import React from 'react';
 import Image from 'next/image';
+import { getBSLVideos } from './bSLVideos';
 
 interface NavBarState {
   type: string,
@@ -60,27 +61,17 @@ export class MyNavBar extends Component<NavBarProps, NavBarState> {
           }
           {this.state.type === gameTypes.bslVideos &&
           <NavDropdown title="Play type" id="basic-nav-dropdown" key="ndd">
-            <NavDropdown.Item 
-              href="#"
-              onClick={()=>{
-                setLevel(3);
-              }}
-              eventKey="1.1"
-            >Play in order</NavDropdown.Item>
-            <NavDropdown.Item 
-              href="#"
-              onClick={()=>{
-                setLevel(4);
-              }}
-              eventKey="1.2"
-            >Shuffle the order</NavDropdown.Item>
-            <NavDropdown.Item 
-              href="#"
-              onClick={()=>{
-                setLevel(5);
-              }}
-              eventKey="1.3"
-            >Pick one at random</NavDropdown.Item>
+            {getBSLVideos().map((g)=>{
+              return (<NavDropdown.Item 
+                href="#"
+                onClick={()=>{
+                  setLevel(g.level * 100 + g.group);
+                }}
+                eventKey="1.1"
+              >
+                {g.title}
+              </NavDropdown.Item>)
+            })}
           </NavDropdown>
           }
           {this.state.type !== gameTypes.bslVideos &&

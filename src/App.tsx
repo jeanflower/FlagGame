@@ -94,7 +94,17 @@ export class GameApp extends Component<AppProps, AppState> {
     } else if(this.state.gameType === gameTypes.bslAlphabet) {
       result = getBSLAlphabetImages(this.state.gameLevel);
     } else if(this.state.gameType === gameTypes.bslVideos) {
-      result = getBSLVideos(this.state.gameLevel);
+
+      const allVids = getBSLVideos();
+      const gameGroup = this.state.gameLevel % 100;
+      const gameLevel = (this.state.gameLevel - gameGroup) / 100
+      result = allVids.find((g)=>{
+        return g.level === gameLevel && g.group === gameGroup;
+      })?.videos;
+      if(result === undefined){
+        console.log(`no videos for game level ${this.state.gameLevel} = ${gameLevel} * 100 + ${gameGroup}`);
+        return [];
+      }
     } else {
       result = getFlagImages(this.state.gameLevel);
     }
