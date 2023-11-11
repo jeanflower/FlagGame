@@ -39,7 +39,7 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
     `object-src 'unsafe-inline';` + // TOOD why is unsafe-inline needed?
     `img-src 'self' https://www.signbsl.com/ https://media.signbsl.com data:;` +
     `media-src 'self' https://media.signbsl.com;`+
-    `script-src 'self' ${unsafeEval};` + // TODO unsafe
+    `script-src 'self' 'unsafe-inline' ${unsafeEval};` + // TODO unsafe
     `script-src-elem 'self' https://embed.signbsl.com/ 'unsafe-inline';` + // TODO unsafe
     `connect-src 'self' https://embed-api.signbsl.com/;` +
     `frame-src;` +
