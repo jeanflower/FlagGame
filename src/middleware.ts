@@ -46,7 +46,7 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
     `font-src 'self';` +
     `base-uri 'self';` +
     `form-action 'self';` +
-    `frame-ancestors 'none';`+
+    `frame-ancestors 'self' https://flags-and-more-ee0e3d453aed.herokuapp.com/ http://www.samsara-sleeps.com/;`+
  
     `block-all-mixed-content;` +
     `upgrade-insecure-requests;`+
