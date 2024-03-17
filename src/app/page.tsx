@@ -1,6 +1,6 @@
 'use client'
 
-import { GameApp, gameModes, gameTypes, selectFromFifteen } from '@/App';
+import { GameApp, gameModes, gameTypes, selectFromFifteen, selectFromFour } from '@/App';
 import ClientOnly from '@/ClientOnly';
 import "./../bootstrap/dist/css/bootstrap.css";
 import { useSearchParams } from 'next/navigation';
@@ -11,7 +11,7 @@ export default function BSLAphabetGame() {
   const mode = searchParams.get('mode')
   const level = searchParams.get('level')
 
-  let defaultMode = selectFromFifteen;
+  let defaultMode = selectFromFour;
   let chosenMode = gameModes.find((m) => {
     return m.name === mode;
   });
