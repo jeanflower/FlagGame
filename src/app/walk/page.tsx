@@ -16,9 +16,13 @@ export default function map() {
 
 
   return (<>
-    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Evljlj9wptw94mHPH04U32okD-dWzgM&ehbc=2E312F" width="100%" height="600"></iframe>
+    <iframe 
+      src="https://www.google.com/maps/d/u/0/embed?mid=1Evljlj9wptw94mHPH04U32okD-dWzgM&ehbc=2E312F" 
+      width="100%" 
+      height="500"
+    />
     <div style={{ width: "100%", padding: "10px" }}>
-        <h2>Progress Updates</h2>
+        <strong>Total distance so far</strong>: {grandTotal.toFixed(1)} miles
         <ul>
           {data.map((entry, index) => {
             return (
@@ -28,7 +32,6 @@ export default function map() {
             )}
           )}
         </ul>
-        <strong>Total distance so far</strong>: {grandTotal.toFixed(1)} miles
       </div>
   </>);
 }
