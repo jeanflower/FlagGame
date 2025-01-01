@@ -4,13 +4,11 @@ import "./../../bootstrap/dist/css/bootstrap.css";
 
 export default function map() {
   const data = [
-    { date: "1 Jan 2025", steps: 9000, miles: 0.0, combined: 0.0 },
+    { date: "1 Jan 2025", combined: 14.095 },
   ];
   let grandTotal = 0.0;
   for(const entry of data) {
-    const combined = (entry.miles + entry.steps / 2000);
-    grandTotal += combined
-    entry.combined = combined;
+    grandTotal += entry.combined
   }
 
 
@@ -27,7 +25,7 @@ export default function map() {
           {data.map((entry, index) => {
             return (
               <li key={index}>
-                <strong>{entry.date}</strong>: {entry.steps} steps + {entry.miles} miles = {entry.combined.toFixed(1)} miles
+                <strong>{entry.date}</strong>: {entry.combined.toFixed(1)} miles
               </li>
             )}
           )}
