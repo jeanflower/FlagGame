@@ -4,7 +4,7 @@ import "./../../bootstrap/dist/css/bootstrap.css";
 
 export default function map() {
   const data = [
-    { date: "1 Jan 2025", combined: 14.095 },
+    { date: "1 Jan 2025", combined: 16.095 },
   ];
   let grandTotal = 0.0;
   for(const entry of data) {
@@ -20,12 +20,12 @@ export default function map() {
       height="600"
     />
     <div style={{ width: "100%", padding: "10px" }}>
-        <strong>Total distance so far</strong>: {grandTotal.toFixed(1)} miles
+        <strong>Total distance so far</strong>: {(grandTotal*5/8).toFixed(1)} miles
         <ul>
           {data.map((entry, index) => {
             return (
               <li key={index}>
-                <strong>{entry.date}</strong>: {entry.combined.toFixed(1)} miles
+                <strong>{entry.date}</strong>: {(entry.combined*5/8).toFixed(1)} miles
               </li>
             )}
           )}
