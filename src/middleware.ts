@@ -42,7 +42,7 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
     `script-src 'self' 'unsafe-inline' ${unsafeEval};` + // TODO unsafe
     `script-src-elem 'self' https://embed.signbsl.com/ 'unsafe-inline';` + // TODO unsafe
     `connect-src 'self' https://embed-api.signbsl.com/;` +
-    `frame-src;` +
+    `frame-src https://www.google.com/;` +
     `font-src 'self';` +
     `base-uri 'self';` +
     `form-action 'self';` +
