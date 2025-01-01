@@ -19,7 +19,7 @@ export default function map() {
     <iframe 
       src="https://www.google.com/maps/d/u/0/embed?mid=1Evljlj9wptw94mHPH04U32okD-dWzgM&ehbc=2E312F" 
       width="100%" 
-      height="560"
+      height="600"
     />
     <div style={{ width: "100%", padding: "10px" }}>
         <strong>Total distance so far</strong>: {grandTotal.toFixed(1)} miles
