@@ -4,8 +4,9 @@ import "./../../bootstrap/dist/css/bootstrap.css";
 
 export default function map() {
   const data = [
-    { date: "1 Jan 2025", combinedKm: 21.2152 },
+    { date: "3 Jan 2025", combinedKm: 25.14 },
     { date: "2 Jan 2025", combinedKm: 29.104 },
+    { date: "1 Jan 2025", combinedKm: 21.2152 },
   ];
   let grandTotalKm = 0.0;
   for(const entry of data) {
