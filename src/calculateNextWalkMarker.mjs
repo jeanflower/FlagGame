@@ -1,4 +1,4 @@
-import { walkData } from './walkData.js'
+import { walkData } from './walkData.mjs'
 import fs from 'fs';
 import * as turf from '@turf/turf';
 

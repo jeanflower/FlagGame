@@ -1,7 +1,7 @@
 'use client'
 
 import "./../../bootstrap/dist/css/bootstrap.css";
-import { walkData } from '../../walkData'
+import { walkData } from '../../walkData.mjs'
 
 export default function map() {
   let grandTotalKm = 0.0;
