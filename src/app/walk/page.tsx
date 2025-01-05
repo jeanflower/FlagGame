@@ -1,16 +1,11 @@
 'use client'
 
 import "./../../bootstrap/dist/css/bootstrap.css";
+import { walkData } from '../../walkData'
 
 export default function map() {
-  const data = [
-    { date: "4 Jan 2025", combinedKm: 29.1872 },
-    { date: "3 Jan 2025", combinedKm: 25.14 },
-    { date: "2 Jan 2025", combinedKm: 29.104 },
-    { date: "1 Jan 2025", combinedKm: 21.2152 },
-  ];
   let grandTotalKm = 0.0;
-  for(const entry of data) {
+  for(const entry of walkData) {
     grandTotalKm += entry.combinedKm
   }
 
@@ -25,7 +20,7 @@ export default function map() {
     <div style={{ width: "100%", padding: "10px" }}>
         <strong>Total distance so far</strong>: {(grandTotalKm*5/8).toFixed(1)} miles
         <ul>
-          {data.map((entry, index) => {
+          {walkData.map((entry, index) => {
             return (
               <li key={index}>
                 <strong>{entry.date}</strong>: {(entry.combinedKm*5/8).toFixed(1)} miles
