@@ -30,17 +30,21 @@ for (const d of reversedData) {
   if(accumulatedDist > turf.length(lines[0])) {
     line = lines[1];
     alongDist = alongDist - turf.length(lines[0]);
-    //console.log(`we're beyond London`);
+    // console.log(`we're beyond London, alongDist = ${alongDist}`);
+    if(alongDist > 90) {
+      alongDist += 120; // cross the channel!
+      // console.log(`we're beyond Newhaven, alongDist = ${alongDist}`);
+    }
   }
-  if(accumulatedDist > turf.length(lines[1])) {
+  if(accumulatedDist > turf.length(lines[0]) + turf.length(lines[1])) {
     line = lines[2];
     alongDist = alongDist - turf.length(lines[1]);
-    //console.log(`we're beyond Paris`);
+    // console.log(`we're beyond Paris`);
   }
-  if(accumulatedDist > turf.length(lines[2])) {
+  if(accumulatedDist > turf.length(lines[0]) + turf.length(lines[1]) + turf.length(lines[2])) {
     line = lines[3];
     alongDist = alongDist - turf.length(lines[2]);
-    //console.log(`we're beyond Rome`);
+    // console.log(`we're beyond Rome`);
   }
   const point = turf.along(line, alongDist, { units: 'kilometers' });
   console.log(`${d.date} marker coordinates after ${d.combinedKm}km, to ${accumulatedDist} : ${point.geometry.coordinates[1]}, ${point.geometry.coordinates[0]}`);
