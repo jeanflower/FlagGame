@@ -21,31 +21,32 @@ console.log(`Paris to Rome ${turf.length(lines[2])}km`);
 console.log(`Rome to Malta ${turf.length(lines[3])}km`);
 
 const reversedData = [...walkData].reverse()
-let accumulatedDist = 0.0;
+let accumulatedDistFromStats = 0.0;
 for (const d of reversedData) {
-  accumulatedDist += d.combinedKm;
+  accumulatedDistFromStats += d.combinedKm;
   //console.log(`accumulatedDist = ${accumulatedDist}km`);
   let line = lines[0];
-  let alongDist = accumulatedDist;
-  if(accumulatedDist > turf.length(lines[0])) {
+  let alongPathDist = accumulatedDistFromStats;
+  if(accumulatedDistFromStats > turf.length(lines[0])) {
+    // console.log(`we're beyond London`);
     line = lines[1];
-    alongDist = alongDist - turf.length(lines[0]);
-    // console.log(`we're beyond London, alongDist = ${alongDist}`);
-    if(alongDist > 90) {
-      alongDist += 120; // cross the channel!
-      // console.log(`we're beyond Newhaven, alongDist = ${alongDist}`);
+    alongPathDist = alongPathDist - turf.length(lines[0]);
+    // console.log(`we're beyond London by ${alongPathDist}`);
+    if(alongPathDist > 90) {
+      alongPathDist += 120; // cross the channel!
+      //console.log(`we're across the channel, beyond London by ${alongPathDist}`);
     }
   }
-  if(accumulatedDist > turf.length(lines[0]) + turf.length(lines[1])) {
+  if(alongPathDist > turf.length(lines[1])) {
     line = lines[2];
-    alongDist = alongDist - turf.length(lines[1]);
-    // console.log(`we're beyond Paris`);
+    alongPathDist = alongPathDist - turf.length(lines[1]);
+    //console.log(`we're beyond Paris by ${alongPathDist}`);
   }
-  if(accumulatedDist > turf.length(lines[0]) + turf.length(lines[1]) + turf.length(lines[2])) {
+  if(alongPathDist > turf.length(lines[2])) {
     line = lines[3];
-    alongDist = alongDist - turf.length(lines[2]);
+    alongPathDist = alongPathDist - turf.length(lines[2]);
     // console.log(`we're beyond Rome`);
   }
-  const point = turf.along(line, alongDist, { units: 'kilometers' });
-  console.log(`${d.date} marker coordinates after ${d.combinedKm}km, to ${accumulatedDist} : ${point.geometry.coordinates[1]}, ${point.geometry.coordinates[0]}`);
+  const point = turf.along(line, alongPathDist, { units: 'kilometers' });
+  console.log(`${d.date} marker coordinates after ${d.combinedKm}km, to ${accumulatedDistFromStats} : ${point.geometry.coordinates[1]}, ${point.geometry.coordinates[0]}`);
 };
