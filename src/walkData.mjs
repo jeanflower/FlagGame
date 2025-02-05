@@ -1,4 +1,5 @@
 export const walkData = [
+  { date: "4 Feb 2025", combinedKm: 40.88 },
   { date: "3 Feb 2025", combinedKm: 23.11 },
   { date: "2 Feb 2025", combinedKm: 20.96 },
   { date: "1 Feb 2025", combinedKm: 23.58 },
