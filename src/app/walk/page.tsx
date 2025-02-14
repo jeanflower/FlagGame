@@ -1,15 +1,16 @@
-'use client'
-
 import "./../../bootstrap/dist/css/bootstrap.css";
 import { walkData } from '../../walkData.mjs'
+
+export const metadata = {
+  title: "LGHS walk to Malta",
+  description: "Progress tracker",
+};
 
 export default function map() {
   let grandTotalKm = 0.0;
   for(const entry of walkData) {
     grandTotalKm += entry.combinedKm
   }
-
-
 
   return (<>
     <iframe 
