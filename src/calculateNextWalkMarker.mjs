@@ -55,5 +55,5 @@ for (const d of reversedData) {
     // console.log(`we're beyond Rome`);
   }
   const point = turf.along(path, alongPathDist, { units: 'kilometers' });
-  console.log(`${d.date} marker coordinates after ${d.combinedKm}km = ${d.combinedKm * 5/8}m, to ${accumulatedDistFromStats}km = ${accumulatedDistFromStats * 5/8}m : ${point.geometry.coordinates[1]}, ${point.geometry.coordinates[0]}`);
+  console.log(`${d.date} marker coordinates after ${d.combinedKm}km = ${(d.combinedKm * 5/8).toFixed(2)}m, to ${accumulatedDistFromStats.toFixed(2)}km = ${(accumulatedDistFromStats * 5/8).toFixed(2)}m : ${point.geometry.coordinates[1].toFixed(3)}, ${point.geometry.coordinates[0].toFixed(3)}`);
 };
