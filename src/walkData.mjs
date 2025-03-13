@@ -1,4 +1,12 @@
 export const walkData = [
+  { date: "12 Mar 2025", combinedKm: 32.00 },
+  { date: "11 Mar 2025", combinedKm: 15.29 },
+  { date: "10 Mar 2025", combinedKm: 23.37 },
+  { date: "9 Mar 2025", combinedKm: 23.11 },
+  { date: "8 Mar 2025", combinedKm: 25.47 },
+  { date: "7 Mar 2025", combinedKm: 25.61 },
+  { date: "6 Mar 2025", combinedKm: 31.54 },
+  { date: "5 Mar 2025", combinedKm: 23.68 },
   { date: "4 Mar 2025", combinedKm: 33.24 },
   { date: "3 Mar 2025", combinedKm: 23.14 },
   { date: "2 Mar 2025", combinedKm: 47.16 },
