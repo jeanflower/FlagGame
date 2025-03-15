@@ -52,8 +52,15 @@ for (const d of reversedData) {
   if(alongPathDist > turf.length(paths[2])) {
     path = paths[3];
     alongPathDist = alongPathDist - turf.length(paths[2]);
-    // console.log(`we're beyond Rome`);
+    //console.log(`we're beyond Rome by ${alongPathDist}`);
+    if(alongPathDist > 272) {
+      alongPathDist += 299; // cross to Sicily
+      //console.log(`we're onto Sicily`);
+    }
   }
   const point = turf.along(path, alongPathDist, { units: 'kilometers' });
-  console.log(`${d.date} marker coordinates after ${d.combinedKm}km = ${(d.combinedKm * 5/8).toFixed(2)}m, to ${accumulatedDistFromStats.toFixed(2)}km = ${(accumulatedDistFromStats * 5/8).toFixed(2)}m : ${point.geometry.coordinates[1].toFixed(3)}, ${point.geometry.coordinates[0].toFixed(3)}`);
+  console.log(`${d.date} marker coordinates after ${d.combinedKm}km = `
+    +`${(d.combinedKm * 5/8).toFixed(2)}m, to ${accumulatedDistFromStats.toFixed(2)}km = `
+    +`${(accumulatedDistFromStats * 5/8).toFixed(2)}m : `
+    +`${point.geometry.coordinates[1].toFixed(3)}, ${point.geometry.coordinates[0].toFixed(3)}`);
 };
