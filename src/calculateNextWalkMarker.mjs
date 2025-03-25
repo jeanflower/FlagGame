@@ -55,7 +55,11 @@ for (const d of reversedData) {
     //console.log(`we're beyond Rome by ${alongPathDist}`);
     if(alongPathDist > 272) {
       alongPathDist += 299; // cross to Sicily
-      //console.log(`we're onto Sicily`);
+      // console.log(`we're onto Sicily alongPathDist = ${alongPathDist}`);
+    }
+    if (alongPathDist > 786) {
+      alongPathDist += 126; // cross to Malta
+      // console.log(`we're onto Malta alongPathDist = ${alongPathDist}`);
     }
   }
   const point = turf.along(path, alongPathDist, { units: 'kilometers' });
