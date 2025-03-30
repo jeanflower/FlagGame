@@ -2,7 +2,7 @@ import "./../../bootstrap/dist/css/bootstrap.css";
 import { walkData } from '../../walkData.mjs'
 
 export const metadata = {
-  title: "LGHS walk to Malta",
+  title: "LGHS walk 2025",
   description: "Progress tracker",
 };
 
@@ -16,8 +16,9 @@ export default function map() {
     <iframe 
       src="https://www.google.com/maps/d/u/0/embed?mid=1Evljlj9wptw94mHPH04U32okD-dWzgM&ehbc=2E312F" 
       width="100%" 
-      height="600"
+      height="1000"
     />
+    {/*
     <div style={{ width: "100%", padding: "10px" }}>
         <strong>Total distance so far</strong>: {(grandTotalKm*5/8).toFixed(1)} miles
         <ul>
@@ -30,5 +31,6 @@ export default function map() {
           )}
         </ul>
       </div>
+    */}
   </>);
 }
