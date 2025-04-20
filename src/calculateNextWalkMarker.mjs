@@ -10,15 +10,13 @@ const geojson = JSON.parse(fs.readFileSync(geojsonFile, 'utf8'));
 const paths = geojson.features.filter((f) => {
   return f.geometry.type === 'LineString';
 });
-if (paths.length !== 4) {
-  console.error('Expected 4 LineStrings in GeoJSON.');
+if (paths.length !== 2) {
+  console.error('Expected 2 LineStrings in GeoJSON.');
   process.exit(1);
 }
 
-console.log(`Leeds to London ${turf.length(paths[0]) * 5/8}m`);
-console.log(`London to Paris ${turf.length(paths[1]) * 5/8}m`);
-console.log(`Paris to Rome ${turf.length(paths[2]) * 5/8}m`);
-console.log(`Rome to Malta ${turf.length(paths[3]) * 5/8}m`);
+console.log(`paths[0] length in miles ${turf.length(paths[0]) * 5/8}m`);
+console.log(`paths[1] length in miles ${turf.length(paths[1]) * 5/8}m`);
 
 let totalLength = 0.0;
 for (const p of paths) {
@@ -31,19 +29,16 @@ const reversedData = [...walkData].reverse()
 let accumulatedDistFromStats = 0.0;
 for (const d of reversedData) {
   accumulatedDistFromStats += d.combinedKm;
-  //console.log(`accumulatedDist = ${accumulatedDist}km`);
+  //console.log(`accumulatedDistFromStats = ${accumulatedDistFromStats}km`);
   let path = paths[0];
   let alongPathDist = accumulatedDistFromStats;
   if(accumulatedDistFromStats > turf.length(paths[0])) {
-    // console.log(`we're beyond London`);
+    // console.log(`we're beyond paths[0]`);
     path = paths[1];
     alongPathDist = alongPathDist - turf.length(paths[0]);
-    // console.log(`we're beyond London by ${alongPathDist}`);
-    if(alongPathDist > 90) {
-      alongPathDist += 120; // cross the channel!
-      //console.log(`we're across the channel, beyond London by ${alongPathDist}`);
-    }
+    // console.log(`we're beyond Lyminster by ${alongPathDist}`);
   }
+  /*
   if(alongPathDist > turf.length(paths[1])) {
     path = paths[2];
     alongPathDist = alongPathDist - turf.length(paths[1]);
@@ -52,19 +47,15 @@ for (const d of reversedData) {
   if(alongPathDist > turf.length(paths[2])) {
     path = paths[3];
     alongPathDist = alongPathDist - turf.length(paths[2]);
-    //console.log(`we're beyond Rome by ${alongPathDist}`);
-    if(alongPathDist > 272) {
-      alongPathDist += 299; // cross to Sicily
-      // console.log(`we're onto Sicily alongPathDist = ${alongPathDist}`);
-    }
-    if (alongPathDist > 786) {
-      alongPathDist += 126; // cross to Malta
-      // console.log(`we're onto Malta alongPathDist = ${alongPathDist}`);
-    }
   }
+  */
+  // console.log(`alongPathDist = ${alongPathDist}km`);
   const point = turf.along(path, alongPathDist, { units: 'kilometers' });
-  console.log(`${d.date} marker coordinates after ${d.combinedKm}km = `
+  // console.log(`point = ${JSON.stringify(point)}`);
+  console.log(`${d.date} ` 
+    +`${point.geometry.coordinates[1].toFixed(3)}, ${point.geometry.coordinates[0].toFixed(3)}`
+    + ` after ${d.combinedKm}km = `
     +`${(d.combinedKm * 5/8).toFixed(2)}m, to ${accumulatedDistFromStats.toFixed(2)}km = `
-    +`${(accumulatedDistFromStats * 5/8).toFixed(2)}m : `
-    +`${point.geometry.coordinates[1].toFixed(3)}, ${point.geometry.coordinates[0].toFixed(3)}`);
+    +`${(accumulatedDistFromStats * 5/8).toFixed(2)}m`
+  );
 };
